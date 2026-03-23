@@ -1,0 +1,2 @@
+# ComuzaIA-Kerolmi
+MI PROYECTO MAS AMBICIOSO
