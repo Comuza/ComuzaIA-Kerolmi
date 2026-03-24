@@ -11,133 +11,75 @@
     }
 
     @keyframes TarjetaAnimada {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-                filter: blur(8px);
-                border: 1.025px solid rgba(255, 200, 200, 0.6);
-            }
-
-            5% {
-                filter: blur(12px);
-                border: 1.05px solid rgba(255, 200, 200, 0.6);
-            }
-
-            10% {
-                filter: blur(15px);
-                border: 1.075px solid rgba(255, 200, 200, 0.6);
-            }
-            15% {
-                filter: blur(12px);
-                border: 1.1px solid rgba(255, 200, 200, 0.6);
-            }
-
-            20% {
-                filter: blur(10px);
-                border: 1.125px solid rgba(255, 200, 200, 0.6);
-            }
-
-            25% {
-                filter: blur(8px);
-                border: 1.150px solid rgba(255, 200, 200, 0.6);
-            }
-
-            30% {
-                filter: blur(7px);
-                border: 1.175px solid rgba(255, 200, 200, 0.6);
-            }
-
-            35% {
-                filter: blur(6px);
-                border: 1.2px solid rgba(255, 200, 200, 0.6);
-            }
-
-            40% {
-                opacity: 0.6;
-                background-color: rgba(125, 85, 85, 0.229);
-                transform: translateY(-8px) scale(1.01);
-                box-shadow: 10px 14px 18px rgba(125, 85, 85, 0.239);
-                border: 1.225px solid rgba(255, 200, 200, 0.6);
-            }
-
-            45% {
-                filter: blur(5px);
-                border: 1.250px solid rgba(255, 200, 200, 0.6);
-            }
-
-            46% {
-                filter: blur(5px);
-                border: 1.275px solid rgba(255, 200, 200, 0.6);
-            }
-
-            47% {
-                filter: blur(4px);
-                border: 1.300px solid rgba(255, 200, 200, 0.6);
-            }
-
-            52% {
-                filter: blur(4px);
-                border: 1.325px solid rgba(255, 200, 200, 0.6);
-            }
-            
-            55% {
-                filter: blur(4px);
-                border: 1.350px solid rgba(255, 200, 200, 0.6);
-            }
-
-            60% {
+        0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            filter: blur(8px);
+            border: 1.025px solid rgba(255, 200, 200, 0.6);
+            color: transparent; /* Mantiene el texto oculto al inicio */
+        }
+        10% {
+            filter: blur(15px);
+            border: 1.075px solid rgba(255, 200, 200, 0.6);
+        }
+        20% {
+            filter: blur(10px);
+            border: 1.125px solid rgba(255, 200, 200, 0.6);
+        }
+        30% {
+            filter: blur(7px);
+            border: 1.175px solid rgba(255, 200, 200, 0.6);
+        }
+        40% {
+            opacity: 0.6;
+            background-color: rgba(125, 85, 85, 0.229);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 10px 14px 18px rgba(125, 85, 85, 0.239);
+            border: 1.225px solid rgba(255, 200, 200, 0.6);
+            filter: blur(6px);
+        }
+        47% {
             filter: blur(4px);
-            border: 1.375px solid rgba(255, 200, 200, 0.6);
-            }
-
-            65% {
-                filter: blur(3px);
-                border: 1.400px solid rgba(255, 200, 200, 0.6);
-            }
-
-            70% {
-                filter: blur(3px);
-                border: 1.425px solid rgba(255, 200, 200, 0.6);
-            }
-
-            75% {
-                filter: blur(3px);
-                border: 1.45px solid rgba(255, 200, 200, 0.6);
-            }
-
-            80% {
-                filter: blur(3px);
-                border: 1.475px solid rgba(255, 200, 200, 0.6);
-            }
-
-            85% {
-                filter: blur(2px);
-                border: 1.5px solid rgba(255, 200, 200, 0.6);
-            }
-
-            90% {
-                border: 1.525px solid rgba(255, 200, 200, 0.6);
-            }
-
-            95% {
-                filter: blur(1px);
-                border: 1.55px solid rgba(255, 200, 200, 0.6);
-            }
-
-            100% {
-                opacity: 0.5;
-                transform: translateY(0) scale(1);
-                filter: blur(0.5px);
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(2px);
-                box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.239);
-                border: 1.60px solid rgba(255, 200, 200, 0.6);
-                color: rgba(255, 255, 255, 0.766);
-            }
+            border: 1.3px solid rgba(255, 200, 200, 0.6);
+        }
+        55% {
+            filter: blur(4px);
+            border: 1.35px solid rgba(255, 200, 200, 0.6);
+        }
+        65% {
+            filter: blur(3px);
+            border: 1.4px solid rgba(255, 200, 200, 0.6);
+        }
+        75% {
+            filter: blur(3px);
+            border: 1.45px solid rgba(255, 200, 200, 0.6);
+        }
+        85% {
+            filter: blur(2px);
+            border: 1.5px solid rgba(255, 200, 200, 0.6);
+        }
+        95% {
+            filter: blur(1px);
+            border: 1.55px solid rgba(255, 200, 200, 0.6);
+        }
+        100% {
+            opacity: 0.3;
+            transform: translateY(0) scale(1);
+            filter: blur(0.5px);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+            box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.239);
+            border: 1.6px solid rgba(255, 200, 200, 0.6);
+            color: rgba(255, 255, 255, 0.766);
+        }
     }
-    
 
-        .tarjeta1 {
+    /* Regla crítica para que el delay funcione y no se vea el texto antes */
+    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+        animation-fill-mode: both !important;
+    }
+
+    .tarjeta1 {
         background-color: rgb(255, 255, 255);
         backdrop-filter: blur(2px);
         border-radius: 35px;
@@ -146,24 +88,26 @@
         margin: 20px;
         box-shadow: 2.254px 2.254px 10.4px rgba(255, 255, 255, 0.441);
         opacity: 0.3;
-        animation: TarjetaAnimada 1s ease-in-out forwards;
+        animation: TarjetaAnimada 1.5s ease-in-out forwards;
     }
 
-            .tarjeta2 {
+    .tarjeta2 {
         background-color: rgba(255, 255, 255, 0);
         backdrop-filter: blur(30px);
         border-radius: 25px;
         font-size: 12.5px;
-        padding: 15px;
-        margin: 0px;
+        padding: 15px 15px;
+        margin: 10px auto;
         opacity: 0.3;
-        animation: TarjetaAnimada 1s ease-in-out forwards;
+        animation: TarjetaAnimada 1.3s ease-in-out forwards;
         animation-delay: 0.2s;
-        color: transparent
-
+        display: flex;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 250px;
     }
 
-                .tarjeta3 {
+    .tarjeta4 {
         background-color: rgba(255, 255, 255, 0);
         backdrop-filter: blur(30px);
         border-radius: 25px;
@@ -171,10 +115,37 @@
         padding: 15px;
         margin: 25px;
         opacity: 0.3;
-        animation: TarjetaAnimada 1s ease-in-out forwards;
+        animation: TarjetaAnimada 1.7s ease-in-out forwards;
         animation-delay: 0.4s;
-        color: transparent
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 
+    .tarjeta3 {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(30px);
+        border-radius: 25px;
+        font-size: 12.5px;
+        padding: 15px;
+        margin: 25px;
+        opacity: 0.3;
+        animation: TarjetaAnimada 1.7s ease-in-out forwards;
+        animation-delay: 1s;
+        width: 27.5%;
+    }
+
+    .contenedor-horizontal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .tarjeta2, .tarjeta4 {
+        margin: 25px;
+        padding: 15px;
     }
 </style>
 <body>
@@ -185,12 +156,32 @@
         <p>IA para Desarrollo Web</p>
     </div>
 
-    <div class="tarjeta2">
-        <h3>Esta ia programa en html, css y javascript...</h3>
-    </div>  
+    <div class="contenedor-horizontal">
+        <div class="tarjeta4">
+            <h3>Lista de actualizaciones...</h3>
+        </div>
 
-    <div class="tarjeta3">
-        <h3><span style="color: rgb(205, 39, 39)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Nova...</span></h3>
-    </div>  
+        <div class="tarjeta2">
+            <h3>Para html, css y javascript...</h3>
+        </div>  
+
+        <div class="tarjeta4">
+            <h3>Mapa de trabajo...</h3>
+        </div>
+    </div> 
+
+    <div class="contenedor-horizontal">
+        <div class="tarjeta3">
+            <h3><span style="color: rgb(168, 75, 255)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Nova... <hr> La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado! <hr> (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo) <hr> [Es recomendable usar Kecomu "Umwarimu" si eres Junior y quieres tener un aprendizaje guiado, no esperes muchas explicaciones en esta versión de la ia]</span></h3>
+        </div>
+        
+        <div class="tarjeta3">
+            <h3><span style="color: rgba(255, 54, 158, 0.812)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Kero... <hr> La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo! <hr> (Es recomendable usar Kecomu "Nova" para codigo flexible y optimizado) <hr> [Es recomendable usar Kecomu "Umwarimu" si eres Junior y quieres tener un aprendizaje guiado, no esperes muchas explicaciones en esta versión de la ia]</span></h3>
+        </div>
+
+        <div class="tarjeta3">
+            <h3><span style="color: rgba(213, 90, 90, 0.729)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Umwarimu... <hr> La versión "Umwarimu" de Kecomu es un de aprendizaje guiado donde puedes estar creando mientras aprendes, esta versión te explorar el basto mundo de la programación sin dificultades! <hr> (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente, flexible, optimizado y rapido) <hr> Es recomendable usar esta versión si eres nuevo</span></h3>
+        </div>
+    </div>
 </body>
 </html>
