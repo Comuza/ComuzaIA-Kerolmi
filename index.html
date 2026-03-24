@@ -8,180 +8,146 @@
 <style>
     body {
         background-color: rgb(56, 1, 10);
+        margin: 0;
+        padding: 20px;
+        font-family: sans-serif;
+        color: rgba(255, 255, 255, 0.766);
     }
 
+    /* Animación fiel a tu diseño */
     @keyframes TarjetaAnimada {
         0% {
             opacity: 0;
             transform: translateY(40px) scale(0.95);
             filter: blur(8px);
             border: 1.025px solid rgba(255, 200, 200, 0.6);
-            color: transparent; /* Mantiene el texto oculto al inicio */
-        }
-        10% {
-            filter: blur(15px);
-            border: 1.075px solid rgba(255, 200, 200, 0.6);
-        }
-        20% {
-            filter: blur(10px);
-            border: 1.125px solid rgba(255, 200, 200, 0.6);
-        }
-        30% {
-            filter: blur(7px);
-            border: 1.175px solid rgba(255, 200, 200, 0.6);
+            color: transparent;
         }
         40% {
             opacity: 0.6;
             background-color: rgba(125, 85, 85, 0.229);
             transform: translateY(-8px) scale(1.01);
-            box-shadow: 10px 14px 18px rgba(125, 85, 85, 0.239);
-            border: 1.225px solid rgba(255, 200, 200, 0.6);
             filter: blur(6px);
         }
-        47% {
-            filter: blur(4px);
-            border: 1.3px solid rgba(255, 200, 200, 0.6);
-        }
-        55% {
-            filter: blur(4px);
-            border: 1.35px solid rgba(255, 200, 200, 0.6);
-        }
-        65% {
-            filter: blur(3px);
-            border: 1.4px solid rgba(255, 200, 200, 0.6);
-        }
-        75% {
-            filter: blur(3px);
-            border: 1.45px solid rgba(255, 200, 200, 0.6);
-        }
-        85% {
-            filter: blur(2px);
-            border: 1.5px solid rgba(255, 200, 200, 0.6);
-        }
-        95% {
-            filter: blur(1px);
-            border: 1.55px solid rgba(255, 200, 200, 0.6);
-        }
         100% {
-            opacity: 0.3;
+            opacity: 1;
             transform: translateY(0) scale(1);
             filter: blur(0.5px);
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(2px);
-            box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.239);
-            border: 1.6px solid rgba(255, 200, 200, 0.6);
-            color: rgba(255, 255, 255, 0.766);
+            background: rgba(255, 255, 255, 0.05); /* Ajustado para que se vea oscuro como tu imagen */
+            backdrop-filter: blur(10px);
+            border: 1.6px solid rgba(255, 200, 200, 0.3);
+            color: rgba(255, 255, 255, 0.522);
         }
     }
 
-    /* Regla crítica para que el delay funcione y no se vea el texto antes */
+    /* Reglas generales */
     .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-        animation-fill-mode: both !important;
-    }
-
-    .tarjeta1 {
-        background-color: rgb(255, 255, 255);
-        backdrop-filter: blur(2px);
-        border-radius: 35px;
-        font-size: 12.5px;
-        padding: 32px;
-        margin: 20px;
-        box-shadow: 2.254px 2.254px 10.4px rgba(255, 255, 255, 0.441);
-        opacity: 0.3;
         animation: TarjetaAnimada 1.5s ease-in-out forwards;
-    }
-
-    .tarjeta2 {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(30px);
+        animation-fill-mode: both !important;
         border-radius: 25px;
-        font-size: 12.5px;
-        padding: 15px 15px;
-        margin: 10px auto;
-        opacity: 0.3;
-        animation: TarjetaAnimada 1.3s ease-in-out forwards;
-        animation-delay: 0.2s;
-        display: flex;
-        justify-content: center;
-        flex: 0 0 auto;
-        width: 250px;
     }
 
-    .tarjeta4 {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(30px);
-        border-radius: 25px;
-        font-size: 12.5px;
-        padding: 15px;
-        margin: 25px;
-        opacity: 0.3;
-        animation: TarjetaAnimada 1.7s ease-in-out forwards;
-        animation-delay: 0.4s;
-        display: flex;
-        justify-content: center;
-        width: 100%;
+    /* Fila 1: Principal */
+    .tarjeta1 {
+        padding: 30px;
+        margin-bottom: 20px;
+        animation-delay: 0s;
     }
 
-    .tarjeta3 {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(30px);
-        border-radius: 25px;
-        font-size: 12.5px;
-        padding: 15px;
-        margin: 25px;
-        opacity: 0.3;
-        animation: TarjetaAnimada 1.7s ease-in-out forwards;
-        animation-delay: 1s;
-        width: 27.5%;
-    }
-
-    .contenedor-horizontal {
+    /* Filas de contenedores */
+    .fila {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
         gap: 20px;
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
-    .tarjeta2, .tarjeta4 {
-        margin: 25px;
+    /* Fila 2: Actualizaciones, Lenguajes, Mapa */
+    .tarjeta-pequena {
+        flex: 1;
         padding: 15px;
+        text-align: center;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fila 3: Las 3 versiones */
+    .tarjeta-grande {
+        flex: 1;
+        padding: 20px;
+        font-size: 12px;
+        min-height: 200px;
+    }
+
+    /* Delays específicos para orden de cascada */
+    .f2-1 { animation-delay: 0s; }
+    .f2-2 { animation-delay: 0.3s; }
+    .f2-3 { animation-delay: 0.6s; }
+    .f3-1 { animation-delay: 1s; }
+    .f3-2 { animation-delay: 1s; }
+    .f3-3 { animation-delay: 1s; }
+
+    hr { border: 0.5px solid rgba(255, 200, 200, 0.2); margin: 10px 0; }
+
+    /* Ajuste para que en Celular sigan siendo legibles */
+    @media (max-width: 768px) {
+        .fila { flex-direction: column; }
+        .tarjeta-grande { min-height: auto; }
     }
 </style>
 <body>
 
     <div class="tarjeta1">
-        <h1>Kecomu</h1>
+        <h2 style="margin: 0;">Kecomu</h2>
         <hr>
-        <p>IA para Desarrollo Web</p>
+        <p style="font-size: 11px; margin: 0;">IA para Desarrollo Web</p>
     </div>
 
-    <div class="contenedor-horizontal">
-        <div class="tarjeta4">
+    <div class="fila">
+        <div class="tarjeta-pequena tarjeta4 f2-3">
             <h3>Lista de actualizaciones...</h3>
         </div>
-
-        <div class="tarjeta2">
+        <div class="tarjeta-pequena tarjeta2 f2-2">
             <h3>Para html, css y javascript...</h3>
-        </div>  
-
-        <div class="tarjeta4">
+        </div>
+        <div class="tarjeta-pequena tarjeta4 f2-3">
             <h3>Mapa de trabajo...</h3>
         </div>
-    </div> 
+    </div>
 
-    <div class="contenedor-horizontal">
-        <div class="tarjeta3">
-            <h3><span style="color: rgb(168, 75, 255)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Nova... <hr> La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado! <hr> (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo) <hr> [Es recomendable usar Kecomu "Umwarimu" si eres Junior y quieres tener un aprendizaje guiado, no esperes muchas explicaciones en esta versión de la ia]</span></h3>
-        </div>
-        
-        <div class="tarjeta3">
-            <h3><span style="color: rgba(255, 54, 158, 0.812)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Kero... <hr> La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo! <hr> (Es recomendable usar Kecomu "Nova" para codigo flexible y optimizado) <hr> [Es recomendable usar Kecomu "Umwarimu" si eres Junior y quieres tener un aprendizaje guiado, no esperes muchas explicaciones en esta versión de la ia]</span></h3>
+    <div class="fila">
+        <div class="tarjeta-grande tarjeta3 f3-1">
+            <h3><span style="color: rgb(168, 75, 255)">Kecomu</span> Nova...</h3>
+            <hr>
+            La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado!
+            <hr>
+            (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo)
+            <hr>
+            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
         </div>
 
-        <div class="tarjeta3">
-            <h3><span style="color: rgba(213, 90, 90, 0.729)">Kecomu</span><span style="color: rgba(255, 255, 255, 0.766)">  Umwarimu... <hr> La versión "Umwarimu" de Kecomu es un de aprendizaje guiado donde puedes estar creando mientras aprendes, esta versión te explorar el basto mundo de la programación sin dificultades! <hr> (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente, flexible, optimizado y rapido) <hr> Es recomendable usar esta versión si eres nuevo</span></h3>
+        <div class="tarjeta-grande tarjeta3 f3-3">
+            <h3><span style="color: rgba(255, 54, 158, 0.812)">Kecomu</span> Kero...</h3>
+            <hr>
+            La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!
+            <hr>
+            (Es recomendable usar Kecomu "Nova" para codigo flexible)
+            <hr>
+            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
+        </div>
+
+        <div class="tarjeta-grande tarjeta3 f3-2">
+            <h3><span style="color: rgba(213, 90, 90, 0.729)">Kecomu</span> Umwarimu...</h3>
+            <hr>
+            La versión "Umwarimu" de Kecomu es un de aprendizaje guiado donde puedes estar creando mientras aprendes!
+            <hr>
+            (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente)
+            <hr>
+            Es recomendable usar esta versión si eres nuevo
         </div>
     </div>
+
 </body>
 </html>
