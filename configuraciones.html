@@ -234,6 +234,172 @@ function getCookie(nombre) {
     return null;
 }
 
+function aplicarCalidadAnimacion() {
+    const animacion = getCookie('kecomu_animacion');
+    const estiloExistente = document.getElementById('estilo-animacion');
+    if (estiloExistente) estiloExistente.remove();
+    
+    const style = document.createElement('style');
+    style.id = 'estilo-animacion';
+    
+    if (animacion === 'baja') {
+        style.textContent = `
+            @keyframes TarjetaAnimadaBaja {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                animation: TarjetaAnimadaBaja 0.8s ease-out forwards !important;
+                filter: none !important;
+                backdrop-filter: none !important;
+                transform: none !important;
+            }
+        `;
+    } 
+    else if (animacion === 'intermedia') {
+        style.textContent = `
+            @keyframes TarjetaAnimadaIntermedia {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                animation: TarjetaAnimadaIntermedia 0.8s ease-out forwards !important;
+                filter: none !important;
+                backdrop-filter: none !important;
+            }
+        `;
+    }
+    else if (animacion === 'alta') {
+        style.textContent = `
+            @keyframes TarjetaAnimadaAlta {
+                0% {
+                    opacity: 0;
+                    transform: translateY(40px) scale(0.95);
+                    filter: blur(8px);
+                }
+                40% {
+                    opacity: 0.6;
+                    background-color: rgba(125, 85, 85, 0.229);
+                    transform: translateY(-8px) scale(1.01);
+                    filter: blur(6px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    filter: blur(0);
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(10px);
+                    border: 1.6px solid rgba(255, 200, 200, 0.3);
+                }
+            }
+            
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                animation: TarjetaAnimadaAlta 1.2s ease-out forwards !important;
+            }
+        `;
+    }
+    
+    if (animacion !== null) {
+        document.head.appendChild(style);
+    }
+}
+
+function aplicarClaridadVisual() {
+    const claridad = getCookie('kecomu_claridad');
+    const estiloExistente = document.getElementById('estilo-claridad');
+    if (estiloExistente) estiloExistente.remove();
+    
+    if (claridad === 'true') {
+        const style = document.createElement('style');
+        style.id = 'estilo-claridad';
+        style.textContent = `
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                filter: none !important;
+                backdrop-filter: none !important;
+                opacity: 1 !important;
+                background: rgba(20, 15, 25, 0.95) !important;
+                border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            }
+            
+            body.modo-claro .tarjeta1,
+            body.modo-claro .tarjeta2,
+            body.modo-claro .tarjeta3,
+            body.modo-claro .tarjeta4 {
+                background: rgba(245, 240, 250, 0.98) !important;
+                border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                color: #1a1a2e !important;
+            }
+            
+            body {
+                font-size: 18px !important;
+            }
+            
+            .tarjeta-pequena h3, .tarjeta-grande h3 {
+                font-size: 1.3rem !important;
+                font-weight: 600 !important;
+            }
+            
+            .tarjeta-grande p, .tarjeta1 p {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                color: #ffffff !important;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+            }
+            
+            body.modo-claro .tarjeta1,
+            body.modo-claro .tarjeta2,
+            body.modo-claro .tarjeta3,
+            body.modo-claro .tarjeta4 {
+                color: #1a1a2e !important;
+                text-shadow: none !important;
+            }
+            
+            hr {
+                border-width: 1px !important;
+                opacity: 0.5 !important;
+            }
+            
+            .btn-config {
+                opacity: 0.9 !important;
+                filter: none !important;
+                backdrop-filter: none !important;
+                background: rgba(0, 0, 0, 0.7) !important;
+                font-size: 12px !important;
+                padding: 10px 24px !important;
+            }
+            
+            body.modo-claro .btn-config {
+                background: rgba(200, 180, 220, 0.8) !important;
+                color: #1a1a2e !important;
+            }
+            
+            @keyframes claridadForzada {
+                0%, 100% { opacity: 1 !important; }
+            }
+            
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                animation: claridadForzada 0.1s forwards !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
 function activarTarjeta(elemento, grupo) {
     if (grupo === 'claridad') {
         if (elemento.classList.contains('tarjeta-activa')) {
@@ -243,6 +409,7 @@ function activarTarjeta(elemento, grupo) {
             elemento.classList.add('tarjeta-activa');
             setCookie('kecomu_claridad', 'true');
         }
+        aplicarClaridadVisual();
         return;
     }
     
@@ -262,6 +429,11 @@ function activarTarjeta(elemento, grupo) {
     if (grupo === 'tema') {
         const valor = elemento.querySelector('h3').innerText.includes('oscuro') ? 'oscuro' : 'claro';
         setCookie('kecomu_tema', valor);
+        if (valor === 'claro') {
+            document.body.classList.add('modo-claro');
+        } else {
+            document.body.classList.remove('modo-claro');
+        }
     } else if (grupo === 'animacion') {
         let valor = '';
         const texto = elemento.querySelector('h3').innerText;
@@ -269,6 +441,7 @@ function activarTarjeta(elemento, grupo) {
         else if (texto.includes('intermedia')) valor = 'intermedia';
         else if (texto.includes('alta')) valor = 'alta';
         setCookie('kecomu_animacion', valor);
+        aplicarCalidadAnimacion();
     }
 }
 
@@ -322,10 +495,13 @@ function cargarPreferencias() {
     if (tema === 'claro') {
         document.body.classList.add('modo-claro');
     }
+    
+    aplicarCalidadAnimacion();
+    aplicarClaridadVisual();
 }
 
 cargarPreferencias();
 </script>
 
 </body>
-</html>
+    </html>
