@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kecomu · IA para Desarrollo Web • Políticas de Privacidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(46, 0, 8);
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: rgba(255, 255, 255, 0.766);
+            min-height: 100vh;
+        }
+
+        @keyframes TarjetaAnimada {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+                filter: blur(8px);
+                border: 1.025px solid rgba(255, 200, 200, 0.6);
+                color: transparent;
+            }
+            40% {
+                opacity: 0.6;
+                background-color: rgba(125, 85, 85, 0.229);
+                transform: translateY(-8px) scale(1.01);
+                filter: blur(6px);
+            }
+            100% {
+                opacity: 0.5;
+                transform: translateY(0) scale(1);
+                filter: blur(0.5px);
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1.6px solid rgba(255, 200, 200, 0.3);
+                color: rgba(255, 255, 255, 0.522);
+            }
+        }
+
+        .tarjeta1,
+        .tarjeta2,
+        .tarjeta3,
+        .tarjeta4 {
+            animation: TarjetaAnimada 1.5s ease-in-out forwards;
+            animation-fill-mode: both;
+            border-radius: 12px;
+        }
+
+        .tarjeta1 {
+            padding: 30px;
+            margin-bottom: 20px;
+            animation-delay: 0s;
+        }
+
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta-pequena {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tarjeta-pequena:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tarjeta-grande {
+            flex: 1;
+            padding: 20px;
+            font-size: 12px;
+            min-height: 200px;
+        }
+
+        .f2-1 { animation-delay: 0s; }
+        .f2-2 { animation-delay: 0.3s; }
+        .f2-3 { animation-delay: 0.6s; }
+        .f3-1 { animation-delay: 1s; }
+        .f3-2 { animation-delay: 1s; }
+        .f3-3 { animation-delay: 1s; }
+
+        hr {
+            border: 0.5px solid rgba(255, 200, 200, 0.2);
+            margin: 10px 0;
+        }
+        .btn-config {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 200, 200, 0.3);
+            border-radius: 1.5px;
+            padding: 8px 20px;
+            color: white;
+            font-size: 10px;
+            font-family: inherit;
+            cursor: pointer;
+            opacity: 0.5;
+            backdrop-filter: blur(5px);
+            transition: all 0.9s ease;
+            animation: TarjetaAnimada 1.5s ease-in-out forwards;
+            animation-fill-mode: both;
+            animation-delay: 0.5s;
+        }
+
+        .btn-config:hover {
+            background: rgb(60, 0, 9) !important;
+            filter: blur(0.3px) !important;
+            transform: scale(0.99) !important;
+            opacity: 0.5 !important;
+        }
+
+        .contenedor-boton {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .contenedor-boton-izq {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .fila {
+                flex-direction: column;
+            }
+            .tarjeta-grande {
+                min-height: auto;
+            }
+        }
+
+        body.modo-claro {
+            background-color: rgb(30, 25, 35);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        body.modo-claro .tarjeta1,
+        body.modo-claro .tarjeta2,
+        body.modo-claro .tarjeta3,
+        body.modo-claro .tarjeta4 {
+            background: rgba(50, 45, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1.6px solid rgba(200, 180, 200, 0.3);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        body.modo-claro hr {
+            border-color: rgba(200, 180, 200, 0.3);
+        }
+
+        body.modo-claro .btn-config {
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(200, 180, 200, 0.3);
+        }
+
+        body.modo-claro .btn-config:hover {
+            background: rgb(80, 70, 90) !important;
+        }
+
+        body.modo-claro h3 span {
+            color: rgba(200, 180, 200, 0.7) !important;
+        }
+
+        body.modo-claro .tarjeta-pequena:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .politica-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 200, 200, 0.2);
+        }
+
+        .politica-item:last-child {
+            border-bottom: none;
+        }
+
+        .politica-titulo {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: rgba(255, 200, 200, 0.9);
+        }
+
+        .politica-texto {
+            font-size: 12px;
+            margin: 8px 0;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+
+        .politica-texto::before {
+            content: "✓";
+            color: rgba(255, 200, 200, 0.7);
+            display: inline-block;
+            width: 15px;
+            margin-left: -15px;
+        }
+
+        body.modo-claro .politica-titulo {
+            color: rgba(200, 180, 200, 0.9);
+        }
+
+        body.modo-claro .politica-texto::before {
+            color: rgba(200, 180, 200, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-boton">
+        <button class="btn-config" onclick="location.href='index.html'">
+            <b>Inicio</b>
+        </button>
+    </div>
+
+    <div class="tarjeta1">
+        <h2 style="margin: 0;">Kecomu · Políticas de Privacidad</h2>
+        <hr>
+        <p style="font-size: 11px; margin: 0;">Compromiso con la transparencia y protección de sus datos</p>
+    </div>
+
+    <div class="fila">
+        <div class="tarjeta-grande tarjeta3 f3-1" style="flex: 2;">
+            <h3>Declaración de Privacidad</h3>
+            <hr>
+            
+            <div class="politica-item">
+                <div class="politica-titulo">Uso de datos para entrenamiento</div>
+                <div class="politica-texto">Kecomu NO utiliza las conversaciones, código generado ni ningún tipo de interacción de los usuarios para entrenar o mejorar sus modelos de inteligencia artificial. Su información permanece estrictamente confidencial.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Venta o comercialización de datos</div>
+                <div class="politica-texto">No comercializamos, vendemos ni transferimos sus datos personales o conversaciones a terceros bajo ningún concepto. Su privacidad es absoluta y no forma parte de ningún modelo de negocio.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Telemetría y seguimiento</div>
+                <div class="politica-texto">Kecomu no implementa sistemas de telemetría, seguimiento de usuarios, analíticas externas o herramientas que recopilen información sobre su comportamiento dentro de la plataforma.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Publicidad</div>
+                <div class="politica-texto">La plataforma es completamente libre de publicidad. No mostramos anuncios de terceros ni utilizamos mecanismos de monetización basados en la exposición comercial.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Gratuidad y límites de uso</div>
+                <div class="politica-texto">Kecomu es un servicio gratuito e ilimitado. No existen planes de pago, límites de uso por suscripción, restricciones de funcionalidad ni barreras económicas para acceder a todas las características de la plataforma.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Cookies y almacenamiento local</div>
+                <div class="politica-texto">Las únicas cookies utilizadas son aquellas estrictamente necesarias para recordar sus preferencias visuales (tema oscuro, calidad de animación y modo de accesibilidad). No se utilizan cookies de seguimiento, análisis ni publicidad.</div>
+            </div>
+
+            <div class="politica-item">
+                <div class="politica-titulo">Transparencia y compromiso</div>
+                <div class="politica-texto">Creemos en un desarrollo web ético y transparente. Por ello, todas nuestras políticas están redactadas en lenguaje claro y accesible, sin tecnicismos oscuros ni cláusulas engañosas. Si tiene alguna pregunta sobre el tratamiento de sus datos, puede contactarnos a través de los canales habilitados en la plataforma.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor-boton-izq">
+        <button class="btn-config" onclick="location.href='index.html'" style="margin-top: 10px;">
+            <b>← Volver al inicio</b>
+        </button>
+    </div>
+
+    <script>
+        function getCookie(nombre) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${nombre}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function aplicarCalidadAnimacion() {
+            const animacion = getCookie('kecomu_animacion');
+            const estiloExistente = document.getElementById('estilo-animacion');
+            if (estiloExistente) estiloExistente.remove();
+            
+            const style = document.createElement('style');
+            style.id = 'estilo-animacion';
+            
+            if (animacion === 'baja') {
+                style.textContent = `
+                    @keyframes TarjetaAnimadaBaja {
+                        0% {
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 0.5;
+                            background: rgba(255, 255, 255, 0.05);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(255, 200, 200, 0.3);
+                        }
+                    }
+                    
+                    body.modo-claro @keyframes TarjetaAnimadaBaja {
+                        0% {
+                            opacity: 0;
+                        }
+                        100% {
+                            opacity: 0.85;
+                            background: rgba(50, 45, 55, 0.6);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(200, 180, 200, 0.3);
+                        }
+                    }
+                    
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
+                        animation-fill-mode: both !important;
+                        filter: none !important;
+                        transform: none !important;
+                    }
+                    
+                    .f2-1 { animation-delay: 0s !important; }
+                    .f2-2 { animation-delay: 0.1s !important; }
+                    .f2-3 { animation-delay: 0.2s !important; }
+                    .f3-1 { animation-delay: 0.3s !important; }
+                    .f3-2 { animation-delay: 0.3s !important; }
+                    .f3-3 { animation-delay: 0.3s !important; }
+                    .btn-config { animation-delay: 0.4s !important; }
+                `;
+            } 
+            else if (animacion === 'intermedia') {
+                style.textContent = `
+                    @keyframes TarjetaAnimadaIntermedia {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                        100% {
+                            opacity: 0.5;
+                            transform: translateY(0);
+                            background: rgba(255, 255, 255, 0.05);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(255, 200, 200, 0.3);
+                        }
+                    }
+                    
+                    body.modo-claro @keyframes TarjetaAnimadaIntermedia {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                        100% {
+                            opacity: 0.85;
+                            transform: translateY(0);
+                            background: rgba(50, 45, 55, 0.6);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(200, 180, 200, 0.3);
+                        }
+                    }
+                    
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
+                        animation-fill-mode: both !important;
+                        filter: none !important;
+                    }
+                    
+                    .f2-1 { animation-delay: 0s !important; }
+                    .f2-2 { animation-delay: 0.3s !important; }
+                    .f2-3 { animation-delay: 0.6s !important; }
+                    .f3-1 { animation-delay: 1s !important; }
+                    .f3-2 { animation-delay: 1s !important; }
+                    .f3-3 { animation-delay: 1s !important; }
+                    .btn-config { animation-delay: 0.5s !important; }
+                `;
+            }
+            else if (animacion === 'alta') {
+                style.textContent = `
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
+                        animation-fill-mode: both !important;
+                    }
+                    
+                    .f2-1 { animation-delay: 0s !important; }
+                    .f2-2 { animation-delay: 0.3s !important; }
+                    .f2-3 { animation-delay: 0.6s !important; }
+                    .f3-1 { animation-delay: 1s !important; }
+                    .f3-2 { animation-delay: 1s !important; }
+                    .f3-3 { animation-delay: 1s !important; }
+                    .btn-config { animation-delay: 0.5s !important; }
+                `;
+            }
+            
+            if (animacion !== null) {
+                document.head.appendChild(style);
+            }
+        }
+
+        function aplicarClaridadVisual() {
+            const claridad = getCookie('kecomu_claridad');
+            const estiloExistente = document.getElementById('estilo-claridad');
+            if (estiloExistente) estiloExistente.remove();
+            
+            if (claridad === 'true') {
+                const style = document.createElement('style');
+                style.id = 'estilo-claridad';
+                style.textContent = `
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        filter: none !important;
+                        backdrop-filter: none !important;
+                        opacity: 1 !important;
+                        background: rgba(20, 15, 25, 0.95) !important;
+                        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                    }
+                    
+                    body.modo-claro .tarjeta1,
+                    body.modo-claro .tarjeta2,
+                    body.modo-claro .tarjeta3,
+                    body.modo-claro .tarjeta4,
+                    body.modo-claro .btn-config {
+                        background: rgba(245, 240, 250, 0.98) !important;
+                        border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                        color: #1a1a2e !important;
+                    }
+                    
+                    body {
+                        font-size: 18px !important;
+                    }
+                    
+                    .tarjeta-pequena h3, .tarjeta-grande h3 {
+                        font-size: 1.3rem !important;
+                        font-weight: 600 !important;
+                    }
+                    
+                    .tarjeta-grande p, .tarjeta1 p {
+                        font-size: 1rem !important;
+                        line-height: 1.5 !important;
+                    }
+                    
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                        color: #ffffff !important;
+                        text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+                    }
+                    
+                    body.modo-claro .tarjeta1,
+                    body.modo-claro .tarjeta2,
+                    body.modo-claro .tarjeta3,
+                    body.modo-claro .tarjeta4 {
+                        color: #1a1a2e !important;
+                        text-shadow: none !important;
+                    }
+                    
+                    hr {
+                        border-width: 1px !important;
+                        opacity: 0.5 !important;
+                    }
+                    
+                    .btn-config {
+                        opacity: 0.9 !important;
+                        filter: none !important;
+                        backdrop-filter: none !important;
+                        background: rgba(0, 0, 0, 0.7) !important;
+                        font-size: 12px !important;
+                        padding: 10px 24px !important;
+                    }
+                    
+                    body.modo-claro .btn-config {
+                        background: rgba(200, 180, 220, 0.8) !important;
+                        color: #1a1a2e !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function aplicarPreferencias() {
+            const tema = getCookie('kecomu_tema');
+            if (tema === 'claro') {
+                document.body.classList.add('modo-claro');
+            }
+            
+            aplicarCalidadAnimacion();
+            aplicarClaridadVisual();
+        }
+
+        aplicarPreferencias();
+    </script>
+
+</body>
+</html>
