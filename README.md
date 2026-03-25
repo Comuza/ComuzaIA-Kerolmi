@@ -7,7 +7,7 @@
 
 ## Propósito
 
-COMUZA nace con la idea de facilitar el desarrollo web a través de tres versiones especializadas:
+**Kerolmi** nace con la idea de facilitar el desarrollo web a través de tres versiones especializadas:
 
 - **Nova** → Código flexible y optimizado
 - **Kero** → Diseño gráfico creativo y atractivo
@@ -39,6 +39,8 @@ COMUZA nace con la idea de facilitar el desarrollo web a través de tres version
 ## Próximos pasos (en desarrollo)
 
 - Integración con API de inteligencia artificial
+- Integrar la ia
+- terminar la parte visual
 - Chat interactivo para asistencia en código
 - Generación de código en tiempo real
 - Guardado y exportación de proyectos
@@ -71,8 +73,8 @@ Este proyecto se encuentra bajo licencia MIT.
 
 ## Créditos
 **Kerolmi**  
-Desarrollado por **Comuza the king of the null**
+Desarrollado por **Comuza • the king of the Inull**
 
 ---
 
-**Estado actual:** Interfaz visual en desarrollo junto a In Inteligencia artificial **Kerolmi**
+**Estado actual:** Interfaz visual en desarrollo junto a la Inteligencia artificial **Kerolmi**.
