@@ -144,35 +144,59 @@
         }
 
 body.modo-claro {
-    background-color: rgb(30, 25, 35);
-    color: rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    color: #2c3e50;
 }
 
 body.modo-claro .tarjeta1,
 body.modo-claro .tarjeta2,
 body.modo-claro .tarjeta3,
 body.modo-claro .tarjeta4 {
-    background: rgba(50, 45, 55, 0.6);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border: 1.6px solid rgba(200, 180, 200, 0.3);
-    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    color: #2c3e50;
+}
+
+body.modo-claro .tarjeta1 h2,
+body.modo-claro .tarjeta1 p {
+    color: #2c3e50;
 }
 
 body.modo-claro hr {
-    border-color: rgba(200, 180, 200, 0.3);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 body.modo-claro .btn-config {
-    color: rgba(255, 255, 255, 0.85);
-    border-color: rgba(200, 180, 200, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #2c3e50;
+    opacity: 0.8;
+    backdrop-filter: blur(5px);
 }
 
 body.modo-claro .btn-config:hover {
-    background: rgb(80, 70, 90) !important;
+    background: rgb(255, 255, 255) !important;
+    filter: none !important;
+    transform: scale(0.98) !important;
+    opacity: 1 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-body.modo-claro h3 span {
-    color: rgba(200, 180, 200, 0.7) !important;
+body.modo-claro .tarjeta-activa {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1.6px solid rgba(100, 70, 120, 0.4);
+    background: rgba(255, 255, 255, 1);
+}
+
+body.modo-claro .tarjeta-pequena h3,
+body.modo-claro .tarjeta-grande h3 {
+    color: #2c3e50;
+}
+
+body.modo-claro .tarjeta-grande p {
+    color: #4a5568;
 }
     </style>
 </head>
@@ -256,6 +280,18 @@ function aplicarCalidadAnimacion() {
                 }
             }
             
+            body.modo-claro @keyframes TarjetaAnimadaBaja {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(0, 0, 0, 0.08);
+                }
+            }
+            
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
                 animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
                 animation-fill-mode: both !important;
@@ -284,6 +320,20 @@ function aplicarCalidadAnimacion() {
                     background: rgba(255, 255, 255, 0.05);
                     backdrop-filter: blur(10px);
                     border: 1.6px solid rgba(255, 200, 200, 0.3);
+                }
+            }
+            
+            body.modo-claro @keyframes TarjetaAnimadaIntermedia {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(0, 0, 0, 0.08);
                 }
             }
             
@@ -343,9 +393,10 @@ function aplicarClaridadVisual() {
             body.modo-claro .tarjeta2,
             body.modo-claro .tarjeta3,
             body.modo-claro .tarjeta4 {
-                background: rgba(245, 240, 250, 0.98) !important;
-                border: 2px solid rgba(100, 70, 120, 0.5) !important;
-                color: #1a1a2e !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(0, 0, 0, 0.1) !important;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+                color: #1a202c !important;
             }
             
             body {
@@ -371,7 +422,7 @@ function aplicarClaridadVisual() {
             body.modo-claro .tarjeta2,
             body.modo-claro .tarjeta3,
             body.modo-claro .tarjeta4 {
-                color: #1a1a2e !important;
+                color: #1a202c !important;
                 text-shadow: none !important;
             }
             
@@ -390,21 +441,48 @@ function aplicarClaridadVisual() {
             }
             
             body.modo-claro .btn-config {
-                background: rgba(200, 180, 220, 0.8) !important;
-                color: #1a1a2e !important;
+                background: #ffffff !important;
+                color: #1a202c !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+            }
+            
+            body.modo-claro .btn-config:hover {
+                background: #f7fafc !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
             }
             
             @keyframes claridadForzada {
                 0% {
                     opacity: 0;
+                    transform: translateY(20px);
                 }
                 100% {
                     opacity: 1 !important;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes claridadForzadaModoClaro {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 1 !important;
+                    transform: translateY(0);
                 }
             }
             
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: claridadForzada 0.4s ease-out forwards !important;
+                animation: claridadForzada 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
+            }
+            
+            body.modo-claro .tarjeta1,
+            body.modo-claro .tarjeta2,
+            body.modo-claro .tarjeta3,
+            body.modo-claro .tarjeta4 {
+                animation: claridadForzadaModoClaro 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards !important;
             }
             
             .f2-1 { animation-delay: 0s !important; }
@@ -522,4 +600,4 @@ cargarPreferencias();
 </script>
 
 </body>
-</html>
+    </html>
