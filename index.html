@@ -79,18 +79,16 @@
             transition: all 0.2s ease;
         }
 
+        .tarjeta-pequena:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .tarjeta-grande {
             flex: 1;
             padding: 20px;
             font-size: 12px;
             min-height: 200px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tarjeta-activa {
-            box-shadow: 5px 5px 5px rgba(62, 21, 101, 0.6);
-            border: 1.6px solid rgba(57, 28, 84, 0.8);
         }
 
         .f2-1 { animation-delay: 0s; }
@@ -174,13 +172,17 @@
         body.modo-claro h3 span {
             color: rgba(200, 180, 200, 0.7) !important;
         }
+
+        body.modo-claro .tarjeta-pequena:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
     </style>
 </head>
 <body>
 
     <div class="contenedor-boton">
-        <button class="btn-config" onclick="location.href='index.html'">
-            <b>Inicio</b>
+        <button class="btn-config" onclick="location.href='configuraciones.html'">
+            <b>Configuraciones</b>
         </button>
     </div>
 
@@ -191,328 +193,158 @@
     </div>
 
     <div class="fila">
-        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
-            <h3>Modo oscuro...</h3>
+        <div class="tarjeta-pequena tarjeta4 f2-1" onclick="location.href='actua.html'">
+            <h3>Novedades...</h3>
         </div>
-        <div class="tarjeta-pequena tarjeta2 f2-2" onclick="activarTarjeta(this, 'claridad')">
-            <h3>Claridad visual... <br> [Más información sobre los cambios de cada modo aqui]</h3>
+        <div class="tarjeta-pequena tarjeta2 f2-2">
+            <h3>Para html, css y javascript...</h3>
         </div>
-        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
-            <h3>Modo claro...</h3>
-        </div>
-    </div>
-
-    <div class="fila">
-        <div class="tarjeta-grande tarjeta3 f3-1" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad baja sobre la animación</h3>
-            <hr>
-            <p style="font-size: 11px; margin: 0;">Esta configuración reduce en gran medida la calidad visual de la animación, lo que puede resultar en una experiencia menos atractiva pero con un rendimiento mejorado. Es ideal para dispositivos con recursos limitados o para usuarios que priorizan la velocidad sobre la estética.</p>
-        </div>
-
-        <div class="tarjeta-grande tarjeta3 f3-3" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad intermedia sobre la animación</h3>
-            <hr>
-            <p style="font-size: 11px; margin: 0;">Recomendada para la mayoría de los usuarios, esta configuración ofrece un equilibrio entre calidad visual y rendimiento. La animación se renderiza con detalles moderados, proporcionando una experiencia fluida sin comprometer demasiado la estética.</p>
-        </div>
-
-        <div class="tarjeta-grande tarjeta3 f3-2" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad alta sobre la animación</h3>
-            <hr>
-            <p style="font-size: 11px; margin: 0;">Esta configuración ofrece la mejor calidad visual para la animación, con detalles nítidos y efectos visuales completos. Sin embargo, puede requerir más recursos del sistema, lo que podría afectar el rendimiento en dispositivos más antiguos o con hardware limitado. Es ideal para usuarios que buscan la mejor experiencia visual posible.</p>
-        </div>
-    </div>
-
-    <div class="fila">
         <div class="tarjeta-pequena tarjeta4 f2-3" onclick="location.href='Datos.html'">
             <h3>Más información de que recopila la ia aqui...</h3>
         </div>
     </div>
 
+    <div class="fila">
+        <div class="tarjeta-grande tarjeta3 f3-1">
+            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgb(168, 75, 255)">Nova...</span></h3>
+            <hr>
+            La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado!
+            <hr>
+            (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo)
+            <hr>
+            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
+        </div>
+
+        <div class="tarjeta-grande tarjeta3 f3-3">
+            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu</span> <span style="color: rgba(255, 54, 158, 0.812)">Kero...</span></h3>
+            <hr>
+            La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!
+            <hr>
+            (Es recomendable usar Kecomu "Nova" para codigo flexible)
+            <hr>
+            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
+        </div>
+
+        <div class="tarjeta-grande tarjeta3 f3-2">
+            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgba(213, 90, 90, 0.729)">Umwarimu...</span></h3>
+            <hr>
+            La versión "Umwarimu" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes!
+            <hr>
+            (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente)
+            <hr>
+            Es recomendable usar esta versión si eres nuevo
+        </div>
+    </div>
+
     <script>
-function setCookie(nombre, valor) {
-    document.cookie = `${nombre}=${valor}; path=/; max-age=31536000`;
-}
+        function getCookie(nombre) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${nombre}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
 
-function getCookie(nombre) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${nombre}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-}
+        function aplicarCalidadAnimacion() {
+            const animacion = getCookie('kecomu_animacion');
+            const estiloExistente = document.getElementById('estilo-animacion');
+            if (estiloExistente) estiloExistente.remove();
+            
+            const style = document.createElement('style');
+            style.id = 'estilo-animacion';
+            
+            if (animacion === 'baja') {
+                style.textContent = `
+                    @keyframes TarjetaAnimadaBaja {
+                        0% { opacity: 0; }
+                        100% {
+                            opacity: 0.5;
+                            background: rgba(255, 255, 255, 0.05);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(255, 200, 200, 0.3);
+                        }
+                    }
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
+                        animation-fill-mode: both !important;
+                        filter: none !important;
+                        transform: none !important;
+                    }
+                    .f2-1 { animation-delay: 0s !important; }
+                    .f2-2 { animation-delay: 0.1s !important; }
+                    .f2-3 { animation-delay: 0.2s !important; }
+                    .f3-1 { animation-delay: 0.3s !important; }
+                    .f3-2 { animation-delay: 0.3s !important; }
+                    .f3-3 { animation-delay: 0.3s !important; }
+                    .btn-config { animation-delay: 0.4s !important; }
+                `;
+            } 
+            else if (animacion === 'intermedia') {
+                style.textContent = `
+                    @keyframes TarjetaAnimadaIntermedia {
+                        0% { opacity: 0; transform: translateY(30px); }
+                        100% {
+                            opacity: 0.5;
+                            transform: translateY(0);
+                            background: rgba(255, 255, 255, 0.05);
+                            backdrop-filter: blur(10px);
+                            border: 1.6px solid rgba(255, 200, 200, 0.3);
+                        }
+                    }
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
+                        animation-fill-mode: both !important;
+                        filter: none !important;
+                    }
+                `;
+            }
+            else if (animacion === 'alta') {
+                style.textContent = `
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
+                        animation-fill-mode: both !important;
+                    }
+                `;
+            }
+            
+            if (animacion !== null) {
+                document.head.appendChild(style);
+            }
+        }
 
-function aplicarCalidadAnimacion() {
-    const animacion = getCookie('kecomu_animacion');
-    const estiloExistente = document.getElementById('estilo-animacion');
-    if (estiloExistente) estiloExistente.remove();
-    
-    const style = document.createElement('style');
-    style.id = 'estilo-animacion';
-    
-    if (animacion === 'baja') {
-        style.textContent = `
-            @keyframes TarjetaAnimadaBaja {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 0.5;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(255, 200, 200, 0.3);
-                }
-            }
+        function aplicarClaridadVisual() {
+            const claridad = getCookie('kecomu_claridad');
+            const estiloExistente = document.getElementById('estilo-claridad');
+            if (estiloExistente) estiloExistente.remove();
             
-            body.modo-claro @keyframes TarjetaAnimadaBaja {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 0.85;
-                    background: rgba(50, 45, 55, 0.6);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(200, 180, 200, 0.3);
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
-                animation-fill-mode: both !important;
-                filter: none !important;
-                transform: none !important;
-            }
-            
-        `;
-    } 
-    else if (animacion === 'intermedia') {
-        style.textContent = `
-            @keyframes TarjetaAnimadaIntermedia {
-                0% {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                100% {
-                    opacity: 0.5;
-                    transform: translateY(0);
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(255, 200, 200, 0.3);
-                }
-            }
-            
-            body.modo-claro @keyframes TarjetaAnimadaIntermedia {
-                0% {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                100% {
-                    opacity: 0.85;
-                    transform: translateY(0);
-                    background: rgba(50, 45, 55, 0.6);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(200, 180, 200, 0.3);
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
-                animation-fill-mode: both !important;
-                filter: none !important;
-            }
-            
-            .f2-1 { animation-delay: 0s !important; }
-            .f2-2 { animation-delay: 0.3s !important; }
-            .f2-3 { animation-delay: 0.6s !important; }
-            .f3-1 { animation-delay: 1s !important; }
-            .f3-2 { animation-delay: 1s !important; }
-            .f3-3 { animation-delay: 1s !important; }
-        `;
-    }
-    else if (animacion === 'alta') {
-        style.textContent = `
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
-                animation-fill-mode: both !important;
-            }
-            
-            .f2-1 { animation-delay: 0s !important; }
-            .f2-2 { animation-delay: 0.3s !important; }
-            .f2-3 { animation-delay: 0.6s !important; }
-            .f3-1 { animation-delay: 1s !important; }
-            .f3-2 { animation-delay: 1s !important; }
-            .f3-3 { animation-delay: 1s !important; }
-        `;
-    }
-    
-    if (animacion !== null) {
-        document.head.appendChild(style);
-    }
-}
-
-function aplicarClaridadVisual() {
-    const claridad = getCookie('kecomu_claridad');
-    const estiloExistente = document.getElementById('estilo-claridad');
-    if (estiloExistente) estiloExistente.remove();
-    
-    if (claridad === 'true') {
-        const style = document.createElement('style');
-        style.id = 'estilo-claridad';
-        style.textContent = `
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                filter: none !important;
-                backdrop-filter: none !important;
-                opacity: 1 !important;
-                background: rgba(20, 15, 25, 0.95) !important;
-                border: 2px solid rgba(255, 255, 255, 0.3) !important;
-            }
-            
-            body.modo-claro .tarjeta1,
-            body.modo-claro .tarjeta2,
-            body.modo-claro .tarjeta3,
-            body.modo-claro .tarjeta4 {
-                background: rgba(245, 240, 250, 0.98) !important;
-                border: 2px solid rgba(100, 70, 120, 0.5) !important;
-                color: #1a1a2e !important;
-            }
-            
-            body {
-                font-size: 18px !important;
-            }
-            
-            .tarjeta-pequena h3, .tarjeta-grande h3 {
-                font-size: 1.3rem !important;
-                font-weight: 600 !important;
-            }
-            
-            .tarjeta-grande p, .tarjeta1 p {
-                font-size: 1rem !important;
-                line-height: 1.5 !important;
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                color: #ffffff !important;
-                text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
-            }
-            
-            body.modo-claro .tarjeta1,
-            body.modo-claro .tarjeta2,
-            body.modo-claro .tarjeta3,
-            body.modo-claro .tarjeta4 {
-                color: #1a1a2e !important;
-                text-shadow: none !important;
-            }
-            
-            hr {
-                border-width: 1px !important;
-                opacity: 0.5 !important;
-            }
-            
-            .btn-config {
-                opacity: 0.9 !important;
-                filter: none !important;
-                backdrop-filter: none !important;
-                background: rgba(0, 0, 0, 0.7) !important;
-                font-size: 12px !important;
-                padding: 10px 24px !important;
-            }
-            
-            body.modo-claro .btn-config {
-                background: rgba(200, 180, 220, 0.8) !important;
-                color: #1a1a2e !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-}
-
-function sincronizarEstadosBotones() {
-    const claridad = getCookie('kecomu_claridad');
-    const tema = getCookie('kecomu_tema');
-    const animacion = getCookie('kecomu_animacion');
-    
-    document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
-        const texto = tarjeta.querySelector('h3').innerText;
-        if (texto.includes('Claridad visual')) {
             if (claridad === 'true') {
-                tarjeta.classList.add('tarjeta-activa');
-            } else {
-                tarjeta.classList.remove('tarjeta-activa');
+                const style = document.createElement('style');
+                style.id = 'estilo-claridad';
+                style.textContent = `
+                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                        filter: none !important;
+                        backdrop-filter: none !important;
+                        opacity: 1 !important;
+                        background: rgba(20, 15, 25, 0.95) !important;
+                        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                    }
+                    body { font-size: 18px !important; }
+                    .btn-config { opacity: 0.9 !important; background: rgba(0, 0, 0, 0.7) !important; }
+                `;
+                document.head.appendChild(style);
             }
-        } else if (texto.includes('oscuro')) {
-            if (tema === 'oscuro') {
-                tarjeta.classList.add('tarjeta-activa');
-            } else {
-                tarjeta.classList.remove('tarjeta-activa');
-            }
-        } else if (texto.includes('claro')) {
+        }
+
+        function aplicarPreferencias() {
+            const tema = getCookie('kecomu_tema');
             if (tema === 'claro') {
-                tarjeta.classList.add('tarjeta-activa');
-            } else {
-                tarjeta.classList.remove('tarjeta-activa');
+                document.body.classList.add('modo-claro');
             }
+            aplicarCalidadAnimacion();
+            aplicarClaridadVisual();
         }
-    });
-    
-    document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
-        const texto = tarjeta.querySelector('h3').innerText;
-        if (texto.includes('baja') && animacion === 'baja') {
-            tarjeta.classList.add('tarjeta-activa');
-        } else if (texto.includes('intermedia') && animacion === 'intermedia') {
-            tarjeta.classList.add('tarjeta-activa');
-        } else if (texto.includes('alta') && animacion === 'alta') {
-            tarjeta.classList.add('tarjeta-activa');
-        } else {
-            tarjeta.classList.remove('tarjeta-activa');
-        }
-    });
-}
 
-function actualizarEstadoVisual() {
-    aplicarCalidadAnimacion();
-    aplicarClaridadVisual();
-    sincronizarEstadosBotones();
-}
-
-function activarTarjeta(elemento, grupo) {
-    if (grupo === 'claridad') {
-        const claridadActual = getCookie('kecomu_claridad');
-        const nuevoEstado = claridadActual === 'true' ? 'false' : 'true';
-        setCookie('kecomu_claridad', nuevoEstado);
-        actualizarEstadoVisual();
-        return;
-    }
-    
-    if (grupo === 'tema') {
-        const valor = elemento.querySelector('h3').innerText.includes('oscuro') ? 'oscuro' : 'claro';
-        setCookie('kecomu_tema', valor);
-        if (valor === 'claro') {
-            document.body.classList.add('modo-claro');
-        } else {
-            document.body.classList.remove('modo-claro');
-        }
-        actualizarEstadoVisual();
-    } else if (grupo === 'animacion') {
-        let valor = '';
-        const texto = elemento.querySelector('h3').innerText;
-        if (texto.includes('baja')) valor = 'baja';
-        else if (texto.includes('intermedia')) valor = 'intermedia';
-        else if (texto.includes('alta')) valor = 'alta';
-        setCookie('kecomu_animacion', valor);
-        actualizarEstadoVisual();
-    }
-}
-
-function cargarPreferencias() {
-    const tema = getCookie('kecomu_tema');
-    
-    if (tema === 'claro') {
-        document.body.classList.add('modo-claro');
-    }
-    
-    actualizarEstadoVisual();
-}
-
-cargarPreferencias();
-</script>
+        aplicarPreferencias();
+    </script>
 
 </body>
     </html>
