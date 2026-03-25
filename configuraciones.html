@@ -244,17 +244,9 @@ function aplicarCalidadAnimacion() {
     
     if (animacion === 'baja') {
         style.textContent = `
-            @keyframes TarjetaAnimadaBaja {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 1;
-                }
-            }
-            
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimadaBaja 0.8s ease-out forwards !important;
+                animation: none !important;
+                opacity: 1 !important;
                 filter: none !important;
                 backdrop-filter: none !important;
                 transform: none !important;
@@ -269,36 +261,8 @@ function aplicarCalidadAnimacion() {
                     transform: translateY(30px);
                 }
                 100% {
-                    opacity: 1;
+                    opacity: 0.5;
                     transform: translateY(0);
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimadaIntermedia 0.8s ease-out forwards !important;
-                filter: none !important;
-                backdrop-filter: none !important;
-            }
-        `;
-    }
-    else if (animacion === 'alta') {
-        style.textContent = `
-            @keyframes TarjetaAnimadaAlta {
-                0% {
-                    opacity: 0;
-                    transform: translateY(40px) scale(0.95);
-                    filter: blur(8px);
-                }
-                40% {
-                    opacity: 0.6;
-                    background-color: rgba(125, 85, 85, 0.229);
-                    transform: translateY(-8px) scale(1.01);
-                    filter: blur(6px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                    filter: blur(0);
                     background: rgba(255, 255, 255, 0.05);
                     backdrop-filter: blur(10px);
                     border: 1.6px solid rgba(255, 200, 200, 0.3);
@@ -306,12 +270,38 @@ function aplicarCalidadAnimacion() {
             }
             
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: TarjetaAnimadaAlta 1.2s ease-out forwards !important;
+                animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
+                animation-fill-mode: both !important;
+                filter: none !important;
             }
+            
+            .f2-1 { animation-delay: 0s !important; }
+            .f2-2 { animation-delay: 0.3s !important; }
+            .f2-3 { animation-delay: 0.6s !important; }
+            .f3-1 { animation-delay: 1s !important; }
+            .f3-2 { animation-delay: 1s !important; }
+            .f3-3 { animation-delay: 1s !important; }
+        `;
+    }
+    else if (animacion === 'alta') {
+        style.textContent = `
+            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
+                animation-fill-mode: both !important;
+            }
+            
+            .f2-1 { animation-delay: 0s !important; }
+            .f2-2 { animation-delay: 0.3s !important; }
+            .f2-3 { animation-delay: 0.6s !important; }
+            .f3-1 { animation-delay: 1s !important; }
+            .f3-2 { animation-delay: 1s !important; }
+            .f3-3 { animation-delay: 1s !important; }
         `;
     }
     
-    if (animacion !== null) {
+    if (animacion !== null && animacion !== 'intermedia' && animacion !== 'alta') {
+        document.head.appendChild(style);
+    } else if (animacion === 'intermedia' || animacion === 'alta') {
         document.head.appendChild(style);
     }
 }
@@ -504,4 +494,4 @@ cargarPreferencias();
 </script>
 
 </body>
-    </html>
+            </html>
