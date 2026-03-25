@@ -95,6 +95,35 @@
             border: 0.5px solid rgba(255, 200, 200, 0.2);
             margin: 10px 0;
         }
+        .btn-config {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 200, 200, 0.3);
+            border-radius: 1.5px;
+            padding: 8px 20px;
+            color: white;
+            font-size: 10px;
+            font-family: inherit;
+            cursor: pointer;
+            opacity: 0.5;
+            backdrop-filter: blur(5px);
+            transition: all 0.9s ease;
+            animation: TarjetaAnimada 1.5s ease-in-out forwards;
+            animation-fill-mode: both;
+            animation-delay: 0.5s;
+        }
+
+        .btn-config:hover {
+            background: rgb(60, 0, 9) !important;
+            filter: blur(0.3px) !important;
+            transform: scale(0.99) !important;
+            opacity: 0.5 !important;
+        }
+
+        .contenedor-boton {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
 
         @media (max-width: 768px) {
             .fila {
@@ -104,9 +133,47 @@
                 min-height: auto;
             }
         }
+
+body.modo-claro {
+    background-color: rgb(30, 25, 35);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+body.modo-claro .tarjeta1,
+body.modo-claro .tarjeta2,
+body.modo-claro .tarjeta3,
+body.modo-claro .tarjeta4 {
+    background: rgba(50, 45, 55, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1.6px solid rgba(200, 180, 200, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+body.modo-claro hr {
+    border-color: rgba(200, 180, 200, 0.3);
+}
+
+body.modo-claro .btn-config {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(200, 180, 200, 0.3);
+}
+
+body.modo-claro .btn-config:hover {
+    background: rgb(80, 70, 90) !important;
+}
+
+body.modo-claro h3 span {
+    color: rgba(200, 180, 200, 0.7) !important;
+}
     </style>
 </head>
 <body>
+
+    <div class="contenedor-boton">
+        <button class="btn-config" onclick="location.href='configuraciones.html'">
+            <b>Configuraciones</b>
+        </button>
+    </div>
 
     <div class="tarjeta1">
         <h2 style="margin: 0;">Kecomu</h2>
@@ -157,6 +224,24 @@
             Es recomendable usar esta versión si eres nuevo
         </div>
     </div>
+
+    <script>
+        function getCookie(nombre) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${nombre}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function aplicarPreferencias() {
+            const tema = getCookie('kecomu_tema');
+            if (tema === 'claro') {
+                document.body.classList.add('modo-claro');
+            }
+        }
+
+        aplicarPreferencias();
+    </script>
 
 </body>
 </html>
