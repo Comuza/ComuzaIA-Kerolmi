@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kecomu · IA para Desarrollo Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(46, 0, 8);
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: rgba(255, 255, 255, 0.766);
+            min-height: 100vh;
+        }
+
+        @keyframes TarjetaAnimada {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+                filter: blur(8px);
+                border: 1.025px solid rgba(255, 200, 200, 0.6);
+                color: transparent;
+            }
+            40% {
+                opacity: 0.6;
+                background-color: rgba(125, 85, 85, 0.229);
+                transform: translateY(-8px) scale(1.01);
+                filter: blur(6px);
+            }
+            100% {
+                opacity: 0.5;
+                transform: translateY(0) scale(1);
+                filter: blur(0.5px);
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1.6px solid rgba(255, 200, 200, 0.3);
+                color: rgba(255, 255, 255, 0.522);
+            }
+        }
+
+        .tarjeta1,
+        .tarjeta2,
+        .tarjeta3,
+        .tarjeta4 {
+            animation: TarjetaAnimada 1.5s ease-in-out forwards;
+            animation-fill-mode: both;
+            border-radius: 12px;
+        }
+
+        .tarjeta1 {
+            padding: 30px;
+            margin-bottom: 20px;
+            animation-delay: 0s;
+        }
+
+        .fila {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta-pequena {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tarjeta-grande {
+            flex: 1;
+            padding: 20px;
+            font-size: 12px;
+            min-height: 200px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tarjeta-activa {
+            box-shadow: 5px 5px 5px rgba(62, 21, 101, 0.6);
+            border: 1.6px solid rgba(57, 28, 84, 0.8);
+        }
+
+        .f2-1 { animation-delay: 0s; }
+        .f2-2 { animation-delay: 0.3s; }
+        .f2-3 { animation-delay: 0.6s; }
+        .f3-1 { animation-delay: 1s; }
+        .f3-2 { animation-delay: 1s; }
+        .f3-3 { animation-delay: 1s; }
+
+        hr {
+            border: 0.5px solid rgba(255, 200, 200, 0.2);
+            margin: 10px 0;
+        }
+        .btn-config {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 200, 200, 0.3);
+            border-radius: 1.5px;
+            padding: 8px 20px;
+            color: white;
+            font-size: 10px;
+            font-family: inherit;
+            cursor: pointer;
+            opacity: 0.5;
+            backdrop-filter: blur(5px);
+            transition: all 0.9s ease;
+            animation: TarjetaAnimada 1.5s ease-in-out forwards;
+            animation-fill-mode: both;
+            animation-delay: 0.5s;
+        }
+
+        .btn-config:hover {
+            background: rgb(60, 0, 9) !important;
+            filter: blur(0.3px) !important;
+            transform: scale(0.99) !important;
+            opacity: 0.5 !important;
+        }
+
+        .contenedor-boton {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .fila {
+                flex-direction: column;
+            }
+            .tarjeta-grande {
+                min-height: auto;
+            }
+        }
+
+body.modo-claro {
+    background-color: rgb(30, 25, 35);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+body.modo-claro .tarjeta1,
+body.modo-claro .tarjeta2,
+body.modo-claro .tarjeta3,
+body.modo-claro .tarjeta4 {
+    background: rgba(50, 45, 55, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1.6px solid rgba(200, 180, 200, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+body.modo-claro hr {
+    border-color: rgba(200, 180, 200, 0.3);
+}
+
+body.modo-claro .btn-config {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(200, 180, 200, 0.3);
+}
+
+body.modo-claro .btn-config:hover {
+    background: rgb(80, 70, 90) !important;
+}
+
+body.modo-claro h3 span {
+    color: rgba(200, 180, 200, 0.7) !important;
+}
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-boton">
+        <button class="btn-config" onclick="location.href='Lapotente.html'">
+            <b>Inicio</b>
+        </button>
+    </div>
+
+    <div class="tarjeta1">
+        <h2 style="margin: 0;">Kecomu</h2>
+        <hr>
+        <p style="font-size: 11px; margin: 0;">IA para Desarrollo Web</p>
+    </div>
+
+    <div class="fila">
+        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
+            <h3>Modo oscuro...</h3>
+        </div>
+        <div class="tarjeta-pequena tarjeta2 f2-2" onclick="activarTarjeta(this, 'claridad')">
+            <h3>Claridad visual... <br> [Más información sobre los cambios de cada modo aqui]</h3>
+        </div>
+        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
+            <h3>Modo claro...</h3>
+        </div>
+    </div>
+
+    <div class="fila">
+        <div class="tarjeta-grande tarjeta3 f3-1" onclick="activarTarjeta(this, 'animacion')">
+            <h3>Calidad baja sobre la animación</h3>
+            <hr>
+            <p style="font-size: 11px; margin: 0;">Esta configuración reduce en gran medida la calidad visual de la animación, lo que puede resultar en una experiencia menos atractiva pero con un rendimiento mejorado. Es ideal para dispositivos con recursos limitados o para usuarios que priorizan la velocidad sobre la estética.</p>
+        </div>
+
+        <div class="tarjeta-grande tarjeta3 f3-3" onclick="activarTarjeta(this, 'animacion')">
+            <h3>Calidad intermedia sobre la animación</h3>
+            <hr>
+            <p style="font-size: 11px; margin: 0;">Recomendada para la mayoría de los usuarios, esta configuración ofrece un equilibrio entre calidad visual y rendimiento. La animación se renderiza con detalles moderados, proporcionando una experiencia fluida sin comprometer demasiado la estética.</p>
+        </div>
+
+        <div class="tarjeta-grande tarjeta3 f3-2" onclick="activarTarjeta(this, 'animacion')">
+            <h3>Calidad alta sobre la animación</h3>
+            <hr>
+            <p style="font-size: 11px; margin: 0;">Esta configuración ofrece la mejor calidad visual para la animación, con detalles nítidos y efectos visuales completos. Sin embargo, puede requerir más recursos del sistema, lo que podría afectar el rendimiento en dispositivos más antiguos o con hardware limitado. Es ideal para usuarios que buscan la mejor experiencia visual posible.</p>
+        </div>
+    </div>
+
+    <script>
+function setCookie(nombre, valor) {
+    document.cookie = `${nombre}=${valor}; path=/; max-age=31536000`;
+}
+
+function getCookie(nombre) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${nombre}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+function activarTarjeta(elemento, grupo) {
+    if (grupo === 'claridad') {
+        if (elemento.classList.contains('tarjeta-activa')) {
+            elemento.classList.remove('tarjeta-activa');
+            setCookie('kecomu_claridad', 'false');
+        } else {
+            elemento.classList.add('tarjeta-activa');
+            setCookie('kecomu_claridad', 'true');
+        }
+        return;
+    }
+    
+    let selector = '';
+    if (grupo === 'tema') {
+        selector = '.tarjeta-pequena';
+    } else if (grupo === 'animacion') {
+        selector = '.tarjeta-grande';
+    }
+    
+    document.querySelectorAll(selector).forEach(tarjeta => {
+        tarjeta.classList.remove('tarjeta-activa');
+    });
+    
+    elemento.classList.add('tarjeta-activa');
+    
+    if (grupo === 'tema') {
+        const valor = elemento.querySelector('h3').innerText.includes('oscuro') ? 'oscuro' : 'claro';
+        setCookie('kecomu_tema', valor);
+    } else if (grupo === 'animacion') {
+        let valor = '';
+        const texto = elemento.querySelector('h3').innerText;
+        if (texto.includes('baja')) valor = 'baja';
+        else if (texto.includes('intermedia')) valor = 'intermedia';
+        else if (texto.includes('alta')) valor = 'alta';
+        setCookie('kecomu_animacion', valor);
+    }
+}
+
+function cargarPreferencias() {
+    const tema = getCookie('kecomu_tema');
+    const animacion = getCookie('kecomu_animacion');
+    const claridad = getCookie('kecomu_claridad');
+    
+    if (tema === 'oscuro') {
+        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('oscuro')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    } else if (tema === 'claro') {
+        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('claro')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    }
+    
+    if (animacion === 'baja') {
+        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('baja')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    } else if (animacion === 'intermedia') {
+        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('intermedia')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    } else if (animacion === 'alta') {
+        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('alta')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    }
+    
+    if (claridad === 'true') {
+        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
+            if (tarjeta.querySelector('h3').innerText.includes('Claridad visual')) {
+                tarjeta.classList.add('tarjeta-activa');
+            }
+        });
+    }
+    
+    // Aplicar modo claro si la cookie lo dice
+    if (tema === 'claro') {
+        document.body.classList.add('modo-claro');
+    }
+}
+
+cargarPreferencias();
+</script>
+
+</body>
+</html>
