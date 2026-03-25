@@ -73,7 +73,7 @@ Este proyecto se encuentra bajo licencia MIT.
 
 ## Créditos
 **Kerolmi**  
-Desarrollado por **Comuza • the king of the Null**
+Desarrollado por **Comuza • The king of the Null**
 
 ---
 
