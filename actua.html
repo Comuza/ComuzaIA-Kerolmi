@@ -132,6 +132,12 @@
             margin-bottom: 20px;
         }
 
+        .contenedor-boton-izq {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
         @media (max-width: 768px) {
             .fila {
                 flex-direction: column;
@@ -141,99 +147,160 @@
             }
         }
 
-body.modo-claro {
-    background-color: rgb(30, 25, 35);
-    color: rgba(255, 255, 255, 0.85);
-}
+        body.modo-claro {
+            background-color: rgb(30, 25, 35);
+            color: rgba(255, 255, 255, 0.85);
+        }
 
-body.modo-claro .tarjeta1,
-body.modo-claro .tarjeta2,
-body.modo-claro .tarjeta3,
-body.modo-claro .tarjeta4 {
-    background: rgba(50, 45, 55, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1.6px solid rgba(200, 180, 200, 0.3);
-    color: rgba(255, 255, 255, 0.85);
-}
+        body.modo-claro .tarjeta1,
+        body.modo-claro .tarjeta2,
+        body.modo-claro .tarjeta3,
+        body.modo-claro .tarjeta4 {
+            background: rgba(50, 45, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1.6px solid rgba(200, 180, 200, 0.3);
+            color: rgba(255, 255, 255, 0.85);
+        }
 
-body.modo-claro hr {
-    border-color: rgba(200, 180, 200, 0.3);
-}
+        body.modo-claro hr {
+            border-color: rgba(200, 180, 200, 0.3);
+        }
 
-body.modo-claro .btn-config {
-    color: rgba(255, 255, 255, 0.85);
-    border-color: rgba(200, 180, 200, 0.3);
-}
+        body.modo-claro .btn-config {
+            color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(200, 180, 200, 0.3);
+        }
 
-body.modo-claro .btn-config:hover {
-    background: rgb(80, 70, 90) !important;
-}
+        body.modo-claro .btn-config:hover {
+            background: rgb(80, 70, 90) !important;
+        }
 
-body.modo-claro h3 span {
-    color: rgba(200, 180, 200, 0.7) !important;
-}
+        body.modo-claro h3 span {
+            color: rgba(200, 180, 200, 0.7) !important;
+        }
 
-body.modo-claro .tarjeta-pequena:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
+        body.modo-claro .tarjeta-pequena:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .actualizacion-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 200, 200, 0.2);
+        }
+
+        .actualizacion-item:last-child {
+            border-bottom: none;
+        }
+
+        .fecha {
+            font-size: 10px;
+            color: rgba(255, 200, 200, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .version {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: rgba(255, 200, 200, 0.9);
+        }
+
+        .cambio {
+            font-size: 12px;
+            margin: 8px 0;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+
+        .cambio::before {
+            content: "•";
+            color: rgba(255, 200, 200, 0.7);
+            display: inline-block;
+            width: 15px;
+            margin-left: -15px;
+        }
+
+        body.modo-claro .fecha {
+            color: rgba(200, 180, 200, 0.6);
+        }
+
+        body.modo-claro .version {
+            color: rgba(200, 180, 200, 0.9);
+        }
+
+        body.modo-claro .cambio::before {
+            color: rgba(200, 180, 200, 0.7);
+        }
     </style>
 </head>
 <body>
 
     <div class="contenedor-boton">
-        <button class="btn-config" onclick="location.href='configuraciones.html'">
-            <b>Configuraciones</b>
+        <button class="btn-config" onclick="location.href='index.html'">
+            <b>Inicio</b>
         </button>
     </div>
 
     <div class="tarjeta1">
-        <h2 style="margin: 0;">Kecomu</h2>
+        <h2 style="margin: 0;">Kecomu · Novedades</h2>
         <hr>
-        <p style="font-size: 11px; margin: 0;">IA para Desarrollo Web</p>
+        <p style="font-size: 11px; margin: 0;">Historial de actualizaciones y mejoras</p>
     </div>
 
     <div class="fila">
-        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="location.href='actua.html'">
-            <h3>Lista de actualizaciones...</h3>
-        </div>
-        <div class="tarjeta-pequena tarjeta2 f2-2">
-            <h3>Para html, css y javascript... <br> [Más información sobre la ia aquí]</h3>
-        </div>
-        <div class="tarjeta-pequena tarjeta4 f2-3">
-            <h3>Mapa de trabajo...</h3>
+        <div class="tarjeta-grande tarjeta3 f3-1" style="flex: 2;">
+            <h3>Dis     <hr>
+            
+            <div class="actualizacion-item">
+                <div class="fecha">24 de marzo, 2026</div>
+                <div class="version: di
+                <div class="cambio">Implementación del sistema de configuración visual</div>
+                <div class="cambio">Modo claro/oscuro con persistencia en cookies</div>
+                <div class="cambio">Tres niveles de calidad de animación: baja, intermedia y alta</div>
+                <div class="cambio">Modo claridad visual para mejorar accesibilidad y contraste</div>
+                <div class="cambio">Diseño resInterfave para móviles y tablets</div>
+            </div>
+
+            <div class="actualizacion-item">
+                <div class="fecha">24 de marzo, 2026</div>
+                <div class="version">Sistema de configuración</div>
+                <div class="cambio">Página de configuraciones con opciones de tema y visuales</div>
+                <div class="cambio">Sincronización de preferencias entre todas las páginas</div>
+                <div class="cambio">Animaciones con delays secuenciales para mejor experiencia</div>
+            </div>
+
+            <div class="actualizacion-item">
+                <div class="fecha">24 de marzo, 2026</div>
+                <div class="version">Página de novedades</div>
+                <div class="cambio">Creación del módulo de actualizaciones</div>
+                <div class="cambio">Historial detallado de cambios y mejoras</div>
+                <div class="cambio">Compatibilidad total con todas las configuraciones visuales</div>
+            </div>
+
+            <div class="actualizacion-item">
+                <div class="fecha">Próximamente</div>
+                <div class="version"> Kecomu IA - Funcionalidad principal</div>
+                <div class="cambio">Integración con API para generación de código</div>
+                <div class="cambio">Versiones Nova (código flexible), Kero (diseño creativo) y Umwarimu (aprendizaje guiado)</div>
+                <div class="cambio">Chat interactivo para ayudar en desarrollo web</div>
+                <div class="cambio">Generación de código HTML, CSS y JavaScript en tiempo real</div>
+            </div>
+
+            <div class="actualizacion-item">
+                <div class="fecha">Próximamente</div>
+                <div class="version">Guardado de proyectos</div>
+                <div class="cambio">Sistema para guardar y exportar código generado</div>
+                <div class="cambio">Historial de conversaciones con la IA</div>
+                <div class="cambio">Compartir proyectos con otros usuarios</div>
+            </div>
         </div>
     </div>
 
-    <div class="fila">
-        <div class="tarjeta-grande tarjeta3 f3-1">
-            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgb(168, 75, 255)">Nova...</span></h3>
-            <hr>
-            La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado!
-            <hr>
-            (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo)
-            <hr>
-            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
-        </div>
-
-        <div class="tarjeta-grande tarjeta3 f3-3">
-            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu</span> <span style="color: rgba(255, 54, 158, 0.812)">Kero...</span></h3>
-            <hr>
-            La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!
-            <hr>
-            (Es recomendable usar Kecomu "Nova" para codigo flexible)
-            <hr>
-            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
-        </div>
-
-        <div class="tarjeta-grande tarjeta3 f3-2">
-            <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgba(213, 90, 90, 0.729)">Umwarimu...</span></h3>
-            <hr>
-            La versión "Umwarimu" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes!
-            <hr>
-            (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente)
-            <hr>
-            Es recomendable usar esta versión si eres nuevo
-        </div>
+    <div class="contenedor-boton-izq">
+        <button class="btn-config" onclick="location.href='index.html'" style="margin-top: 10px;">
+            <b>← Volver al inicio</b>
+        </button>
     </div>
 
     <script>
@@ -452,4 +519,4 @@ body.modo-claro .tarjeta-pequena:hover {
     </script>
 
 </body>
-        </html>
+                    </html>
