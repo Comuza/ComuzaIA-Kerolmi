@@ -71,9 +71,8 @@ Este proyecto se encuentra bajo licencia MIT.
 
 ---
 
-## Créditos
-**Kerolmi**  
-Desarrollado por **Comuza • The king of the Null**
+## Créditos de Kerolmi
+Desarrollador, director y tester **Comuza • The king of the Null**
 
 ---
 
