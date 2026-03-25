@@ -75,6 +75,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tarjeta-pequena:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .tarjeta-grande {
@@ -165,6 +172,10 @@ body.modo-claro .btn-config:hover {
 body.modo-claro h3 span {
     color: rgba(200, 180, 200, 0.7) !important;
 }
+
+body.modo-claro .tarjeta-pequena:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
     </style>
 </head>
 <body>
@@ -182,7 +193,7 @@ body.modo-claro h3 span {
     </div>
 
     <div class="fila">
-        <div class="tarjeta-pequena tarjeta4 f2-3">
+        <div class="tarjeta-pequena tarjeta4 f2-3" onclick="location.href='actua.html'">
             <h3>Lista de actualizaciones...</h3>
         </div>
         <div class="tarjeta-pequena tarjeta2 f2-2">
@@ -441,4 +452,4 @@ body.modo-claro h3 span {
     </script>
 
 </body>
-    </html>
+        </html>
