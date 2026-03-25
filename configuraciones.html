@@ -244,13 +244,31 @@ function aplicarCalidadAnimacion() {
     
     if (animacion === 'baja') {
         style.textContent = `
+            @keyframes TarjetaAnimadaBaja {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 0.5;
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(10px);
+                    border: 1.6px solid rgba(255, 200, 200, 0.3);
+                }
+            }
+            
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: none !important;
-                opacity: 1 !important;
+                animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
+                animation-fill-mode: both !important;
                 filter: none !important;
-                backdrop-filter: none !important;
                 transform: none !important;
             }
+            
+            .f2-1 { animation-delay: 0s !important; }
+            .f2-2 { animation-delay: 0.1s !important; }
+            .f2-3 { animation-delay: 0.2s !important; }
+            .f3-1 { animation-delay: 0.3s !important; }
+            .f3-2 { animation-delay: 0.3s !important; }
+            .f3-3 { animation-delay: 0.3s !important; }
         `;
     } 
     else if (animacion === 'intermedia') {
@@ -299,9 +317,7 @@ function aplicarCalidadAnimacion() {
         `;
     }
     
-    if (animacion !== null && animacion !== 'intermedia' && animacion !== 'alta') {
-        document.head.appendChild(style);
-    } else if (animacion === 'intermedia' || animacion === 'alta') {
+    if (animacion !== null) {
         document.head.appendChild(style);
     }
 }
@@ -379,12 +395,24 @@ function aplicarClaridadVisual() {
             }
             
             @keyframes claridadForzada {
-                0%, 100% { opacity: 1 !important; }
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1 !important;
+                }
             }
             
             .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                animation: claridadForzada 0.1s forwards !important;
+                animation: claridadForzada 0.4s ease-out forwards !important;
             }
+            
+            .f2-1 { animation-delay: 0s !important; }
+            .f2-2 { animation-delay: 0.1s !important; }
+            .f2-3 { animation-delay: 0.2s !important; }
+            .f3-1 { animation-delay: 0.3s !important; }
+            .f3-2 { animation-delay: 0.3s !important; }
+            .f3-3 { animation-delay: 0.3s !important; }
         `;
         document.head.appendChild(style);
     }
@@ -494,4 +522,4 @@ cargarPreferencias();
 </script>
 
 </body>
-            </html>
+</html>
