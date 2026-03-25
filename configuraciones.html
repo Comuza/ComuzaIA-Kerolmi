@@ -143,7 +143,6 @@
             }
         }
 
-        /* Modo claro original */
         body.modo-claro {
             background-color: rgb(30, 25, 35);
             color: rgba(255, 255, 255, 0.85);
@@ -425,33 +424,62 @@ function aplicarClaridadVisual() {
     }
 }
 
-function activarTarjeta(elemento, grupo) {
-    if (grupo === 'claridad') {
-        if (elemento.classList.contains('tarjeta-activa')) {
-            elemento.classList.remove('tarjeta-activa');
-            setCookie('kecomu_claridad', 'false');
-        } else {
-            elemento.classList.add('tarjeta-activa');
-            setCookie('kecomu_claridad', 'true');
+function sincronizarEstadosBotones() {
+    const claridad = getCookie('kecomu_claridad');
+    const tema = getCookie('kecomu_tema');
+    const animacion = getCookie('kecomu_animacion');
+    
+    document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
+        const texto = tarjeta.querySelector('h3').innerText;
+        if (texto.includes('Claridad visual')) {
+            if (claridad === 'true') {
+                tarjeta.classList.add('tarjeta-activa');
+            } else {
+                tarjeta.classList.remove('tarjeta-activa');
+            }
+        } else if (texto.includes('oscuro')) {
+            if (tema === 'oscuro') {
+                tarjeta.classList.add('tarjeta-activa');
+            } else {
+                tarjeta.classList.remove('tarjeta-activa');
+            }
+        } else if (texto.includes('claro')) {
+            if (tema === 'claro') {
+                tarjeta.classList.add('tarjeta-activa');
+            } else {
+                tarjeta.classList.remove('tarjeta-activa');
+            }
         }
-        // Reaplicar animación y luego claridad visual
-        aplicarCalidadAnimacion();
-        aplicarClaridadVisual();
-        return;
-    }
-    
-    let selector = '';
-    if (grupo === 'tema') {
-        selector = '.tarjeta-pequena';
-    } else if (grupo === 'animacion') {
-        selector = '.tarjeta-grande';
-    }
-    
-    document.querySelectorAll(selector).forEach(tarjeta => {
-        tarjeta.classList.remove('tarjeta-activa');
     });
     
-    elemento.classList.add('tarjeta-activa');
+    document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
+        const texto = tarjeta.querySelector('h3').innerText;
+        if (texto.includes('baja') && animacion === 'baja') {
+            tarjeta.classList.add('tarjeta-activa');
+        } else if (texto.includes('intermedia') && animacion === 'intermedia') {
+            tarjeta.classList.add('tarjeta-activa');
+        } else if (texto.includes('alta') && animacion === 'alta') {
+            tarjeta.classList.add('tarjeta-activa');
+        } else {
+            tarjeta.classList.remove('tarjeta-activa');
+        }
+    });
+}
+
+function actualizarEstadoVisual() {
+    aplicarCalidadAnimacion();
+    aplicarClaridadVisual();
+    sincronizarEstadosBotones();
+}
+
+function activarTarjeta(elemento, grupo) {
+    if (grupo === 'claridad') {
+        const claridadActual = getCookie('kecomu_claridad');
+        const nuevoEstado = claridadActual === 'true' ? 'false' : 'true';
+        setCookie('kecomu_claridad', nuevoEstado);
+        actualizarEstadoVisual();
+        return;
+    }
     
     if (grupo === 'tema') {
         const valor = elemento.querySelector('h3').innerText.includes('oscuro') ? 'oscuro' : 'claro';
@@ -461,8 +489,7 @@ function activarTarjeta(elemento, grupo) {
         } else {
             document.body.classList.remove('modo-claro');
         }
-        // Reaplicar animación para que use los estilos del modo claro si es necesario
-        aplicarCalidadAnimacion();
+        actualizarEstadoVisual();
     } else if (grupo === 'animacion') {
         let valor = '';
         const texto = elemento.querySelector('h3').innerText;
@@ -470,67 +497,22 @@ function activarTarjeta(elemento, grupo) {
         else if (texto.includes('intermedia')) valor = 'intermedia';
         else if (texto.includes('alta')) valor = 'alta';
         setCookie('kecomu_animacion', valor);
-        aplicarCalidadAnimacion();
+        actualizarEstadoVisual();
     }
 }
 
 function cargarPreferencias() {
     const tema = getCookie('kecomu_tema');
-    const animacion = getCookie('kecomu_animacion');
-    const claridad = getCookie('kecomu_claridad');
-    
-    if (tema === 'oscuro') {
-        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('oscuro')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    } else if (tema === 'claro') {
-        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('claro')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    }
-    
-    if (animacion === 'baja') {
-        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('baja')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    } else if (animacion === 'intermedia') {
-        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('intermedia')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    } else if (animacion === 'alta') {
-        document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('alta')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    }
-    
-    if (claridad === 'true') {
-        document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
-            if (tarjeta.querySelector('h3').innerText.includes('Claridad visual')) {
-                tarjeta.classList.add('tarjeta-activa');
-            }
-        });
-    }
     
     if (tema === 'claro') {
         document.body.classList.add('modo-claro');
     }
     
-    aplicarCalidadAnimacion();
-    aplicarClaridadVisual();
+    actualizarEstadoVisual();
 }
 
 cargarPreferencias();
 </script>
 
 </body>
-    </html>
+</html>
