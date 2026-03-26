@@ -1,20 +1,24 @@
-# Kerolmi • ia para desarrollo web
+# Kecomu • ia para desarrollo web
 
 ## Descripcion
-**Kerolmi** es una web hecha para asistir a los desarrolladores en la creación de código HTML, CSS y JavaScript mediante inteligencia artificial. Actualmente, el proyecto se encuentra en fase de desarrollo de interfaz visual, con un sistema completo de personalización y accesibilidad.
+**Kecomu** es una web hecha para asistir a los desarrolladores en la creación de código HTML, CSS y JavaScript mediante inteligencia artificial. Actualmente, el proyecto se encuentra en fase de desarrollo de interfaz visual, con un sistema completo de personalización y accesibilidad.
 
 ----------------------------------------------
 
+## Versión
+<img src="https://img.shields.io/badge/Versión-1.0.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
+
+---
+
 ## Propósito
 
-**Kerolmi** nace con la idea de facilitar el desarrollo web a través de tres versiones especializadas:
-
-  <img src="https://img.shields.io/badge/IA_-Nova-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
-  Código flexible y optimizado
-  <br>
-  <img src="https://img.shields.io/badge/IA_-Kero-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" /> 
-  Diseño gráfico creativo y atractivo
-  <img src="https://img.shields.io/badge/IA_-Umwarimu-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" /> → Aprendizaje guiado para quienes están comenzando
+**Kecomu** nace con la idea de facilitar el desarrollo web a través de tres versiones especializadas:
+  
+  - Nova • La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado! 
+  - Kero • La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!
+  - Umwarimu • La versión "Umwarimu" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes! 
+  
+  
 
 ---
 
@@ -73,23 +77,18 @@ Este proyecto se encuentra bajo licencia MIT.
 
 ---
 
-## "Kerolmi Intelligence"
+## Actividad/Contribuciones sobre el proyecto
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Versión-1.0.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
-
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Comuza&bg_color=2E0008&color=b60000&line=696900&point=690000&area=true&hide_border=true" width="100%" />
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Dev-Comuza_The king of the Null-FFC8C8?style=for-the-badge&logo=codeforces&labelColor=000000&color=2E0008" />
-</p>
-
-<br>
+---
 
 
-## Créditos de Kerolmi
+## Créditos de Kecomu
 Desarrollador, director y tester **Comuza • The king of the Null**
 
 ---
 
-**Estado actual:** Interfaz visual en desarrollo junto a la Inteligencia artificial **Kerolmi**.
+**Estado actual:** Interfaz visual en desarrollo junto a la Inteligencia artificial **Kecomu**.
