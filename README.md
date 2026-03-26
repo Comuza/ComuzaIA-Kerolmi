@@ -73,13 +73,12 @@ Este proyecto se encuentra bajo licencia MIT.
 ## Puntuación de "Kerolmi Intelligence"
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Versión-1.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
-  <img src="https://img.shields.io/badge/IA_Engine-Nova_%2F_Kero-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
-  <img src="https://img.shields.io/badge/Privacidad-Garantizada-2E0008?style=for-the-badge&logo=shield&labelColor=000000&color=FFC8C8" />
+  <img src="https://img.shields.io/badge/Versión-1.0.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
+  <img src="https://img.shields.io/badge/IA_Engine-Nova_%2F_Kero_%2F_Umwarimu-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Dev-12_Years_Old-FFC8C8?style=for-the-badge&logo=codeforces&labelColor=000000&color=2E0008" />
+  <img src="https://img.shields.io/badge/Dev-Comuza_The king of the Null-FFC8C8?style=for-the-badge&logo=codeforces&labelColor=000000&color=2E0008" />
   <img src="https://img.shields.io/badge/Status-Active-2E0008?style=for-the-badge&logo=rocket&labelColor=000000&color=FFC8C8" />
 </p>
 
