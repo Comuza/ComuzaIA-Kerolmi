@@ -90,7 +90,7 @@ Este proyecto se encuentra bajo licencia MIT.
 <p align="left">
   <img src="https://img.shields.io/badge/Autor-Comuza-FFC8C8?style=for-the-badge&logo=github&labelColor=000000&color=2E0008" />
   <img src="https://img.shields.io/badge/Apodo-King_of_the_Null-FFC8C8?style=for-the-badge&logo=visual-studio-code&labelColor=000000&color=2E0008" />
-  <img src="https://img.shields.io/badge/Role-Director_Desarrollador_y_Tester-FFC8C8?style=for-the-badge&logo=visual-studio-code&labelColor=000000&color=2E0008" />
+  <img src="https://img.shields.io/badge/Rol-Director_Desarrollador_y_Tester-FFC8C8?style=for-the-badge&logo=visual-studio-code&labelColor=000000&color=2E0008" />
 </p>
 
 ---
