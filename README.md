@@ -29,10 +29,9 @@
 
 ## Tecnologías utilizadas
 
-- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-- CSS3 (animaciones, flexbox, backdrop-filter)
-- JavaScript vanilla (sin frameworks)
-- Cookies para persistencia de configuración
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 
 ---
 
@@ -70,6 +69,22 @@
 Este proyecto se encuentra bajo licencia MIT.
 
 ---
+
+## Puntuación de "Kerolmi Intelligence"
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Versión-1.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
+  <img src="https://img.shields.io/badge/IA_Engine-Nova_%2F_Kero-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
+  <img src="https://img.shields.io/badge/Privacidad-Garantizada-2E0008?style=for-the-badge&logo=shield&labelColor=000000&color=FFC8C8" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Dev-12_Years_Old-FFC8C8?style=for-the-badge&logo=codeforces&labelColor=000000&color=2E0008" />
+  <img src="https://img.shields.io/badge/Status-Active-2E0008?style=for-the-badge&logo=rocket&labelColor=000000&color=FFC8C8" />
+</p>
+
+<br>
+
 
 ## Créditos de Kerolmi
 Desarrollador, director y tester **Comuza • The king of the Null**
