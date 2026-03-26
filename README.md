@@ -9,9 +9,12 @@
 
 **Kerolmi** nace con la idea de facilitar el desarrollo web a través de tres versiones especializadas:
 
-- **Nova** → Código flexible y optimizado
-- **Kero** → Diseño gráfico creativo y atractivo
-- **Umwarimu** → Aprendizaje guiado para quienes están comenzando
+  <img src="https://img.shields.io/badge/IA_-Nova-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
+  Código flexible y optimizado
+  <br>
+  <img src="https://img.shields.io/badge/IA_-Kero-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" /> 
+  Diseño gráfico creativo y atractivo
+  <img src="https://img.shields.io/badge/IA_-Umwarimu-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" /> → Aprendizaje guiado para quienes están comenzando
 
 ---
 
@@ -70,11 +73,11 @@ Este proyecto se encuentra bajo licencia MIT.
 
 ---
 
-## Puntuación de "Kerolmi Intelligence"
+## "Kerolmi Intelligence"
 
 <p align="center">
   <img src="https://img.shields.io/badge/Versión-1.0.0.0--Alfa-2E0008?style=for-the-badge&logo=github&labelColor=000000&color=FFC8C8" />
-  <img src="https://img.shields.io/badge/IA_Engine-Nova_%2F_Kero_%2F_Umwarimu-2E0008?style=for-the-badge&logo=openai&labelColor=000000&color=FFC8C8" />
+
 </p>
 
 <p align="center">
