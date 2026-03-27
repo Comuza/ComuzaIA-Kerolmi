@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kecomu · IA para Desarrollo Web</title>
     <style>
+        /* Tus estilos existentes, sin cambios */
         * {
             margin: 0;
             padding: 0;
@@ -130,13 +131,34 @@
             justify-content: flex-end;
             margin-bottom: 20px;
         }
-
+        /* Nuevo estilo para la barra de idiomas */
+        .language-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .language-buttons {
+            display: flex;
+            gap: 10px;
+        }
         @media (max-width: 768px) {
             .fila {
                 flex-direction: column;
             }
             .tarjeta-grande {
                 min-height: auto;
+            }
+            .language-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .contenedor-boton {
+                justify-content: center;
+            }
+            .language-buttons {
+                justify-content: center;
             }
         }
 
@@ -170,6 +192,7 @@
     </style>
 </head>
 <body>
+
     <div class="language-bar">
         <div class="language-buttons">
             <button class="btn-config" onclick="cambiarIdioma('es')">
@@ -179,51 +202,107 @@
                 <b>🇺🇸 English</b>
             </button>
         </div>
-    <div class="contenedor-boton">
-        <button class="btn-config" onclick="location.href='index.html'">
-            <b>Inicio</b>
-        </button>
+        <div class="contenedor-boton" style="margin-bottom: 0;">
+            <button class="btn-config" onclick="location.href='index.html'">
+                <b id="btn-inicio-text">Inicio</b>
+            </button>
+        </div>
     </div>
 
     <div class="tarjeta1">
-        <h2>Kecomu</h2>
+        <h2 id="titulo-kecomu">Kecomu</h2>
         <hr>
-        <p style="font-size: 11px;">IA para Desarrollo Web</p>
+        <p id="subtitulo-kecomu" style="font-size: 11px;">IA para Desarrollo Web</p>
     </div>
 
     <div class="fila">
         <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
-            <h3>Tema oscuro...</h3>
+            <h3 id="tema-oscuro-text">Tema oscuro...</h3>
         </div>
         <div class="tarjeta-pequena tarjeta2 f2-2" onclick="activarTarjeta(this, 'claridad')">
-            <h3>Claridad visual...</h3>
+            <h3 id="claridad-text">Claridad visual...</h3>
         </div>
         <div class="tarjeta-pequena tarjeta4 f2-3" onclick="activarTarjeta(this, 'tema')">
-            <h3>Modo claro...</h3>
+            <h3 id="tema-claro-text">Modo claro...</h3>
         </div>
     </div>
 
     <div class="fila">
         <div class="tarjeta-grande tarjeta3 f3-1" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad baja sobre la animación</h3>
+            <h3 id="anim-baja-titulo">Calidad baja sobre la animación</h3>
             <hr>
-            <p style="font-size: 11px;">Esta configuración reduce en gran medida la calidad visual de la animación, lo que puede resultar en una experiencia menos atractiva pero con un rendimiento mejorado. Es ideal para dispositivos con recursos limitados o para usuarios que priorizan la velocidad sobre la estética.</p>
+            <p id="anim-baja-desc" style="font-size: 11px;">Esta configuración reduce en gran medida la calidad visual de la animación, lo que puede resultar en una experiencia menos atractiva pero con un rendimiento mejorado. Es ideal para dispositivos con recursos limitados o para usuarios que priorizan la velocidad sobre la estética.</p>
         </div>
 
         <div class="tarjeta-grande tarjeta3 f3-3" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad intermedia sobre la animación</h3>
+            <h3 id="anim-media-titulo">Calidad intermedia sobre la animación</h3>
             <hr>
-            <p style="font-size: 11px;">Recomendada para la mayoría de los usuarios, esta configuración ofrece un equilibrio entre calidad visual y rendimiento. La animación se renderiza con detalles moderados, proporcionando una experiencia fluida sin comprometer demasiado la estética.</p>
+            <p id="anim-media-desc" style="font-size: 11px;">Recomendada para la mayoría de los usuarios, esta configuración ofrece un equilibrio entre calidad visual y rendimiento. La animación se renderiza con detalles moderados, proporcionando una experiencia fluida sin comprometer demasiado la estética.</p>
         </div>
 
         <div class="tarjeta-grande tarjeta3 f3-2" onclick="activarTarjeta(this, 'animacion')">
-            <h3>Calidad alta sobre la animación</h3>
+            <h3 id="anim-alta-titulo">Calidad alta sobre la animación</h3>
             <hr>
-            <p style="font-size: 11px;">Esta configuración ofrece la mejor calidad visual para la animación, con detalles nítidos y efectos visuales completos. Sin embargo, puede requerir más recursos del sistema, lo que podría afectar el rendimiento en dispositivos más antiguos o con hardware limitado. Es ideal para usuarios que buscan la mejor experiencia visual posible.</p>
+            <p id="anim-alta-desc" style="font-size: 11px;">Esta configuración ofrece la mejor calidad visual para la animación, con detalles nítidos y efectos visuales completos. Sin embargo, puede requerir más recursos del sistema, lo que podría afectar el rendimiento en dispositivos más antiguos o con hardware limitado. Es ideal para usuarios que buscan la mejor experiencia visual posible.</p>
         </div>
     </div>
 
     <script>
+        let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
+
+        const textos = {
+            es: {
+                btnInicio: "Inicio",
+                titulo: "Kecomu",
+                subtitulo: "IA para Desarrollo Web",
+                temaOscuro: "Tema oscuro...",
+                claridad: "Claridad visual...",
+                temaClaro: "Modo claro...",
+                animBajaTitulo: "Calidad baja sobre la animación",
+                animBajaDesc: "Esta configuración reduce en gran medida la calidad visual de la animación, lo que puede resultar en una experiencia menos atractiva pero con un rendimiento mejorado. Es ideal para dispositivos con recursos limitados o para usuarios que priorizan la velocidad sobre la estética.",
+                animMediaTitulo: "Calidad intermedia sobre la animación",
+                animMediaDesc: "Recomendada para la mayoría de los usuarios, esta configuración ofrece un equilibrio entre calidad visual y rendimiento. La animación se renderiza con detalles moderados, proporcionando una experiencia fluida sin comprometer demasiado la estética.",
+                animAltaTitulo: "Calidad alta sobre la animación",
+                animAltaDesc: "Esta configuración ofrece la mejor calidad visual para la animación, con detalles nítidos y efectos visuales completos. Sin embargo, puede requerir más recursos del sistema, lo que podría afectar el rendimiento en dispositivos más antiguos o con hardware limitado. Es ideal para usuarios que buscan la mejor experiencia visual posible."
+            },
+            en: {
+                btnInicio: "Home",
+                titulo: "Kecomu",
+                subtitulo: "AI for Web Development",
+                temaOscuro: "Dark theme...",
+                claridad: "Visual clarity...",
+                temaClaro: "Light theme...",
+                animBajaTitulo: "Low animation quality",
+                animBajaDesc: "This setting greatly reduces the visual quality of the animation, which may result in a less attractive experience but with improved performance. Ideal for devices with limited resources or for users who prioritize speed over aesthetics.",
+                animMediaTitulo: "Medium animation quality",
+                animMediaDesc: "Recommended for most users, this setting offers a balance between visual quality and performance. The animation renders with moderate details, providing a smooth experience without compromising too much on aesthetics.",
+                animAltaTitulo: "High animation quality",
+                animAltaDesc: "This setting offers the best visual quality for the animation, with sharp details and full visual effects. However, it may require more system resources, which could affect performance on older devices or limited hardware. Ideal for users seeking the best possible visual experience."
+            }
+        };
+
+        function actualizarTextos() {
+            document.getElementById('btn-inicio-text').textContent = textos[idiomaActual].btnInicio;
+            document.getElementById('titulo-kecomu').textContent = textos[idiomaActual].titulo;
+            document.getElementById('subtitulo-kecomu').textContent = textos[idiomaActual].subtitulo;
+            document.getElementById('tema-oscuro-text').textContent = textos[idiomaActual].temaOscuro;
+            document.getElementById('claridad-text').textContent = textos[idiomaActual].claridad;
+            document.getElementById('tema-claro-text').textContent = textos[idiomaActual].temaClaro;
+            document.getElementById('anim-baja-titulo').textContent = textos[idiomaActual].animBajaTitulo;
+            document.getElementById('anim-baja-desc').textContent = textos[idiomaActual].animBajaDesc;
+            document.getElementById('anim-media-titulo').textContent = textos[idiomaActual].animMediaTitulo;
+            document.getElementById('anim-media-desc').textContent = textos[idiomaActual].animMediaDesc;
+            document.getElementById('anim-alta-titulo').textContent = textos[idiomaActual].animAltaTitulo;
+            document.getElementById('anim-alta-desc').textContent = textos[idiomaActual].animAltaDesc;
+        }
+
+        function cambiarIdioma(idioma) {
+            idiomaActual = idioma;
+            localStorage.setItem('kecomu_idioma', idioma);
+            actualizarTextos();
+            sincronizarEstadosBotones(); 
+        }
+
         const setCookie = (nombre, valor) => {
             document.cookie = `${nombre}=${valor}; path=/; max-age=31536000`;
         };
@@ -321,48 +400,47 @@
             if (animacionesConfig[animacion]) document.head.appendChild(style);
         };
 
-           const aplicarClaridadVisual = () => {
-         const estiloExistente = document.getElementById('estilo-claridad');
-         estiloExistente?.remove();
+        const aplicarClaridadVisual = () => {
+            const estiloExistente = document.getElementById('estilo-claridad');
+            estiloExistente?.remove();
     
-         const claridad = getCookie('kecomu_claridad');
-         if (claridad !== 'true') return;
+            const claridad = getCookie('kecomu_claridad');
+            if (claridad !== 'true') return;
     
-         const style = document.createElement('style');
-         style.id = 'estilo-claridad';
-         style.textContent = `
-        .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-            filter: none !important;
-            backdrop-filter: none !important;
-            opacity: 1 !important;
-            background: rgba(20, 15, 25, 0.95) !important;
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-        }
-            body.modo-claro .tarjeta1,
-            body.modo-claro .tarjeta2,
-            body.modo-claro .tarjeta3,
-            body.modo-claro .tarjeta4 {
-            background: rgba(245, 240, 250, 0.98) !important;
-            border: 2px solid rgba(100, 70, 120, 0.5) !important;
-            color: #1a1a2e !important;
-        }
-
-        .tarjeta-activa {
-            box-shadow: 8px 8px 8px rgba(160, 61, 171, 0.6);
-            border: 1.6px solid rgba(57, 28, 84, 0.8);
-        }
-
-        body { font-size: 18px !important; }
-        .tarjeta-pequena h3, .tarjeta-grande h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
-        .tarjeta-grande p, .tarjeta1 p { font-size: 1rem !important; line-height: 1.5 !important; }
-        .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 { color: #ffffff !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important; }
-        body.modo-claro .tarjeta1, body.modo-claro .tarjeta2, body.modo-claro .tarjeta3, body.modo-claro .tarjeta4 { color: #1a1a2e !important; text-shadow: none !important; }
-        hr { border-width: 1px !important; opacity: 0.5 !important; }
-        .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0, 0, 0, 0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
-        body.modo-claro .btn-config { background: rgba(200, 180, 220, 0.8) !important; color: #1a1a2e !important; }
-    `;
-    document.head.appendChild(style);
-};
+            const style = document.createElement('style');
+            style.id = 'estilo-claridad';
+            style.textContent = `
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                    filter: none !important;
+                    backdrop-filter: none !important;
+                    opacity: 1 !important;
+                    background: rgba(20, 15, 25, 0.95) !important;
+                    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                }
+                body.modo-claro .tarjeta1,
+                body.modo-claro .tarjeta2,
+                body.modo-claro .tarjeta3,
+                body.modo-claro .tarjeta4 {
+                    background: rgba(245, 240, 250, 0.98) !important;
+                    border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                    color: #1a1a2e !important;
+                }
+                .tarjeta-activa {
+                    box-shadow: 8px 8px 8px rgba(160, 61, 171, 0.6);
+                    border: 1.6px solid rgba(57, 28, 84, 0.8);
+                }
+                body { font-size: 18px !important; }
+                .tarjeta-pequena h3, .tarjeta-grande h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
+                .tarjeta-grande p, .tarjeta1 p { font-size: 1rem !important; line-height: 1.5 !important; }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 { color: #ffffff !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important; }
+                body.modo-claro .tarjeta1, body.modo-claro .tarjeta2, body.modo-claro .tarjeta3, body.modo-claro .tarjeta4 { color: #1a1a2e !important; text-shadow: none !important; }
+                hr { border-width: 1px !important; opacity: 0.5 !important; }
+                .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0, 0, 0, 0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
+                body.modo-claro .btn-config { background: rgba(200, 180, 220, 0.8) !important; color: #1a1a2e !important; }
+            `;
+            document.head.appendChild(style);
+        };
+        
         const sincronizarEstadosBotones = () => {
             const claridad = getCookie('kecomu_claridad');
             const tema = getCookie('kecomu_tema');
@@ -370,20 +448,22 @@
             
             document.querySelectorAll('.tarjeta-pequena').forEach(tarjeta => {
                 const texto = tarjeta.querySelector('h3').innerText;
-                if (texto.includes('Claridad visual')) {
+                if (texto.includes('Claridad visual') || texto.includes('Visual clarity')) {
                     claridad === 'true' ? tarjeta.classList.add('tarjeta-activa') : tarjeta.classList.remove('tarjeta-activa');
-                } else if (texto.includes('oscuro')) {
+                } else if (texto.includes('oscuro') || texto.includes('Dark')) {
                     tema === 'oscuro' ? tarjeta.classList.add('tarjeta-activa') : tarjeta.classList.remove('tarjeta-activa');
-                } else if (texto.includes('claro')) {
+                } else if (texto.includes('claro') || texto.includes('Light')) {
                     tema === 'claro' ? tarjeta.classList.add('tarjeta-activa') : tarjeta.classList.remove('tarjeta-activa');
                 }
             });
             
             document.querySelectorAll('.tarjeta-grande').forEach(tarjeta => {
                 const texto = tarjeta.querySelector('h3').innerText;
-                if ((texto.includes('baja') && animacion === 'baja') ||
-                    (texto.includes('intermedia') && animacion === 'intermedia') ||
-                    (texto.includes('alta') && animacion === 'alta')) {
+                if ((texto.includes('baja') || texto.includes('Low')) && animacion === 'baja') {
+                    tarjeta.classList.add('tarjeta-activa');
+                } else if ((texto.includes('intermedia') || texto.includes('Medium')) && animacion === 'intermedia') {
+                    tarjeta.classList.add('tarjeta-activa');
+                } else if ((texto.includes('alta') || texto.includes('High')) && animacion === 'alta') {
                     tarjeta.classList.add('tarjeta-activa');
                 } else {
                     tarjeta.classList.remove('tarjeta-activa');
@@ -406,16 +486,17 @@
             }
             
             if (grupo === 'tema') {
-                const valor = elemento.querySelector('h3').innerText.includes('oscuro') ? 'oscuro' : 'claro';
+                const texto = elemento.querySelector('h3').innerText;
+                const valor = (texto.includes('oscuro') || texto.includes('Dark')) ? 'oscuro' : 'claro';
                 setCookie('kecomu_tema', valor);
                 document.body.classList[valor === 'claro' ? 'add' : 'remove']('modo-claro');
                 actualizarEstadoVisual();
             } else if (grupo === 'animacion') {
                 const texto = elemento.querySelector('h3').innerText;
                 let valor = '';
-                if (texto.includes('baja')) valor = 'baja';
-                else if (texto.includes('intermedia')) valor = 'intermedia';
-                else if (texto.includes('alta')) valor = 'alta';
+                if (texto.includes('baja') || texto.includes('Low')) valor = 'baja';
+                else if (texto.includes('intermedia') || texto.includes('Medium')) valor = 'intermedia';
+                else if (texto.includes('alta') || texto.includes('High')) valor = 'alta';
                 setCookie('kecomu_animacion', valor);
                 actualizarEstadoVisual();
             }
@@ -426,6 +507,13 @@
                 document.body.classList.add('modo-claro');
             }
             actualizarEstadoVisual();
+            const idiomaGuardado = localStorage.getItem('kecomu_idioma');
+            if (idiomaGuardado) {
+                idiomaActual = idiomaGuardado;
+                actualizarTextos();
+            } else {
+                actualizarTextos();
+            }
         };
 
         cargarPreferencias();
