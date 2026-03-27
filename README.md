@@ -111,3 +111,21 @@ Este proyecto se encuentra bajo licencia MIT.
 ---
 
 **Estado actual:** Interfaz visual en desarrollo junto a la Inteligencia artificial **Kecomu**.
+
+---
+Special Thanks / Reconocimientos
+
+> "La optimización no es solo código, es la energía de quienes creen en la innovación desde la base."
+
+Un agradecimiento especial a los **ingenieros senior, arquitectos de software y mentes de la industria** que se han sumado a seguir este perfil en las últimas semanas. 
+
+Ver que profesionales de **FAANG** y grandes instituciones están observando el crecimiento de **Kecomu**, no solo es un honor, sino el combustible para seguir programando más duro en el desarrollo de este ecosistema.
+
+**¿Por qué sigo aquí?**
+- Por que me gusta programar.
+- Por la creencia de que la **Privacidad** es un derecho, no una opción.
+- Por el apoyo de una comunidad que valora el código artesanal.
+
+Enserio gracias <3
+
+---
