@@ -113,9 +113,7 @@ Este proyecto se encuentra bajo licencia MIT.
 **Estado actual:** Interfaz visual en desarrollo junto a la Inteligencia artificial **Kecomu**.
 
 ---
-Special Thanks / Reconocimientos
-
-> "La optimización no es solo código, es la energía de quienes creen en la innovación desde la base."
+### Special Thanks / Reconocimientos
 
 Un agradecimiento especial a los **ingenieros senior, arquitectos de software y mentes de la industria** que se han sumado a seguir este perfil en las últimas semanas. 
 
