@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kecomu · IA para Desarrollo Web</title>
+    <title>Kecomu · AI for Web Development</title>
     <style>
         * {
             margin: 0;
@@ -131,12 +131,34 @@
             margin-bottom: 20px;
         }
 
+        .language-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .language-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
         @media (max-width: 768px) {
             .fila {
                 flex-direction: column;
             }
             .tarjeta-grande {
                 min-height: auto;
+            }
+            .language-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .contenedor-boton {
+                justify-content: center;
+            }
+            .language-buttons {
+                justify-content: center;
             }
         }
 
@@ -175,27 +197,37 @@
 </head>
 <body>
 
-    <div class="contenedor-boton">
-        <button class="btn-config" onclick="location.href='configuraciones.html'">
-            <b>Configuraciones</b>
-        </button>
+    <div class="language-bar">
+        <div class="language-buttons">
+            <button class="btn-config" onclick="cambiarIdioma('es')">
+                <b>🇪🇸 Español</b>
+            </button>
+            <button class="btn-config" onclick="cambiarIdioma('en')">
+                <b>🇺🇸 English</b>
+            </button>
+        </div>
+        <div class="contenedor-boton" style="margin-bottom: 0;">
+            <button class="btn-config" onclick="location.href='configuraciones.html'">
+                <b id="btn-config-text">Configuraciones</b>
+            </button>
+        </div>
     </div>
 
     <div class="tarjeta1">
-        <h2>Kecomu</h2>
+        <h2 id="titulo-kecomu">Kecomu</h2>
         <hr>
-        <p style="font-size: 11px;">IA para Desarrollo Web</p>
+        <p id="subtitulo-kecomu" style="font-size: 11px;">IA para Desarrollo Web</p>
     </div>
 
     <div class="fila">
         <div class="tarjeta-pequena tarjeta4 f2-3" onclick="location.href='actua.html'">
-            <h3>Novedades...</h3>
+            <h3 id="novedades-text">Novedades...</h3>
         </div>
         <div class="tarjeta-pequena tarjeta4 f2-2" onclick="location.href='Poder.html'">
-            <h3>Para html, css y javascript...</h3>
+            <h3 id="poder-text">Para html, css y javascript...</h3>
         </div>
         <div class="tarjeta-pequena tarjeta4 f2-3" onclick="location.href='Datos.html'">
-            <h3>Políticas de Privacidad...</h3>
+            <h3 id="privacidad-text">Políticas de Privacidad...</h3>
         </div>
     </div>
 
@@ -203,35 +235,98 @@
         <div class="tarjeta-grande tarjeta3 f3-1" onclick="location.href='Nova.html'">
             <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgb(168, 75, 255)">Nova...</span></h3>
             <hr>
-            La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado!
+            <span id="nova-desc1">La versión "Nova" de Kecomu esta especializada en hacer un codigo flexible y optimizado!</span>
             <hr>
-            (Es recomendable usar Kecomu "Kero" para diseño grafico y creativo)
+            <span id="nova-desc2">(Es recomendable usar Kecomu "Kero" para diseño grafico y creativo)</span>
             <hr>
-            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
+            <span id="nova-desc3">[Es recomendable usar Kecomu "Umwarimu" si eres Junior]</span>
         </div>
 
         <div class="tarjeta-grande tarjeta3 f3-3">
             <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu</span> <span style="color: rgba(255, 54, 158, 0.812)">Kero...</span></h3>
             <hr>
-            La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!
+            <span id="kero-desc1">La versión "Kero" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!</span>
             <hr>
-            (Es recomendable usar Kecomu "Nova" para codigo flexible)
+            <span id="kero-desc2">(Es recomendable usar Kecomu "Nova" para codigo flexible)</span>
             <hr>
-            [Es recomendable usar Kecomu "Umwarimu" si eres Junior]
+            <span id="kero-desc3">[Es recomendable usar Kecomu "Umwarimu" si eres Junior]</span>
         </div>
 
         <div class="tarjeta-grande tarjeta3 f3-2">
             <h3><span style="color: rgba(167, 167, 167, 0.512)">Kecomu </span><span style="color: rgba(213, 90, 90, 0.729)">Umwarimu...</span></h3>
             <hr>
-            La versión "Umwarimu" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes!
+            <span id="umwa-desc1">La versión "Umwarimu" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes!</span>
             <hr>
-            (Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente)
+            <span id="umwa-desc2">(Es recomendable usar las versión "Nova" y "Kero" para un codigo más potente)</span>
             <hr>
-            Es recomendable usar esta versión si eres nuevo
+            <span id="umwa-desc3">Es recomendable usar esta versión si eres nuevo</span>
         </div>
     </div>
 
     <script>
+        let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
+
+        const textos = {
+            es: {
+                btnConfig: "Configuraciones",
+                titulo: "Kecomu",
+                subtitulo: "IA para Desarrollo Web",
+                novedades: "Novedades...",
+                poder: "Para html, css y javascript...",
+                privacidad: "Políticas de Privacidad...",
+                novaDesc1: "La versión \"Nova\" de Kecomu esta especializada en hacer un codigo flexible y optimizado!",
+                novaDesc2: "(Es recomendable usar Kecomu \"Kero\" para diseño grafico y creativo)",
+                novaDesc3: "[Es recomendable usar Kecomu \"Umwarimu\" si eres Junior]",
+                keroDesc1: "La versión \"Kero\" de Kecomu esta especializada en hacer un codigo creativo y con un diseño grafico atractivo!",
+                keroDesc2: "(Es recomendable usar Kecomu \"Nova\" para codigo flexible)",
+                keroDesc3: "[Es recomendable usar Kecomu \"Umwarimu\" si eres Junior]",
+                umwaDesc1: "La versión \"Umwarimu\" de Kecomu es una ia de aprendizaje guiado, con esta ia puedes estar creando mientras aprendes!",
+                umwaDesc2: "(Es recomendable usar las versión \"Nova\" y \"Kero\" para un codigo más potente)",
+                umwaDesc3: "Es recomendable usar esta versión si eres nuevo"
+            },
+            en: {
+                btnConfig: "Settings",
+                titulo: "Kecomu",
+                subtitulo: "AI for Web Development",
+                novedades: "News...",
+                poder: "For html, css and javascript...",
+                privacidad: "Privacy Policies...",
+                novaDesc1: "The \"Nova\" version of Kecomu is specialized in making flexible and optimized code!",
+                novaDesc2: "(It is recommended to use Kecomu \"Kero\" for graphic design and creative work)",
+                novaDesc3: "[It is recommended to use Kecomu \"Umwarimu\" if you are a Junior]",
+                keroDesc1: "The \"Kero\" version of Kecomu is specialized in making creative code with attractive graphic design!",
+                keroDesc2: "(It is recommended to use Kecomu \"Nova\" for flexible code)",
+                keroDesc3: "[It is recommended to use Kecomu \"Umwarimu\" if you are a Junior]",
+                umwaDesc1: "The \"Umwarimu\" version of Kecomu is a guided learning AI, with which you can create while you learn!",
+                umwaDesc2: "(It is recommended to use the \"Nova\" and \"Kero\" versions for more powerful code)",
+                umwaDesc3: "It is recommended to use this version if you are new"
+            }
+        };
+
+        function actualizarTextos() {
+            document.getElementById('btn-config-text').textContent = textos[idiomaActual].btnConfig;
+            document.getElementById('titulo-kecomu').textContent = textos[idiomaActual].titulo;
+            document.getElementById('subtitulo-kecomu').textContent = textos[idiomaActual].subtitulo;
+            document.getElementById('novedades-text').textContent = textos[idiomaActual].novedades;
+            document.getElementById('poder-text').textContent = textos[idiomaActual].poder;
+            document.getElementById('privacidad-text').textContent = textos[idiomaActual].privacidad;
+            document.getElementById('nova-desc1').textContent = textos[idiomaActual].novaDesc1;
+            document.getElementById('nova-desc2').textContent = textos[idiomaActual].novaDesc2;
+            document.getElementById('nova-desc3').textContent = textos[idiomaActual].novaDesc3;
+            document.getElementById('kero-desc1').textContent = textos[idiomaActual].keroDesc1;
+            document.getElementById('kero-desc2').textContent = textos[idiomaActual].keroDesc2;
+            document.getElementById('kero-desc3').textContent = textos[idiomaActual].keroDesc3;
+            document.getElementById('umwa-desc1').textContent = textos[idiomaActual].umwaDesc1;
+            document.getElementById('umwa-desc2').textContent = textos[idiomaActual].umwaDesc2;
+            document.getElementById('umwa-desc3').textContent = textos[idiomaActual].umwaDesc3;
+        }
+
+        function cambiarIdioma(idioma) {
+            idiomaActual = idioma;
+            localStorage.setItem('kecomu_idioma', idioma);
+            actualizarTextos();
+        }
+
         const getCookie = name => {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -376,6 +471,7 @@
         };
 
         aplicarPreferencias();
+        actualizarTextos();
     </script>
 
 </body>
