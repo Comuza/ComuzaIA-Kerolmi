@@ -13,7 +13,6 @@
 
         body {
             background-color: rgb(46, 0, 8);
-            margin: 0;
             padding: 20px;
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: rgba(255, 255, 255, 0.766);
@@ -169,10 +168,6 @@
             background: rgb(80, 70, 90) !important;
         }
 
-        body.modo-claro h3 span {
-            color: rgba(200, 180, 200, 0.7) !important;
-        }
-
         body.modo-claro .tarjeta-pequena:hover {
             background: rgba(255, 255, 255, 0.15);
         }
@@ -187,9 +182,9 @@
     </div>
 
     <div class="tarjeta1">
-        <h2 style="margin: 0;">Kecomu</h2>
+        <h2>Kecomu</h2>
         <hr>
-        <p style="font-size: 11px; margin: 0;">IA para Desarrollo Web</p>
+        <p style="font-size: 11px;">IA para Desarrollo Web</p>
     </div>
 
     <div class="fila">
@@ -237,23 +232,24 @@
     </div>
 
     <script>
-        function getCookie(nombre) {
+        const getCookie = name => {
             const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${nombre}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            return null;
-        }
+            const parts = value.split(`; ${name}=`);
+            return parts.length === 2 ? parts.pop().split(';').shift() : null;
+        };
 
-        function aplicarCalidadAnimacion() {
+        const aplicarCalidadAnimacion = () => {
             const animacion = getCookie('kecomu_animacion');
+            if (!animacion) return;
+            
             const estiloExistente = document.getElementById('estilo-animacion');
-            if (estiloExistente) estiloExistente.remove();
+            estiloExistente?.remove();
             
             const style = document.createElement('style');
             style.id = 'estilo-animacion';
             
-            if (animacion === 'baja') {
-                style.textContent = `
+            const animaciones = {
+                baja: `
                     @keyframes TarjetaAnimadaBaja {
                         0% { opacity: 0; }
                         100% {
@@ -281,14 +277,10 @@
                     .f2-1 { animation-delay: 0s !important; }
                     .f2-2 { animation-delay: 0.1s !important; }
                     .f2-3 { animation-delay: 0.2s !important; }
-                    .f3-1 { animation-delay: 0.3s !important; }
-                    .f3-2 { animation-delay: 0.3s !important; }
-                    .f3-3 { animation-delay: 0.3s !important; }
+                    .f3-1, .f3-2, .f3-3 { animation-delay: 0.3s !important; }
                     .btn-config { animation-delay: 0.4s !important; }
-                `;
-            } 
-            else if (animacion === 'intermedia') {
-                style.textContent = `
+                `,
+                intermedia: `
                     @keyframes TarjetaAnimadaIntermedia {
                         0% { opacity: 0; transform: translateY(30px); }
                         100% {
@@ -317,14 +309,10 @@
                     .f2-1 { animation-delay: 0s !important; }
                     .f2-2 { animation-delay: 0.3s !important; }
                     .f2-3 { animation-delay: 0.6s !important; }
-                    .f3-1 { animation-delay: 1s !important; }
-                    .f3-2 { animation-delay: 1s !important; }
-                    .f3-3 { animation-delay: 1s !important; }
+                    .f3-1, .f3-2, .f3-3 { animation-delay: 1s !important; }
                     .btn-config { animation-delay: 0.5s !important; }
-                `;
-            }
-            else if (animacion === 'alta') {
-                style.textContent = `
+                `,
+                alta: `
                     .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
                         animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
                         animation-fill-mode: both !important;
@@ -332,94 +320,60 @@
                     .f2-1 { animation-delay: 0s !important; }
                     .f2-2 { animation-delay: 0.3s !important; }
                     .f2-3 { animation-delay: 0.6s !important; }
-                    .f3-1 { animation-delay: 1s !important; }
-                    .f3-2 { animation-delay: 1s !important; }
-                    .f3-3 { animation-delay: 1s !important; }
+                    .f3-1, .f3-2, .f3-3 { animation-delay: 1s !important; }
                     .btn-config { animation-delay: 0.5s !important; }
-                `;
-            }
+                `
+            };
             
-            if (animacion !== null) {
-                document.head.appendChild(style);
-            }
-        }
+            style.textContent = animaciones[animacion] || '';
+            if (animaciones[animacion]) document.head.appendChild(style);
+        };
 
-        function aplicarClaridadVisual() {
+        const aplicarClaridadVisual = () => {
             const claridad = getCookie('kecomu_claridad');
-            const estiloExistente = document.getElementById('estilo-claridad');
-            if (estiloExistente) estiloExistente.remove();
+            if (claridad !== 'true') return;
             
-            if (claridad === 'true') {
-                const style = document.createElement('style');
-                style.id = 'estilo-claridad';
-                style.textContent = `
-                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
-                        filter: none !important;
-                        backdrop-filter: none !important;
-                        opacity: 1 !important;
-                        background: rgba(20, 15, 25, 0.95) !important;
-                        border: 2px solid rgba(255, 255, 255, 0.3) !important;
-                    }
-                    body.modo-claro .tarjeta1,
-                    body.modo-claro .tarjeta2,
-                    body.modo-claro .tarjeta3,
-                    body.modo-claro .tarjeta4,
-                    body.modo-claro .btn-config {
-                        background: rgba(245, 240, 250, 0.98) !important;
-                        border: 2px solid rgba(100, 70, 120, 0.5) !important;
-                        color: #1a1a2e !important;
-                    }
-                    body {
-                        font-size: 18px !important;
-                    }
-                    .tarjeta-pequena h3, .tarjeta-grande h3 {
-                        font-size: 1.3rem !important;
-                        font-weight: 600 !important;
-                    }
-                    .tarjeta-grande p, .tarjeta1 p {
-                        font-size: 1rem !important;
-                        line-height: 1.5 !important;
-                    }
-                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                        color: #ffffff !important;
-                        text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
-                    }
-                    body.modo-claro .tarjeta1,
-                    body.modo-claro .tarjeta2,
-                    body.modo-claro .tarjeta3,
-                    body.modo-claro .tarjeta4 {
-                        color: #1a1a2e !important;
-                        text-shadow: none !important;
-                    }
-                    hr {
-                        border-width: 1px !important;
-                        opacity: 0.5 !important;
-                    }
-                    .btn-config {
-                        opacity: 0.9 !important;
-                        filter: none !important;
-                        backdrop-filter: none !important;
-                        background: rgba(0, 0, 0, 0.7) !important;
-                        font-size: 12px !important;
-                        padding: 10px 24px !important;
-                    }
-                    body.modo-claro .btn-config {
-                        background: rgba(200, 180, 220, 0.8) !important;
-                        color: #1a1a2e !important;
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        }
+            const estiloExistente = document.getElementById('estilo-claridad');
+            estiloExistente?.remove();
+            
+            const style = document.createElement('style');
+            style.id = 'estilo-claridad';
+            style.textContent = `
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                    filter: none !important;
+                    backdrop-filter: none !important;
+                    opacity: 1 !important;
+                    background: rgba(20, 15, 25, 0.95) !important;
+                    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                }
+                body.modo-claro .tarjeta1,
+                body.modo-claro .tarjeta2,
+                body.modo-claro .tarjeta3,
+                body.modo-claro .tarjeta4,
+                body.modo-claro .btn-config {
+                    background: rgba(245, 240, 250, 0.98) !important;
+                    border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                    color: #1a1a2e !important;
+                }
+                body { font-size: 18px !important; }
+                .tarjeta-pequena h3, .tarjeta-grande h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
+                .tarjeta-grande p, .tarjeta1 p { font-size: 1rem !important; line-height: 1.5 !important; }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 { color: #ffffff !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important; }
+                body.modo-claro .tarjeta1, body.modo-claro .tarjeta2, body.modo-claro .tarjeta3, body.modo-claro .tarjeta4 { color: #1a1a2e !important; text-shadow: none !important; }
+                hr { border-width: 1px !important; opacity: 0.5 !important; }
+                .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0, 0, 0, 0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
+                body.modo-claro .btn-config { background: rgba(200, 180, 220, 0.8) !important; color: #1a1a2e !important; }
+            `;
+            document.head.appendChild(style);
+        };
 
-        function aplicarPreferencias() {
-            const tema = getCookie('kecomu_tema');
-            if (tema === 'claro') {
+        const aplicarPreferencias = () => {
+            if (getCookie('kecomu_tema') === 'claro') {
                 document.body.classList.add('modo-claro');
             }
             aplicarCalidadAnimacion();
             aplicarClaridadVisual();
-        }
+        };
 
         aplicarPreferencias();
     </script>
