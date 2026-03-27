@@ -13,7 +13,6 @@
 
         body {
             background-color: rgb(46, 0, 8);
-            margin: 0;
             padding: 20px;
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             color: rgba(255, 255, 255, 0.766);
@@ -64,53 +63,6 @@
                 opacity: 0.5;
                 transform: translateY(0) scale(1);
                 filter: blur(0.5px);
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                border: 2.6px solid rgba(255, 200, 200, 0.3);
-                color: rgb(255, 255, 255);
-                border-color: rgba(7, 113, 78, 0.356);
-                margin: 5px;
-            }
-        }
-
-        @keyframes ptBaja {
-            0% {
-                visibility: visible;
-                opacity: 0;
-                border: 2.025px solid rgba(255, 200, 200, 0.6);
-                color: transparent;
-            }
-            40% {
-                opacity: 0.6;
-                background-color: rgba(125, 85, 85, 0.229);
-            }
-            100% {
-                opacity: 1;
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                border: 2.6px solid rgba(255, 200, 200, 0.3);
-                color: rgb(255, 255, 255);
-                border-color: rgba(7, 113, 78, 0.356);
-                margin: 5px;
-            }
-        }
-
-        @keyframes ptIntermedia {
-            0% {
-                visibility: visible;
-                opacity: 0;
-                transform: translateY(3px) scale(0.99);
-                border: 2.025px solid rgba(255, 200, 200, 0.6);
-                color: transparent;
-            }
-            40% {
-                opacity: 0.6;
-                background-color: rgba(125, 85, 85, 0.229);
-                transform: translateY(-2px) scale(1.02);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
                 background: rgba(255, 255, 255, 0.05);
                 backdrop-filter: blur(10px);
                 border: 2.6px solid rgba(255, 200, 200, 0.3);
@@ -213,7 +165,7 @@
             border-color: blanchedalmond;
             animation-delay: 0.8s;
             animation: pt 1.3s ease-out forwards;
-             visibility: hidden;
+            visibility: hidden;
         }
 
         .input-area {
@@ -288,9 +240,7 @@
         .f2-1 { animation-delay: 0s; }
         .f2-2 { animation-delay: 0.3s; }
         .f2-3 { animation-delay: 0.6s; }
-        .f3-1 { animation-delay: 1s; }
-        .f3-2 { animation-delay: 1s; }
-        .f3-3 { animation-delay: 1s; }
+        .f3-1, .f3-2, .f3-3 { animation-delay: 1s; }
 
         hr {
             border: 0.5px solid rgba(255, 200, 200, 0.2);
@@ -320,18 +270,12 @@
             opacity: 0.5 !important;
         }
 
-        .contenedor-boton {
+        .contenedor-boton, .contenedor-boton-izq {
             display: flex;
-            justify-content: flex-end;
             margin-bottom: 20px;
         }
-
-        .contenedor-boton-izq {
-            display: flex;
-            justify-content: flex-start;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
+        .contenedor-boton { justify-content: flex-end; }
+        .contenedor-boton-izq { justify-content: flex-start; gap: 10px; }
 
         @media (max-width: 768px) {
             .fila {
@@ -373,10 +317,6 @@
             background: rgb(80, 70, 90) !important;
         }
 
-        body.modo-claro h3 span {
-            color: rgba(200, 180, 200, 0.7) !important;
-        }
-
         body.modo-claro .tarjeta-pequena:hover {
             background: rgba(255, 255, 255, 0.15);
         }
@@ -404,9 +344,9 @@
     </div>
 
     <div class="tarjeta1">
-        <h2 style="margin: 0;">Kecomu · Chat</h2>
+        <h2>Kecomu · Chat</h2>
         <hr>
-        <p style="font-size: 11px; margin: 0;">Interactúa con la inteligencia artificial</p>
+        <p style="font-size: 11px;">Interactúa con la inteligencia artificial</p>
     </div>
 
     <div class="fila">
@@ -437,40 +377,161 @@
     <script>
         let versionActual = 'Nova';
 
-        function getCookie(nombre) {
+        const getCookie = name => {
             const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${nombre}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            return null;
-        }
+            const parts = value.split(`; ${name}=`);
+            return parts.length === 2 ? parts.pop().split(';').shift() : null;
+        };
 
-        function setCookie(nombre, valor) {
+        const setCookie = (nombre, valor) => {
             document.cookie = `${nombre}=${valor}; path=/; max-age=31536000`;
-        }
+        };
 
-        function cambiarVersion(version) {
+        const animacionesConfig = {
+            baja: `
+                @keyframes TarjetaAnimadaBaja {
+                    0% { opacity: 0; }
+                    100% {
+                        opacity: 0.5;
+                        background: rgba(255, 255, 255, 0.05);
+                        backdrop-filter: blur(10px);
+                        border: 1.6px solid rgba(255, 200, 200, 0.3);
+                    }
+                }
+                @keyframes ptBaja {
+                    0% { visibility: visible; opacity: 0; border: 2.025px solid rgba(255, 200, 200, 0.6); color: transparent; }
+                    40% { opacity: 0.6; background-color: rgba(125, 85, 85, 0.229); }
+                    100% { visibility: visible; opacity: 1; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: rgb(255, 255, 255); border-color: rgba(7, 113, 78, 0.356); margin: 5px; }
+                }
+                body.modo-claro @keyframes TarjetaAnimadaBaja {
+                    0% { opacity: 0; }
+                    100% { opacity: 0.85; background: rgba(50, 45, 55, 0.6); backdrop-filter: blur(10px); border: 1.6px solid rgba(200, 180, 200, 0.3); }
+                }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                    animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
+                    animation-fill-mode: both !important;
+                    filter: none !important;
+                    transform: none !important;
+                }
+                .mensaje-usuario, .mensaje-ia { animation: ptBaja 0.5s ease-out forwards !important; }
+                .f2-1 { animation-delay: 0s !important; }
+                .f2-2 { animation-delay: 0.1s !important; }
+                .f2-3 { animation-delay: 0.2s !important; }
+                .f3-1, .f3-2, .f3-3 { animation-delay: 0.3s !important; }
+                .btn-config { animation-delay: 0.4s !important; }
+            `,
+            intermedia: `
+                @keyframes TarjetaAnimadaIntermedia {
+                    0% { opacity: 0; transform: translateY(30px); }
+                    100% { opacity: 0.5; transform: translateY(0); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1.6px solid rgba(255, 200, 200, 0.3); }
+                }
+                @keyframes ptIntermedia {
+                    0% { visibility: visible; opacity: 0; transform: translateY(3px) scale(0.99); border: 2.025px solid rgba(255, 200, 200, 0.6); color: transparent; }
+                    40% { opacity: 0.6; background-color: rgba(125, 85, 85, 0.229); transform: translateY(-2px) scale(1.02); }
+                    100% { visibility: visible; opacity: 1; transform: translateY(0) scale(1); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: rgb(255, 255, 255); border-color: rgba(7, 113, 78, 0.356); margin: 5px; }
+                }
+                body.modo-claro @keyframes TarjetaAnimadaIntermedia {
+                    0% { opacity: 0; transform: translateY(30px); }
+                    100% { opacity: 0.85; transform: translateY(0); background: rgba(50, 45, 55, 0.6); backdrop-filter: blur(10px); border: 1.6px solid rgba(200, 180, 200, 0.3); }
+                }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                    animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
+                    animation-fill-mode: both !important;
+                    filter: none !important;
+                }
+                .mensaje-usuario, .mensaje-ia { animation: ptIntermedia 0.7s ease-out forwards !important; }
+                .f2-1 { animation-delay: 0s !important; }
+                .f2-2 { animation-delay: 0.3s !important; }
+                .f2-3 { animation-delay: 0.6s !important; }
+                .f3-1, .f3-2, .f3-3 { animation-delay: 1s !important; }
+                .btn-config { animation-delay: 0.5s !important; }
+            `,
+            alta: `
+                @keyframes pt {
+                    0% { visibility: visible; opacity: 0; transform: translateY(5px) scale(0.95); filter: blur(8px); border: 2.025px solid rgba(255, 200, 200, 0.6); color: transparent; }
+                    40% { opacity: 0.6; background-color: rgba(125, 85, 85, 0.229); transform: translateY(-3px) scale(1.02); filter: blur(6px); }
+                    100% { visibility: visible; opacity: 1; transform: translateY(0) scale(1); filter: blur(0); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: rgb(255, 255, 255); border-color: rgba(7, 113, 78, 0.356); margin: 5px; }
+                }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                    animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
+                    animation-fill-mode: both !important;
+                }
+                .mensaje-usuario { animation: pt 0.8s ease-out forwards !important; }
+                .mensaje-ia { animation: pt 1.3s ease-out 0.8s forwards !important; }
+                .f2-1 { animation-delay: 0s !important; }
+                .f2-2 { animation-delay: 0.3s !important; }
+                .f2-3 { animation-delay: 0.6s !important; }
+                .f3-1, .f3-2, .f3-3 { animation-delay: 1s !important; }
+                .btn-config { animation-delay: 0.5s !important; }
+            `
+        };
+
+        const aplicarCalidadAnimacion = () => {
+            const animacion = getCookie('kecomu_animacion');
+            if (!animacion) return;
+            
+            const estiloExistente = document.getElementById('estilo-animacion');
+            estiloExistente?.remove();
+            
+            const style = document.createElement('style');
+            style.id = 'estilo-animacion';
+            style.textContent = animacionesConfig[animacion] || '';
+            if (animacionesConfig[animacion]) document.head.appendChild(style);
+        };
+
+        const aplicarClaridadVisual = () => {
+            const claridad = getCookie('kecomu_claridad');
+            if (claridad !== 'true') return;
+            
+            const estiloExistente = document.getElementById('estilo-claridad');
+            estiloExistente?.remove();
+            
+            const style = document.createElement('style');
+            style.id = 'estilo-claridad';
+            style.textContent = `
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config, .mensaje, .input-mensaje, .btn-enviar, .btn-version {
+                    filter: none !important;
+                    backdrop-filter: none !important;
+                }
+                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                    opacity: 1 !important;
+                    background: rgba(20, 15, 25, 0.95) !important;
+                    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                }
+                body.modo-claro .tarjeta1,
+                body.modo-claro .tarjeta2,
+                body.modo-claro .tarjeta3,
+                body.modo-claro .tarjeta4 {
+                    background: rgba(245, 240, 250, 0.98) !important;
+                    border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                    color: #1a1a2e !important;
+                }
+                body { font-size: 18px !important; }
+                .tarjeta-pequena h3, .tarjeta-grande h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
+                .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0, 0, 0, 0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
+            `;
+            document.head.appendChild(style);
+        };
+
+        const cambiarVersion = version => {
             versionActual = version;
             setCookie('kecomu_version', version);
             document.querySelectorAll('.btn-version').forEach(btn => {
-                if (btn.getAttribute('data-version') === version) {
-                    btn.classList.add('activo');
-                } else {
-                    btn.classList.remove('activo');
-                }
+                btn.classList.toggle('activo', btn.getAttribute('data-version') === version);
             });
             agregarMensajeSistema(`Has cambiado a la versión ${version}`);
-        }
+        };
 
-        function agregarMensaje(texto, tipo) {
+        const agregarMensaje = (texto, tipo) => {
             const area = document.getElementById('mensajesArea');
             const div = document.createElement('div');
             div.className = `mensaje mensaje-${tipo}`;
             div.textContent = texto;
             area.appendChild(div);
             area.scrollTop = area.scrollHeight;
-        }
+        };
 
-        function agregarMensajeSistema(texto) {
+        const agregarMensajeSistema = texto => {
             const area = document.getElementById('mensajesArea');
             const div = document.createElement('div');
             div.className = 'mensaje mensaje-ia';
@@ -479,9 +540,9 @@
             div.textContent = texto;
             area.appendChild(div);
             area.scrollTop = area.scrollHeight;
-        }
+        };
 
-        function obtenerRespuestaSimulada(mensaje, version) {
+        const obtenerRespuestaSimulada = (mensaje, version) => {
             const msg = mensaje.toLowerCase();
             
             if (version === 'Nova') {
@@ -506,9 +567,9 @@
             }
             
             return `[Kecomu · ${version}]\n\nRecibí tu mensaje: "${mensaje}". ¿Puedes darme más contexto sobre lo que necesitas? Estoy aquí para ayudarte con desarrollo web.`;
-        }
+        };
 
-        async function enviarMensaje() {
+        const enviarMensaje = () => {
             const input = document.getElementById('inputMensaje');
             const mensaje = input.value.trim();
             
@@ -522,286 +583,26 @@
             setTimeout(() => {
                 agregarMensaje(respuesta, 'ia');
             }, 300);
-        }
-function aplicarCalidadAnimacion() {
-    const animacion = getCookie('kecomu_animacion');
-    const estiloExistente = document.getElementById('estilo-animacion');
-    if (estiloExistente) estiloExistente.remove();
-    
-    const style = document.createElement('style');
-    style.id = 'estilo-animacion';
-    
-    if (animacion === 'baja') {
-        style.textContent = `
-            @keyframes TarjetaAnimadaBaja {
-                0% { opacity: 0; }
-                100% {
-                    opacity: 0.5;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(255, 200, 200, 0.3);
-                }
-            }
-            
-            @keyframes ptBaja {
-                0% {
-                    visibility: visible;
-                    opacity: 0;
-                    border: 2.025px solid rgba(255, 200, 200, 0.6);
-                    color: transparent;
-                }
-                40% {
-                    opacity: 0.6;
-                    background-color: rgba(125, 85, 85, 0.229);
-                }
-                100% {
-                    visibility: visible;
-                    opacity: 1;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 2.6px solid rgba(255, 200, 200, 0.3);
-                    color: rgb(255, 255, 255);
-                    border-color: rgba(7, 113, 78, 0.356);
-                    margin: 5px;
-                }
-            }
-            
-            body.modo-claro @keyframes TarjetaAnimadaBaja {
-                0% { opacity: 0; }
-                100% {
-                    opacity: 0.85;
-                    background: rgba(50, 45, 55, 0.6);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(200, 180, 200, 0.3);
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
-                animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
-                animation-fill-mode: both !important;
-                filter: none !important;
-                transform: none !important;
-            }
-            
-            .mensaje-usuario, .mensaje-ia {
-                animation: ptBaja 0.5s ease-out forwards !important;
-            }
-            
-            .f2-1 { animation-delay: 0s !important; }
-            .f2-2 { animation-delay: 0.1s !important; }
-            .f2-3 { animation-delay: 0.2s !important; }
-            .f3-1 { animation-delay: 0.3s !important; }
-            .f3-2 { animation-delay: 0.3s !important; }
-            .f3-3 { animation-delay: 0.3s !important; }
-            .btn-config { animation-delay: 0.4s !important; }
-        `;
-    } 
-    else if (animacion === 'intermedia') {
-        style.textContent = `
-            @keyframes TarjetaAnimadaIntermedia {
-                0% { opacity: 0; transform: translateY(30px); }
-                100% {
-                    opacity: 0.5;
-                    transform: translateY(0);
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(255, 200, 200, 0.3);
-                }
-            }
-            
-            @keyframes ptIntermedia {
-                0% {
-                    visibility: visible;
-                    opacity: 0;
-                    transform: translateY(3px) scale(0.99);
-                    border: 2.025px solid rgba(255, 200, 200, 0.6);
-                    color: transparent;
-                }
-                40% {
-                    opacity: 0.6;
-                    background-color: rgba(125, 85, 85, 0.229);
-                    transform: translateY(-2px) scale(1.02);
-                }
-                100% {
-                    visibility: visible;
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 2.6px solid rgba(255, 200, 200, 0.3);
-                    color: rgb(255, 255, 255);
-                    border-color: rgba(7, 113, 78, 0.356);
-                    margin: 5px;
-                }
-            }
-            
-            body.modo-claro @keyframes TarjetaAnimadaIntermedia {
-                0% { opacity: 0; transform: translateY(30px); }
-                100% {
-                    opacity: 0.85;
-                    transform: translateY(0);
-                    background: rgba(50, 45, 55, 0.6);
-                    backdrop-filter: blur(10px);
-                    border: 1.6px solid rgba(200, 180, 200, 0.3);
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
-                animation: TarjetaAnimadaIntermedia 1.5s ease-in-out forwards !important;
-                animation-fill-mode: both !important;
-                filter: none !important;
-            }
-            
-            .mensaje-usuario, .mensaje-ia {
-                animation: ptIntermedia 0.7s ease-out forwards !important;
-            }
-            
-            .f2-1 { animation-delay: 0s !important; }
-            .f2-2 { animation-delay: 0.3s !important; }
-            .f2-3 { animation-delay: 0.6s !important; }
-            .f3-1 { animation-delay: 1s !important; }
-            .f3-2 { animation-delay: 1s !important; }
-            .f3-3 { animation-delay: 1s !important; }
-            .btn-config { animation-delay: 0.5s !important; }
-        `;
-    }
-    else if (animacion === 'alta') {
-        style.textContent = `
-            @keyframes pt {
-                0% {
-                    visibility: visible;
-                    opacity: 0;
-                    transform: translateY(5px) scale(0.95);
-                    filter: blur(8px);
-                    border: 2.025px solid rgba(255, 200, 200, 0.6);
-                    color: transparent;
-                }
-                40% {
-                    opacity: 0.6;
-                    background-color: rgba(125, 85, 85, 0.229);
-                    transform: translateY(-3px) scale(1.02);
-                    filter: blur(6px);
-                }
-                100% {
-                    visibility: visible;
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                    filter: blur(0);
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(10px);
-                    border: 2.6px solid rgba(255, 200, 200, 0.3);
-                    color: rgb(255, 255, 255);
-                    border-color: rgba(7, 113, 78, 0.356);
-                    margin: 5px;
-                }
-            }
-            
-            .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
-                animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
-                animation-fill-mode: both !important;
-            }
-            
-            .mensaje-usuario {
-                animation: pt 0.8s ease-out forwards !important;
-            }
-            
-            .mensaje-ia {
-                animation: pt 1.3s ease-out 0.8s forwards !important;
-            }
-            
-            .f2-1 { animation-delay: 0s !important; }
-            .f2-2 { animation-delay: 0.3s !important; }
-            .f2-3 { animation-delay: 0.6s !important; }
-            .f3-1 { animation-delay: 1s !important; }
-            .f3-2 { animation-delay: 1s !important; }
-            .f3-3 { animation-delay: 1s !important; }
-            .btn-config { animation-delay: 0.5s !important; }
-        `;
-    }
-    
-    if (animacion !== null) {
-        document.head.appendChild(style);
-    }
-}
+        };
 
-        function aplicarClaridadVisual() {
-            const claridad = getCookie('kecomu_claridad');
-            const estiloExistente = document.getElementById('estilo-claridad');
-            if (estiloExistente) estiloExistente.remove();
-            
-            if (claridad === 'true') {
-                const style = document.createElement('style');
-                style.id = 'estilo-claridad';
-                style.textContent = `
-                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config, .mensaje, .input-mensaje, .btn-enviar, .btn-version {
-                        filter: none !important;
-                        backdrop-filter: none !important;
-                    }
-                    
-                    .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
-                        opacity: 1 !important;
-                        background: rgba(20, 15, 25, 0.95) !important;
-                        border: 2px solid rgba(255, 255, 255, 0.3) !important;
-                    }
-                    
-                    body.modo-claro .tarjeta1,
-                    body.modo-claro .tarjeta2,
-                    body.modo-claro .tarjeta3,
-                    body.modo-claro .tarjeta4 {
-                        background: rgba(245, 240, 250, 0.98) !important;
-                        border: 2px solid rgba(100, 70, 120, 0.5) !important;
-                        color: #1a1a2e !important;
-                    }
-                    
-                    body {
-                        font-size: 18px !important;
-                    }
-                    
-                    .tarjeta-pequena h3, .tarjeta-grande h3 {
-                        font-size: 1.3rem !important;
-                        font-weight: 600 !important;
-                    }
-                    
-                    .tarjeta-grande p, .tarjeta1 p {
-                        font-size: 1rem !important;
-                        line-height: 1.5 !important;
-                    }
-                    
-                    .btn-config {
-                        opacity: 0.9 !important;
-                        filter: none !important;
-                        backdrop-filter: none !important;
-                        background: rgba(0, 0, 0, 0.7) !important;
-                        font-size: 12px !important;
-                        padding: 10px 24px !important;
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        }
-
-        function aplicarPreferencias() {
+        const aplicarPreferencias = () => {
             const tema = getCookie('kecomu_tema');
             const version = getCookie('kecomu_version');
             
-            if (tema === 'claro') {
-                document.body.classList.add('modo-claro');
-            }
+            if (tema === 'claro') document.body.classList.add('modo-claro');
             
             if (version) {
                 versionActual = version;
                 document.querySelectorAll('.btn-version').forEach(btn => {
-                    if (btn.getAttribute('data-version') === version) {
-                        btn.classList.add('activo');
-                    }
+                    btn.classList.toggle('activo', btn.getAttribute('data-version') === version);
                 });
             }
             
             aplicarCalidadAnimacion();
             aplicarClaridadVisual();
-        }
+        };
 
-        document.getElementById('inputMensaje').addEventListener('keypress', function(e) {
+        document.getElementById('inputMensaje').addEventListener('keypress', e => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 enviarMensaje();
