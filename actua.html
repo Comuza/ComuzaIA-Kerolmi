@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kecomu · IA para Desarrollo Web • novedades</title>
+    <title>Kecomu · AI for Web Development • News</title>
     <style>
         * {
             margin: 0;
@@ -226,90 +226,257 @@
 
     <div class="contenedor-boton">
         <button class="btn-config" onclick="location.href='index.html'">
-            <b>Inicio</b>
+            <b id="btn-inicio-text">Inicio</b>
         </button>
     </div>
 
     <div class="tarjeta1">
-        <h2>Kecomu · Novedades</h2>
+        <h2 id="titulo-novedades">Kecomu · Novedades</h2>
         <hr>
-        <p style="font-size: 11px;">Historial de actualizaciones y mejoras</p>
+        <p id="subtitulo-novedades" style="font-size: 11px;">Historial de actualizaciones y mejoras</p>
     </div>
 
     <div class="fila">
         <div class="tarjeta-grande tarjeta3 f3-1" style="flex: 2;">
-            <h3>Registro de cambios<hr>
+            <h3 id="registro-titulo">Registro de cambios<hr>
             
                 <div class="actualizacion-item">
-                <div class="fecha">26 de marzo, 2026</div>
-                <div class="version">Optimización masiva de rendimiento v2.0</div>
-                <div class="cambio">Reducción total del código: 25% (~25.6 KB en los 6 archivos)</div>
-                <div class="cambio">Ejecución JavaScript: 25-35% más rápida</div>
-                <div class="cambio">Carga CPU reducida: 25-40% según el dispositivo</div>
-                <div class="cambio">Memoria RAM: 8-12% menos consumo</div>
-                <div class="cambio">Código optimizado con arrows</div>
-                <div class="cambio">Mismas animaciones, delays y funcionalidades visuales intactas</div>
-                <div class="cambio">Mejor experiencia en dispositivos de gama baja y móviles</div>
-           </div>
+                    <div class="fecha" id="fecha1">26 de marzo, 2026</div>
+                    <div class="version" id="version1">Optimización masiva de rendimiento v2.0</div>
+                    <div class="cambio" id="cambio1_1">Reducción total del código: 25% (~25.6 KB en los 6 archivos)</div>
+                    <div class="cambio" id="cambio1_2">Ejecución JavaScript: 25-35% más rápida</div>
+                    <div class="cambio" id="cambio1_3">Carga CPU reducida: 25-40% según el dispositivo</div>
+                    <div class="cambio" id="cambio1_4">Memoria RAM: 8-12% menos consumo</div>
+                    <div class="cambio" id="cambio1_5">Código optimizado con arrows</div>
+                    <div class="cambio" id="cambio1_6">Mismas animaciones, delays y funcionalidades visuales intactas</div>
+                    <div class="cambio" id="cambio1_7">Mejor experiencia en dispositivos de gama baja y móviles</div>
+                </div>
+
                 <div class="actualizacion-item">
-                <div class="fecha">25 de marzo, 2026</div>
-                <div class="version">Chat interactivo con animaciones premium</div>
-                <div class="cambio">Implementación del sistema de chat con IA simulada</div>
-                <div class="cambio">Animación pt con blur, transform y rebote suave para mensajes</div>
-                <div class="cambio">Armonia en el delay</div>
-                <div class="cambio">Compatibilidad con tres calidades de animación en los mensajes</div>
-                <div class="cambio">Versiones Nova, Kero y Umwarimu con respuestas diferenciadas</div>
-                <div class="cambio">Persistencia de versión seleccionada mediante cookies</div>
-            </div>
+                    <div class="fecha" id="fecha2">25 de marzo, 2026</div>
+                    <div class="version" id="version2">Chat interactivo con animaciones premium</div>
+                    <div class="cambio" id="cambio2_1">Implementación del sistema de chat con IA simulada</div>
+                    <div class="cambio" id="cambio2_2">Animación pt con blur, transform y rebote suave para mensajes</div>
+                    <div class="cambio" id="cambio2_3">Armonia en el delay</div>
+                    <div class="cambio" id="cambio2_4">Compatibilidad con tres calidades de animación en los mensajes</div>
+                    <div class="cambio" id="cambio2_5">Versiones Nova, Kero y Umwarimu con respuestas diferenciadas</div>
+                    <div class="cambio" id="cambio2_6">Persistencia de versión seleccionada mediante cookies</div>
+                </div>
 
-            <div class="actualizacion-item">
-                <div class="fecha">24-25 de marzo, 2026</div>
-                <div class="version">Sistema de configuración visual completo</div>
-                <div class="cambio">Modo claro/oscuro con persistencia en cookies</div>
-                <div class="cambio">Tres niveles de calidad de animación: baja, intermedia y alta</div>
-                <div class="cambio">Modo claridad visual: elimina blurs, aumenta contraste y tamaño de texto</div>
-                <div class="cambio">Sincronización de preferencias entre todas las páginas</div>
-                <div class="cambio">Animaciones con delays secuenciales para mejor experiencia</div>
-            </div>
+                <div class="actualizacion-item">
+                    <div class="fecha" id="fecha3">24-25 de marzo, 2026</div>
+                    <div class="version" id="version3">Sistema de configuración visual completo</div>
+                    <div class="cambio" id="cambio3_1">Modo claro/oscuro con persistencia en cookies</div>
+                    <div class="cambio" id="cambio3_2">Tres niveles de calidad de animación: baja, intermedia y alta</div>
+                    <div class="cambio" id="cambio3_3">Modo claridad visual: elimina blurs, aumenta contraste y tamaño de texto</div>
+                    <div class="cambio" id="cambio3_4">Sincronización de preferencias entre todas las páginas</div>
+                    <div class="cambio" id="cambio3_5">Animaciones con delays secuenciales para mejor experiencia</div>
+                </div>
 
-            <div class="actualizacion-item">
-                <div class="fecha">24 de marzo, 2026</div>
-                <div class="version">Diseño y estructura principal</div>
-                <div class="cambio">Diseño moderno con estética oscura y acentos morados</div>
-                <div class="cambio">Tarjetas con animación de entrada con blur y transform</div>
-                <div class="cambio">Diseño responsive para dispositivos móviles y tablets</div>
-                <div class="cambio">Página de configuraciones con opciones de tema y visuales</div>
-                <div class="cambio">Página de novedades con historial detallado de cambios</div>
-                <div class="cambio">Políticas de privacidad transparentes sin telemetría ni publicidad</div>
-            </div>
+                <div class="actualizacion-item">
+                    <div class="fecha" id="fecha4">24 de marzo, 2026</div>
+                    <div class="version" id="version4">Diseño y estructura principal</div>
+                    <div class="cambio" id="cambio4_1">Diseño moderno con estética oscura y acentos morados</div>
+                    <div class="cambio" id="cambio4_2">Tarjetas con animación de entrada con blur y transform</div>
+                    <div class="cambio" id="cambio4_3">Diseño responsive para dispositivos móviles y tablets</div>
+                    <div class="cambio" id="cambio4_4">Página de configuraciones con opciones de tema y visuales</div>
+                    <div class="cambio" id="cambio4_5">Página de novedades con historial detallado de cambios</div>
+                    <div class="cambio" id="cambio4_6">Políticas de privacidad transparentes sin telemetría ni publicidad</div>
+                </div>
 
-            <div class="actualizacion-item">
-                <div class="fecha">Próximamente</div>
-                <div class="version">Kecomu IA - Funcionalidad principal</div>
-                <div class="cambio">Integración con API para generación de código en tiempo real</div>
-                <div class="cambio">Nova: código flexible, optimizado y estructurado</div>
-                <div class="cambio">Kero: diseño creativo con animaciones y estética cuidada</div>
-                <div class="cambio">Umwarimu: aprendizaje guiado con explicaciones paso a paso</div>
-                <div class="cambio">Generación de código HTML, CSS y JavaScript</div>
-            </div>
+                <div class="actualizacion-item">
+                    <div class="fecha" id="fecha5">Próximamente</div>
+                    <div class="version" id="version5">Kecomu IA - Funcionalidad principal</div>
+                    <div class="cambio" id="cambio5_1">Integración con API para generación de código en tiempo real</div>
+                    <div class="cambio" id="cambio5_2">Nova: código flexible, optimizado y estructurado</div>
+                    <div class="cambio" id="cambio5_3">Kero: diseño creativo con animaciones y estética cuidada</div>
+                    <div class="cambio" id="cambio5_4">Umwarimu: aprendizaje guiado con explicaciones paso a paso</div>
+                    <div class="cambio" id="cambio5_5">Generación de código HTML, CSS y JavaScript</div>
+                </div>
 
-            <div class="actualizacion-item">
-                <div class="fecha">Próximamente</div>
-                <div class="version">Sistema de proyectos</div>
-                <div class="cambio">Guardado y exportación de código generado</div>
-                <div class="cambio">Historial de conversaciones con la IA</div>
-                <div class="cambio">Compartir proyectos con otros usuarios</div>
-            </div>
+                <div class="actualizacion-item">
+                    <div class="fecha" id="fecha6">Próximamente</div>
+                    <div class="version" id="version6">Sistema de proyectos</div>
+                    <div class="cambio" id="cambio6_1">Guardado y exportación de código generado</div>
+                    <div class="cambio" id="cambio6_2">Historial de conversaciones con la IA</div>
+                    <div class="cambio" id="cambio6_3">Compartir proyectos con otros usuarios</div>
+                </div>
+            </h3>
         </div>
     </div>
 
     <div class="contenedor-boton-izq">
         <button class="btn-config" onclick="location.href='index.html'" style="margin-top: 10px;">
-            <b>← Volver al inicio</b>
+            <b id="btn-volver-text">← Volver al inicio</b>
         </button>
     </div>
 
     <script>
+        let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
+
+        const textos = {
+            es: {
+                btnInicio: "Inicio",
+                titulo: "Kecomu · Novedades",
+                subtitulo: "Historial de actualizaciones y mejoras",
+                registroTitulo: "Registro de cambios",
+                btnVolver: "← Volver al inicio",
+                fecha1: "26 de marzo, 2026",
+                version1: "Optimización masiva de rendimiento v2.0",
+                cambio1_1: "Reducción total del código: 25% (~25.6 KB en los 6 archivos)",
+                cambio1_2: "Ejecución JavaScript: 25-35% más rápida",
+                cambio1_3: "Carga CPU reducida: 25-40% según el dispositivo",
+                cambio1_4: "Memoria RAM: 8-12% menos consumo",
+                cambio1_5: "Código optimizado con arrows",
+                cambio1_6: "Mismas animaciones, delays y funcionalidades visuales intactas",
+                cambio1_7: "Mejor experiencia en dispositivos de gama baja y móviles",
+                fecha2: "25 de marzo, 2026",
+                version2: "Chat interactivo con animaciones premium",
+                cambio2_1: "Implementación del sistema de chat con IA simulada",
+                cambio2_2: "Animación pt con blur, transform y rebote suave para mensajes",
+                cambio2_3: "Armonia en el delay",
+                cambio2_4: "Compatibilidad con tres calidades de animación en los mensajes",
+                cambio2_5: "Versiones Nova, Kero y Umwarimu con respuestas diferenciadas",
+                cambio2_6: "Persistencia de versión seleccionada mediante cookies",
+                fecha3: "24-25 de marzo, 2026",
+                version3: "Sistema de configuración visual completo",
+                cambio3_1: "Modo claro/oscuro con persistencia en cookies",
+                cambio3_2: "Tres niveles de calidad de animación: baja, intermedia y alta",
+                cambio3_3: "Modo claridad visual: elimina blurs, aumenta contraste y tamaño de texto",
+                cambio3_4: "Sincronización de preferencias entre todas las páginas",
+                cambio3_5: "Animaciones con delays secuenciales para mejor experiencia",
+                fecha4: "24 de marzo, 2026",
+                version4: "Diseño y estructura principal",
+                cambio4_1: "Diseño moderno con estética oscura y acentos morados",
+                cambio4_2: "Tarjetas con animación de entrada con blur y transform",
+                cambio4_3: "Diseño responsive para dispositivos móviles y tablets",
+                cambio4_4: "Página de configuraciones con opciones de tema y visuales",
+                cambio4_5: "Página de novedades con historial detallado de cambios",
+                cambio4_6: "Políticas de privacidad transparentes sin telemetría ni publicidad",
+                fecha5: "Próximamente",
+                version5: "Kecomu IA - Funcionalidad principal",
+                cambio5_1: "Integración con API para generación de código en tiempo real",
+                cambio5_2: "Nova: código flexible, optimizado y estructurado",
+                cambio5_3: "Kero: diseño creativo con animaciones y estética cuidada",
+                cambio5_4: "Umwarimu: aprendizaje guiado con explicaciones paso a paso",
+                cambio5_5: "Generación de código HTML, CSS y JavaScript",
+                fecha6: "Próximamente",
+                version6: "Sistema de proyectos",
+                cambio6_1: "Guardado y exportación de código generado",
+                cambio6_2: "Historial de conversaciones con la IA",
+                cambio6_3: "Compartir proyectos con otros usuarios"
+            },
+            en: {
+                btnInicio: "Home",
+                titulo: "Kecomu · News",
+                subtitulo: "Update history and improvements",
+                registroTitulo: "Changelog",
+                btnVolver: "← Back to home",
+                fecha1: "March 26, 2026",
+                version1: "Massive performance optimization v2.0",
+                cambio1_1: "Total code reduction: 25% (~25.6 KB across 6 files)",
+                cambio1_2: "JavaScript execution: 25-35% faster",
+                cambio1_3: "CPU load reduced: 25-40% depending on device",
+                cambio1_4: "RAM memory: 8-12% less consumption",
+                cambio1_5: "Code optimized with arrow functions",
+                cambio1_6: "Same animations, delays and visual functionalities intact",
+                cambio1_7: "Better experience on low-end devices and mobile",
+                fecha2: "March 25, 2026",
+                version2: "Interactive chat with premium animations",
+                cambio2_1: "Implementation of simulated AI chat system",
+                cambio2_2: "Animation with blur, transform and smooth bounce for messages",
+                cambio2_3: "Harmony in delays",
+                cambio2_4: "Compatibility with three animation qualities for messages",
+                cambio2_5: "Nova, Kero and Umwarimu versions with differentiated responses",
+                cambio2_6: "Version persistence using cookies",
+                fecha3: "March 24-25, 2026",
+                version3: "Complete visual configuration system",
+                cambio3_1: "Light/dark mode with cookie persistence",
+                cambio3_2: "Three animation quality levels: low, medium and high",
+                cambio3_3: "Visual clarity mode: removes blurs, increases contrast and text size",
+                cambio3_4: "Synchronization of preferences across all pages",
+                cambio3_5: "Animations with sequential delays for better experience",
+                fecha4: "March 24, 2026",
+                version4: "Main design and structure",
+                cambio4_1: "Modern design with dark aesthetic and purple accents",
+                cambio4_2: "Cards with entry animation using blur and transform",
+                cambio4_3: "Responsive design for mobile and tablets",
+                cambio4_4: "Settings page with theme and visual options",
+                cambio4_5: "News page with detailed change history",
+                cambio4_6: "Transparent privacy policies with no telemetry or ads",
+                fecha5: "Coming soon",
+                version5: "Kecomu AI - Main functionality",
+                cambio5_1: "API integration for real-time code generation",
+                cambio5_2: "Nova: flexible, optimized and structured code",
+                cambio5_3: "Kero: creative design with animations and careful aesthetics",
+                cambio5_4: "Umwarimu: guided learning with step-by-step explanations",
+                cambio5_5: "HTML, CSS and JavaScript code generation",
+                fecha6: "Coming soon",
+                version6: "Projects system",
+                cambio6_1: "Save and export generated code",
+                cambio6_2: "Chat history with AI",
+                cambio6_3: "Share projects with other users"
+            }
+        };
+
+        function actualizarTextos() {
+            document.getElementById('btn-inicio-text').textContent = textos[idiomaActual].btnInicio;
+            document.getElementById('titulo-novedades').textContent = textos[idiomaActual].titulo;
+            document.getElementById('subtitulo-novedades').textContent = textos[idiomaActual].subtitulo;
+            document.getElementById('registro-titulo').innerHTML = textos[idiomaActual].registroTitulo + '<hr>';
+            document.getElementById('btn-volver-text').textContent = textos[idiomaActual].btnVolver;
+            
+            document.getElementById('fecha1').textContent = textos[idiomaActual].fecha1;
+            document.getElementById('version1').textContent = textos[idiomaActual].version1;
+            document.getElementById('cambio1_1').textContent = textos[idiomaActual].cambio1_1;
+            document.getElementById('cambio1_2').textContent = textos[idiomaActual].cambio1_2;
+            document.getElementById('cambio1_3').textContent = textos[idiomaActual].cambio1_3;
+            document.getElementById('cambio1_4').textContent = textos[idiomaActual].cambio1_4;
+            document.getElementById('cambio1_5').textContent = textos[idiomaActual].cambio1_5;
+            document.getElementById('cambio1_6').textContent = textos[idiomaActual].cambio1_6;
+            document.getElementById('cambio1_7').textContent = textos[idiomaActual].cambio1_7;
+            
+            document.getElementById('fecha2').textContent = textos[idiomaActual].fecha2;
+            document.getElementById('version2').textContent = textos[idiomaActual].version2;
+            document.getElementById('cambio2_1').textContent = textos[idiomaActual].cambio2_1;
+            document.getElementById('cambio2_2').textContent = textos[idiomaActual].cambio2_2;
+            document.getElementById('cambio2_3').textContent = textos[idiomaActual].cambio2_3;
+            document.getElementById('cambio2_4').textContent = textos[idiomaActual].cambio2_4;
+            document.getElementById('cambio2_5').textContent = textos[idiomaActual].cambio2_5;
+            document.getElementById('cambio2_6').textContent = textos[idiomaActual].cambio2_6;
+            
+            document.getElementById('fecha3').textContent = textos[idiomaActual].fecha3;
+            document.getElementById('version3').textContent = textos[idiomaActual].version3;
+            document.getElementById('cambio3_1').textContent = textos[idiomaActual].cambio3_1;
+            document.getElementById('cambio3_2').textContent = textos[idiomaActual].cambio3_2;
+            document.getElementById('cambio3_3').textContent = textos[idiomaActual].cambio3_3;
+            document.getElementById('cambio3_4').textContent = textos[idiomaActual].cambio3_4;
+            document.getElementById('cambio3_5').textContent = textos[idiomaActual].cambio3_5;
+            
+            document.getElementById('fecha4').textContent = textos[idiomaActual].fecha4;
+            document.getElementById('version4').textContent = textos[idiomaActual].version4;
+            document.getElementById('cambio4_1').textContent = textos[idiomaActual].cambio4_1;
+            document.getElementById('cambio4_2').textContent = textos[idiomaActual].cambio4_2;
+            document.getElementById('cambio4_3').textContent = textos[idiomaActual].cambio4_3;
+            document.getElementById('cambio4_4').textContent = textos[idiomaActual].cambio4_4;
+            document.getElementById('cambio4_5').textContent = textos[idiomaActual].cambio4_5;
+            document.getElementById('cambio4_6').textContent = textos[idiomaActual].cambio4_6;
+            
+            document.getElementById('fecha5').textContent = textos[idiomaActual].fecha5;
+            document.getElementById('version5').textContent = textos[idiomaActual].version5;
+            document.getElementById('cambio5_1').textContent = textos[idiomaActual].cambio5_1;
+            document.getElementById('cambio5_2').textContent = textos[idiomaActual].cambio5_2;
+            document.getElementById('cambio5_3').textContent = textos[idiomaActual].cambio5_3;
+            document.getElementById('cambio5_4').textContent = textos[idiomaActual].cambio5_4;
+            document.getElementById('cambio5_5').textContent = textos[idiomaActual].cambio5_5;
+            
+            document.getElementById('fecha6').textContent = textos[idiomaActual].fecha6;
+            document.getElementById('version6').textContent = textos[idiomaActual].version6;
+            document.getElementById('cambio6_1').textContent = textos[idiomaActual].cambio6_1;
+            document.getElementById('cambio6_2').textContent = textos[idiomaActual].cambio6_2;
+            document.getElementById('cambio6_3').textContent = textos[idiomaActual].cambio6_3;
+        }
+
         const getCookie = name => {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -454,6 +621,7 @@
         };
 
         aplicarPreferencias();
+        actualizarTextos();
     </script>
 
 </body>
