@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kecomu · IA para Desarrollo Web • Chat</title>
+    <title>Kecomu · AI for Web Development • Chat</title>
     <style>
         * {
             margin: 0;
@@ -339,43 +339,108 @@
 
     <div class="contenedor-boton">
         <button class="btn-config" onclick="location.href='index.html'">
-            <b>Volver</b>
+            <b id="btn-volver-text">Volver</b>
         </button>
     </div>
 
     <div class="tarjeta1">
-        <h2>Kecomu · Chat</h2>
+        <h2 id="titulo-chat">Kecomu · Chat</h2>
         <hr>
-        <p style="font-size: 11px;">Interactúa con la inteligencia artificial</p>
+        <p id="subtitulo-chat" style="font-size: 11px;">Interactúa con la inteligencia artificial</p>
     </div>
 
     <div class="fila">
         <div class="tarjeta-grande tarjeta3 chat-container">
             <div class="selector-version">
-                <button class="btn-version" data-version="Nova" onclick="cambiarVersion('Nova')">Nova</button>
-                <button class="btn-version" data-version="Kero" onclick="cambiarVersion('Kero')">Kero</button>
-                <button class="btn-version" data-version="Umwarimu" onclick="cambiarVersion('Umwarimu')">Umwarimu</button>
+                <button class="btn-version" data-version="Nova" onclick="cambiarVersion('Nova')" id="btn-nova">Nova</button>
+                <button class="btn-version" data-version="Kero" onclick="cambiarVersion('Kero')" id="btn-kero">Kero</button>
+                <button class="btn-version" data-version="Umwarimu" onclick="cambiarVersion('Umwarimu')" id="btn-umwa">Umwarimu</button>
             </div>
             <div class="mensajes-area" id="mensajesArea">
-                <div class="mensaje mensaje-ia">
+                <div class="mensaje mensaje-ia" id="mensaje-bienvenida">
                     Hola, soy Kecomu. ¿En qué puedo ayudarte con desarrollo web?
                 </div>
             </div>
             <div class="input-area">
                 <textarea class="input-mensaje" id="inputMensaje" rows="2" placeholder="Escribe tu mensaje..."></textarea>
-                <button class="btn-enviar" onclick="enviarMensaje()">Enviar</button>
+                <button class="btn-enviar" onclick="enviarMensaje()" id="btn-enviar-text">Enviar</button>
             </div>
         </div>
     </div>
 
     <div class="contenedor-boton-izq">
         <button class="btn-config" onclick="location.href='index.html'" style="margin-top: 10px;">
-            <b>← Volver al inicio</b>
+            <b id="btn-back-text">← Volver al inicio</b>
         </button>
     </div>
 
     <script>
+        let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
         let versionActual = 'Nova';
+
+        const textos = {
+            es: {
+                btnVolver: "Volver",
+                titulo: "Kecomu · Chat",
+                subtitulo: "Interactúa con la inteligencia artificial",
+                btnEnviar: "Enviar",
+                btnBack: "← Volver al inicio",
+                bienvenida: "Hola, soy Kecomu. ¿En qué puedo ayudarte con desarrollo web?",
+                placeholder: "Escribe tu mensaje...",
+                versionCambio: (v) => `Has cambiado a la versión ${v}`,
+                respuestas: {
+                    Nova: {
+                        default: (msg) => `[Nova]\n\nEntiendo tu consulta sobre "${msg}". Desde Nova, mi enfoque es generar código limpio, eficiente y altamente optimizado. Dame más detalles sobre lo que necesitas construir y te entregaré una solución estructurada con buenas prácticas.`,
+                        html: `[Nova]\n\nAquí tienes una estructura optimizada:\n\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Documento Optimizado</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { font-family: system-ui; min-height: 100vh; display: flex; align-items: center; justify-content: center; }\n    </style>\n</head>\n<body>\n    <h1>Estructura Optimizada</h1>\n</body>\n</html>\n\nEste código sigue las mejores prácticas de rendimiento y estructura semántica.`
+                    },
+                    Kero: {
+                        default: (msg) => `[Kero]\n\nVeo que preguntas sobre "${msg}". Desde Kero, me enfoco en crear interfaces visualmente atractivas con animaciones cuidadas y armonía cromática. Cuéntame qué estilo visual buscas y te ayudaré a darle vida.`,
+                        diseño: `[Kero]\n\nHe preparado una animación fluida para ti:\n\n@keyframes entradaSuave {\n    0% {\n        opacity: 0;\n        transform: translateY(30px) scale(0.95);\n    }\n    100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n    }\n}\n\n.elemento {\n    animation: entradaSuave 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;\n}\n\n¿Quieres que ajuste la curva de animación o agregue más efectos visuales?`
+                    },
+                    Umwarimu: {
+                        default: (msg) => `[Umwarimu]\n\nSobre "${msg}", te explico con paciencia. ¿Qué parte te genera más dudas? Podemos revisarlo juntos y practicar con ejemplos simples hasta que lo entiendas completamente.`,
+                        aprender: `[Umwarimu]\n\nVamos paso a paso. Te explico:\n\n1. HTML es la estructura de tu página web, como los huesos de un cuerpo.\n2. CSS es el estilo, como la ropa y los colores.\n3. JavaScript es la interacción, como los movimientos y acciones.\n\n¿Quieres que profundicemos en alguno de estos temas? No hay preguntas tontas, estoy aquí para que aprendas a tu ritmo.`
+                    }
+                }
+            },
+            en: {
+                btnVolver: "Back",
+                titulo: "Kecomu · Chat",
+                subtitulo: "Interact with the artificial intelligence",
+                btnEnviar: "Send",
+                btnBack: "← Back to home",
+                bienvenida: "Hi, I'm Kecomu. How can I help you with web development?",
+                placeholder: "Type your message...",
+                versionCambio: (v) => `You have switched to ${v} version`,
+                respuestas: {
+                    Nova: {
+                        default: (msg) => `[Nova]\n\nI understand your query about "${msg}". From Nova, my approach is to generate clean, efficient and highly optimized code. Give me more details about what you need to build and I'll deliver a structured solution with best practices.`,
+                        html: `[Nova]\n\nHere is an optimized structure:\n\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Optimized Document</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { font-family: system-ui; min-height: 100vh; display: flex; align-items: center; justify-content: center; }\n    </style>\n</head>\n<body>\n    <h1>Optimized Structure</h1>\n</body>\n</html>\n\nThis code follows best practices for performance and semantic structure.`
+                    },
+                    Kero: {
+                        default: (msg) => `[Kero]\n\nI see you're asking about "${msg}". From Kero, I focus on creating visually appealing interfaces with careful animations and chromatic harmony. Tell me what visual style you're looking for and I'll help bring it to life.`,
+                        diseño: `[Kero]\n\nI've prepared a smooth animation for you:\n\n@keyframes smoothEntry {\n    0% {\n        opacity: 0;\n        transform: translateY(30px) scale(0.95);\n    }\n    100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n    }\n}\n\n.element {\n    animation: smoothEntry 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;\n}\n\nWould you like me to adjust the animation curve or add more visual effects?`
+                    },
+                    Umwarimu: {
+                        default: (msg) => `[Umwarimu]\n\nAbout "${msg}", I'll explain patiently. What part is giving you the most doubts? We can review it together and practice with simple examples until you fully understand it.`,
+                        aprender: `[Umwarimu]\n\nLet's go step by step. I'll explain:\n\n1. HTML is the structure of your web page, like the bones of a body.\n2. CSS is the style, like the clothes and colors.\n3. JavaScript is the interaction, like movements and actions.\n\nDo you want us to dive deeper into any of these topics? There are no stupid questions, I'm here for you to learn at your own pace.`
+                    }
+                }
+            }
+        };
+
+        function actualizarTextos() {
+            document.getElementById('btn-volver-text').textContent = textos[idiomaActual].btnVolver;
+            document.getElementById('titulo-chat').textContent = textos[idiomaActual].titulo;
+            document.getElementById('subtitulo-chat').textContent = textos[idiomaActual].subtitulo;
+            document.getElementById('btn-enviar-text').textContent = textos[idiomaActual].btnEnviar;
+            document.getElementById('btn-back-text').textContent = textos[idiomaActual].btnBack;
+            document.getElementById('mensaje-bienvenida').textContent = textos[idiomaActual].bienvenida;
+            document.getElementById('inputMensaje').placeholder = textos[idiomaActual].placeholder;
+            document.getElementById('btn-nova').textContent = "Nova";
+            document.getElementById('btn-kero').textContent = "Kero";
+            document.getElementById('btn-umwa').textContent = "Umwarimu";
+        }
 
         const getCookie = name => {
             const value = `; ${document.cookie}`;
@@ -447,11 +512,6 @@
                 .btn-config { animation-delay: 0.5s !important; }
             `,
             alta: `
-                @keyframes pt {
-                    0% { visibility: visible; opacity: 0; transform: translateY(5px) scale(0.95); filter: blur(8px); border: 2.025px solid rgba(255, 200, 200, 0.6); color: transparent; }
-                    40% { opacity: 0.6; background-color: rgba(125, 85, 85, 0.229); transform: translateY(-3px) scale(1.02); filter: blur(6px); }
-                    100% { visibility: visible; opacity: 1; transform: translateY(0) scale(1); filter: blur(0); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: rgb(255, 255, 255); border-color: rgba(7, 113, 78, 0.356); margin: 5px; }
-                }
                 .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
                     animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
                     animation-fill-mode: both !important;
@@ -519,7 +579,7 @@
             document.querySelectorAll('.btn-version').forEach(btn => {
                 btn.classList.toggle('activo', btn.getAttribute('data-version') === version);
             });
-            agregarMensajeSistema(`Has cambiado a la versión ${version}`);
+            agregarMensajeSistema(textos[idiomaActual].versionCambio(version));
         };
 
         const agregarMensaje = (texto, tipo) => {
@@ -544,26 +604,27 @@
 
         const obtenerRespuestaSimulada = (mensaje, version) => {
             const msg = mensaje.toLowerCase();
+            const textosActuales = textos[idiomaActual].respuestas;
             
             if (version === 'Nova') {
-                if (msg.includes('html') || msg.includes('css') || msg.includes('javascript')) {
-                    return `[Nova]\n\nAquí tienes una estructura optimizada:\n\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Documento Optimizado</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { font-family: system-ui; min-height: 100vh; display: flex; align-items: center; justify-content: center; }\n    </style>\n</head>\n<body>\n    <h1>Estructura Optimizada</h1>\n</body>\n</html>\n\nEste código sigue las mejores prácticas de rendimiento y estructura semántica.`;
+                if (msg.includes('html') || msg.includes('css') || msg.includes('javascript') || msg.includes('codigo') || msg.includes('código')) {
+                    return textosActuales.Nova.html;
                 }
-                return `[Nova]\n\nEntiendo tu consulta sobre "${mensaje}". Desde Nova, mi enfoque es generar código limpio, eficiente y altamente optimizado. Dame más detalles sobre lo que necesitas construir y te entregaré una solución estructurada con buenas prácticas.`;
+                return textosActuales.Nova.default(mensaje);
             }
             
             if (version === 'Kero') {
-                if (msg.includes('diseño') || msg.includes('bonito') || msg.includes('animación')) {
-                    return `[Kero]\n\nHe preparado una animación fluida para ti:\n\n@keyframes entradaSuave {\n    0% {\n        opacity: 0;\n        transform: translateY(30px) scale(0.95);\n    }\n    100% {\n        opacity: 1;\n        transform: translateY(0) scale(1);\n    }\n}\n\n.elemento {\n    animation: entradaSuave 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;\n}\n\n¿Quieres que ajuste la curva de animación o agregue más efectos visuales?`;
+                if (msg.includes('diseño') || msg.includes('bonito') || msg.includes('animación') || msg.includes('estilo') || msg.includes('design')) {
+                    return textosActuales.Kero.diseño;
                 }
-                return `[Kero]\n\nVeo que preguntas sobre "${mensaje}". Desde Kero, me enfoco en crear interfaces visualmente atractivas con animaciones cuidadas y armonía cromática. Cuéntame qué estilo visual buscas y te ayudaré a darle vida.`;
+                return textosActuales.Kero.default(mensaje);
             }
             
             if (version === 'Umwarimu') {
-                if (msg.includes('aprender') || msg.includes('principiante') || msg.includes('explica')) {
-                    return `[Umwarimu]\n\nVamos paso a paso. Te explico:\n\n1. HTML es la estructura de tu página web, como los huesos de un cuerpo.\n2. CSS es el estilo, como la ropa y los colores.\n3. JavaScript es la interacción, como los movimientos y acciones.\n\n¿Quieres que profundicemos en alguno de estos temas? No hay preguntas tontas, estoy aquí para que aprendas a tu ritmo.`;
+                if (msg.includes('aprender') || msg.includes('principiante') || msg.includes('explica') || msg.includes('aprendizaje') || msg.includes('learn')) {
+                    return textosActuales.Umwarimu.aprender;
                 }
-                return `[Umwarimu]\n\nSobre "${mensaje}", te explico con paciencia. ¿Qué parte te genera más dudas? Podemos revisarlo juntos y practicar con ejemplos simples hasta que lo entiendas completamente.`;
+                return textosActuales.Umwarimu.default(mensaje);
             }
             
             return `[Kecomu · ${version}]\n\nRecibí tu mensaje: "${mensaje}". ¿Puedes darme más contexto sobre lo que necesitas? Estoy aquí para ayudarte con desarrollo web.`;
@@ -610,6 +671,7 @@
         });
 
         aplicarPreferencias();
+        actualizarTextos();
     </script>
 
 </body>
