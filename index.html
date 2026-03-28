@@ -131,34 +131,12 @@
             margin-bottom: 20px;
         }
 
-        .language-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-        .language-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
         @media (max-width: 768px) {
             .fila {
                 flex-direction: column;
             }
             .tarjeta-grande {
                 min-height: auto;
-            }
-            .language-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .contenedor-boton {
-                justify-content: center;
-            }
-            .language-buttons {
-                justify-content: center;
             }
         }
 
@@ -197,20 +175,10 @@
 </head>
 <body>
 
-    <div class="language-bar">
-        <div class="language-buttons">
-            <button class="btn-config" onclick="cambiarIdioma('es')">
-                <b>🇪🇸 Español</b>
-            </button>
-            <button class="btn-config" onclick="cambiarIdioma('en')">
-                <b>🇺🇸 English</b>
-            </button>
-        </div>
-        <div class="contenedor-boton" style="margin-bottom: 0;">
-            <button class="btn-config" onclick="location.href='configuraciones.html'">
-                <b id="btn-config-text">Configuraciones</b>
-            </button>
-        </div>
+    <div class="contenedor-boton">
+        <button class="btn-config" onclick="location.href='configuraciones.html'">
+            <b id="btn-config-text">Configuraciones</b>
+        </button>
     </div>
 
     <div class="tarjeta1">
@@ -319,12 +287,6 @@
             document.getElementById('umwa-desc1').textContent = textos[idiomaActual].umwaDesc1;
             document.getElementById('umwa-desc2').textContent = textos[idiomaActual].umwaDesc2;
             document.getElementById('umwa-desc3').textContent = textos[idiomaActual].umwaDesc3;
-        }
-
-        function cambiarIdioma(idioma) {
-            idiomaActual = idioma;
-            localStorage.setItem('kecomu_idioma', idioma);
-            actualizarTextos();
         }
 
         const getCookie = name => {
