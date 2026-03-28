@@ -242,6 +242,17 @@
             <hr>
             
             <div class="actualizacion-item">
+                <div class="fecha" id="fechaNueva">27 de marzo, 2026</div>
+                <div class="version" id="versionNueva">Actualización 1.0.1.0 — Sistema bilingüe y mejoras visuales</div>
+                <div class="cambio" id="cambioNueva_1">Language: Sistema bilingüe completo (es/en) con persistencia en localStorage</div>
+                <div class="cambio" id="cambioNueva_2">Visual clarity: Sombra de tarjeta activa más visible (+ contraste, + brillo)</div>
+                <div class="cambio" id="cambioNueva_3">Animations: Corrección en mensajes del chat (texto ya no desaparece al final)</div>
+                <div class="cambio" id="cambioNueva_4">Language selector: Integrado en configuraciones, aplicado en todas las páginas</div>
+                <div class="cambio" id="cambioNueva_5">Code: Traducción completa de 6 páginas (index, config, novedades, capacidades, chat, privacidad)</div>
+                <div class="cambio" id="cambioNueva_6">Consistency: Todas las páginas sincronizan idioma, tema, calidad de animación y claridad visual</div>
+            </div>
+
+            <div class="actualizacion-item">
                 <div class="fecha" id="fecha1">26 de marzo, 2026</div>
                 <div class="version" id="version1">Optimización masiva de rendimiento</div>
                 <div class="cambio" id="cambio1_1">Reducción total del código: 25% (~25.6 KB en los 6 archivos)</div>
@@ -321,6 +332,14 @@
                 subtitulo: "Historial de actualizaciones y mejoras",
                 registroTitulo: "Registro de cambios",
                 btnVolver: "← Volver al inicio",
+                fechaNueva: "27 de marzo, 2026",
+                versionNueva: "Actualización 1.0.1.0 — Sistema bilingüe y mejoras visuales",
+                cambioNueva_1: "Language: Sistema bilingüe completo (es/en) con persistencia en localStorage",
+                cambioNueva_2: "Visual clarity: Sombra de tarjeta activa más visible (+ contraste, + brillo)",
+                cambioNueva_3: "Animations: Corrección en mensajes del chat (texto ya no desaparece al final)",
+                cambioNueva_4: "Language selector: Integrado en configuraciones, aplicado en todas las páginas",
+                cambioNueva_5: "Code: Traducción completa de 6 páginas (index, config, novedades, capacidades, chat, privacidad)",
+                cambioNueva_6: "Consistency: Todas las páginas sincronizan idioma, tema, calidad de animación y claridad visual",
                 fecha1: "26 de marzo, 2026",
                 version1: "Optimización masiva de rendimiento",
                 cambio1_1: "Reducción total del código: 25% (~25.6 KB en los 6 archivos)",
@@ -372,6 +391,14 @@
                 subtitulo: "Update history and improvements",
                 registroTitulo: "Changelog",
                 btnVolver: "← Back to home",
+                fechaNueva: "March 27, 2026",
+                versionNueva: "Update 1.0.1.0 — Bilingual system and visual improvements",
+                cambioNueva_1: "Language: Complete bilingual system (es/en) with localStorage persistence",
+                cambioNueva_2: "Visual clarity: Active card shadow now more visible (+ contrast, + brightness)",
+                cambioNueva_3: "Animations: Fixed chat messages (text no longer disappears at the end)",
+                cambioNueva_4: "Language selector: Integrated in settings, applied across all pages",
+                cambioNueva_5: "Code: Full translation of 6 pages (index, settings, news, capabilities, chat, privacy)",
+                cambioNueva_6: "Consistency: All pages sync language, theme, animation quality and visual clarity",
                 fecha1: "March 26, 2026",
                 version1: "Massive performance optimization",
                 cambio1_1: "Total code reduction: 25% (~25.6 KB across 6 files)",
@@ -425,6 +452,15 @@
             document.getElementById('subtitulo-novedades').textContent = textos[idiomaActual].subtitulo;
             document.getElementById('registro-titulo').textContent = textos[idiomaActual].registroTitulo;
             document.getElementById('btn-volver-text').textContent = textos[idiomaActual].btnVolver;
+            
+            document.getElementById('fechaNueva').textContent = textos[idiomaActual].fechaNueva;
+            document.getElementById('versionNueva').textContent = textos[idiomaActual].versionNueva;
+            document.getElementById('cambioNueva_1').textContent = textos[idiomaActual].cambioNueva_1;
+            document.getElementById('cambioNueva_2').textContent = textos[idiomaActual].cambioNueva_2;
+            document.getElementById('cambioNueva_3').textContent = textos[idiomaActual].cambioNueva_3;
+            document.getElementById('cambioNueva_4').textContent = textos[idiomaActual].cambioNueva_4;
+            document.getElementById('cambioNueva_5').textContent = textos[idiomaActual].cambioNueva_5;
+            document.getElementById('cambioNueva_6').textContent = textos[idiomaActual].cambioNueva_6;
             
             document.getElementById('fecha1').textContent = textos[idiomaActual].fecha1;
             document.getElementById('version1').textContent = textos[idiomaActual].version1;
