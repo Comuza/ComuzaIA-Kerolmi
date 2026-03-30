@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kecomu · AI for Web Development • Chat</title>
@@ -241,7 +239,7 @@
             border: 0.5px solid rgba(255, 200, 200, 0.2);
             margin: 10px 0;
         }
-        
+
         .btn-config {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 200, 200, 0.3);
@@ -266,23 +264,19 @@
             opacity: 0.5 !important;
         }
 
-        .contenedor-boton, .contenedor-boton-izq {
+        .contenedor-boton,
+        .contenedor-boton-izq {
             display: flex;
             margin-bottom: 20px;
         }
+
         .contenedor-boton { justify-content: flex-end; }
         .contenedor-boton-izq { justify-content: flex-start; gap: 10px; }
 
         @media (max-width: 768px) {
-            .fila {
-                flex-direction: column;
-            }
-            .tarjeta-grande {
-                min-height: auto;
-            }
-            .mensaje {
-                max-width: 95%;
-            }
+            .fila { flex-direction: column; }
+            .tarjeta-grande { min-height: auto; }
+            .mensaje { max-width: 95%; }
         }
 
         body.modo-claro {
@@ -371,22 +365,6 @@
     </div>
 
     <script>
-
-        const enviarMensaje = () => {
-    const input = document.getElementById('inputMensaje');
-    const mensaje = input.value.trim();
-    if(!mensaje) return;
-
-    agregarMensaje(mensaje, 'usuario');
-    
-    const respuestaIA = obtenerRespuestaDeSQL(limpiarTexto(mensaje), versionActual);
-
-    setTimeout(() => {
-        agregarMensaje(respuestaIA, 'ia');
-    }, 300);
-
-    input.value = '';
-};
         let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
         let versionActual = 'Nova';
 
@@ -441,19 +419,6 @@
             }
         };
 
-        function actualizarTextos() {
-            document.getElementById('btn-volver-text').textContent = textos[idiomaActual].btnVolver;
-            document.getElementById('titulo-chat').textContent = textos[idiomaActual].titulo;
-            document.getElementById('subtitulo-chat').textContent = textos[idiomaActual].subtitulo;
-            document.getElementById('btn-enviar-text').textContent = textos[idiomaActual].btnEnviar;
-            document.getElementById('btn-back-text').textContent = textos[idiomaActual].btnBack;
-            document.getElementById('mensaje-bienvenida').textContent = textos[idiomaActual].bienvenida;
-            document.getElementById('inputMensaje').placeholder = textos[idiomaActual].placeholder;
-            document.getElementById('btn-nova').textContent = "Nova";
-            document.getElementById('btn-kero').textContent = "Kero";
-            document.getElementById('btn-umwa').textContent = "Umwarimu";
-        }
-
         const getCookie = name => {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -468,74 +433,48 @@
             baja: `
                 @keyframes TarjetaAnimadaBaja {
                     0% { opacity: 0; }
-                    100% { opacity: 0.5; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1.6px solid rgba(255, 200, 200, 0.3); }
+                    100% { opacity: 0.5; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1.6px solid rgba(255,200,200,0.3); }
                 }
                 @keyframes ptBaja {
                     0% { opacity: 0; visibility: visible; }
-                    100% { opacity: 1; visibility: visible; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: white; }
+                    100% { opacity: 1; visibility: visible; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255,200,200,0.3); color: white; }
                 }
-                body.modo-claro @keyframes TarjetaAnimadaBaja {
-                    0% { opacity: 0; }
-                    100% { opacity: 0.85; background: rgba(50, 45, 55, 0.6); backdrop-filter: blur(10px); border: 1.6px solid rgba(200, 180, 200, 0.3); }
-                }
-                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                .tarjeta1,.tarjeta2,.tarjeta3,.tarjeta4,.btn-config {
                     animation: TarjetaAnimadaBaja 0.6s ease-out forwards !important;
                     filter: none !important;
                     transform: none !important;
                 }
                 .mensaje { animation: ptBaja 0.4s ease-out forwards !important; }
                 .mensaje-ia { animation-delay: 0.4s !important; }
-                .f2-1 { animation-delay: 0s !important; }
-                .f2-2 { animation-delay: 0.1s !important; }
-                .f2-3 { animation-delay: 0.2s !important; }
-                .f3-1, .f3-2, .f3-3 { animation-delay: 0.3s !important; }
-                .btn-config { animation-delay: 0.4s !important; }
             `,
             intermedia: `
                 @keyframes TarjetaAnimadaIntermedia {
                     0% { opacity: 0; transform: translateY(30px); }
-                    100% { opacity: 0.5; transform: translateY(0); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1.6px solid rgba(255, 200, 200, 0.3); }
+                    100% { opacity: 0.5; transform: translateY(0); background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1.6px solid rgba(255,200,200,0.3); }
                 }
                 @keyframes ptIntermedia {
                     0% { opacity: 0; transform: translateY(5px); visibility: visible; }
-                    100% { opacity: 1; transform: translateY(0); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255, 200, 200, 0.3); color: white; }
+                    100% { opacity: 1; transform: translateY(0); background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 2.6px solid rgba(255,200,200,0.3); color: white; }
                 }
-                body.modo-claro @keyframes TarjetaAnimadaIntermedia {
-                    0% { opacity: 0; transform: translateY(30px); }
-                    100% { opacity: 0.85; transform: translateY(0); background: rgba(50, 45, 55, 0.6); backdrop-filter: blur(10px); border: 1.6px solid rgba(200, 180, 200, 0.3); }
-                }
-                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                .tarjeta1,.tarjeta2,.tarjeta3,.tarjeta4,.btn-config {
                     animation: TarjetaAnimadaIntermedia 1s ease-out forwards !important;
                 }
                 .mensaje { animation: ptIntermedia 0.5s ease-out forwards !important; }
                 .mensaje-ia { animation-delay: 0.5s !important; }
-                .f2-1 { animation-delay: 0s !important; }
-                .f2-2 { animation-delay: 0.2s !important; }
-                .f2-3 { animation-delay: 0.4s !important; }
-                .f3-1, .f3-2, .f3-3 { animation-delay: 0.6s !important; }
-                .btn-config { animation-delay: 0.5s !important; }
             `,
             alta: `
-                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config {
+                .tarjeta1,.tarjeta2,.tarjeta3,.tarjeta4,.btn-config {
                     animation: TarjetaAnimada 1.5s ease-in-out forwards !important;
                 }
                 .mensaje { animation: pt 0.8s ease-out forwards !important; }
                 .mensaje-ia { animation-delay: 0.8s !important; }
-                .f2-1 { animation-delay: 0s !important; }
-                .f2-2 { animation-delay: 0.3s !important; }
-                .f2-3 { animation-delay: 0.6s !important; }
-                .f3-1, .f3-2, .f3-3 { animation-delay: 1s !important; }
-                .btn-config { animation-delay: 0.5s !important; }
             `
         };
 
         const aplicarCalidadAnimacion = () => {
             const animacion = getCookie('kecomu_animacion');
             if (!animacion) return;
-            
-            const estiloExistente = document.getElementById('estilo-animacion');
-            estiloExistente?.remove();
-            
+            document.getElementById('estilo-animacion')?.remove();
             const style = document.createElement('style');
             style.id = 'estilo-animacion';
             style.textContent = animacionesConfig[animacion] || '';
@@ -545,36 +484,42 @@
         const aplicarClaridadVisual = () => {
             const claridad = getCookie('kecomu_claridad');
             if (claridad !== 'true') return;
-            
-            const estiloExistente = document.getElementById('estilo-claridad');
-            estiloExistente?.remove();
-            
+            document.getElementById('estilo-claridad')?.remove();
             const style = document.createElement('style');
             style.id = 'estilo-claridad';
             style.textContent = `
-                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .btn-config, .mensaje, .input-mensaje, .btn-enviar, .btn-version {
+                .tarjeta1,.tarjeta2,.tarjeta3,.tarjeta4,.btn-config,.mensaje,.input-mensaje,.btn-enviar,.btn-version {
                     filter: none !important;
                     backdrop-filter: none !important;
                 }
-                .tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4 {
+                .tarjeta1,.tarjeta2,.tarjeta3,.tarjeta4 {
                     opacity: 1 !important;
-                    background: rgba(20, 15, 25, 0.95) !important;
-                    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+                    background: rgba(20,15,25,0.95) !important;
+                    border: 2px solid rgba(255,255,255,0.3) !important;
                 }
                 body.modo-claro .tarjeta1,
                 body.modo-claro .tarjeta2,
                 body.modo-claro .tarjeta3,
                 body.modo-claro .tarjeta4 {
-                    background: rgba(245, 240, 250, 0.98) !important;
-                    border: 2px solid rgba(100, 70, 120, 0.5) !important;
+                    background: rgba(245,240,250,0.98) !important;
+                    border: 2px solid rgba(100,70,120,0.5) !important;
                     color: #1a1a2e !important;
                 }
                 body { font-size: 18px !important; }
-                .tarjeta-pequena h3, .tarjeta-grande h3 { font-size: 1.3rem !important; font-weight: 600 !important; }
-                .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0, 0, 0, 0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
+                .btn-config { opacity: 0.9 !important; filter: none !important; backdrop-filter: none !important; background: rgba(0,0,0,0.7) !important; font-size: 12px !important; padding: 10px 24px !important; }
                 .mensaje { opacity: 1 !important; filter: none !important; backdrop-filter: none !important; color: white !important; }
             `;
             document.head.appendChild(style);
+        };
+
+        const actualizarTextos = () => {
+            document.getElementById('btn-volver-text').textContent = textos[idiomaActual].btnVolver;
+            document.getElementById('titulo-chat').textContent = textos[idiomaActual].titulo;
+            document.getElementById('subtitulo-chat').textContent = textos[idiomaActual].subtitulo;
+            document.getElementById('btn-enviar-text').textContent = textos[idiomaActual].btnEnviar;
+            document.getElementById('btn-back-text').textContent = textos[idiomaActual].btnBack;
+            document.getElementById('mensaje-bienvenida').textContent = textos[idiomaActual].bienvenida;
+            document.getElementById('inputMensaje').placeholder = textos[idiomaActual].placeholder;
         };
 
         const cambiarVersion = version => {
@@ -606,63 +551,58 @@
             area.scrollTop = area.scrollHeight;
         };
 
-        const obtenerRespuestaSimulada = (mensaje, version) => {
+        const obtenerRespuesta = (mensaje, version) => {
             const msg = mensaje.toLowerCase();
-            const textosActuales = textos[idiomaActual].respuestas;
-            
+            const r = textos[idiomaActual].respuestas;
+
             if (version === 'Nova') {
                 if (msg.includes('html') || msg.includes('css') || msg.includes('javascript') || msg.includes('codigo') || msg.includes('código')) {
-                    return textosActuales.Nova.html;
+                    return r.Nova.html;
                 }
-                return textosActuales.Nova.default(mensaje);
+                return r.Nova.default(mensaje);
             }
-            
+
             if (version === 'Kero') {
                 if (msg.includes('diseño') || msg.includes('bonito') || msg.includes('animación') || msg.includes('estilo') || msg.includes('design')) {
-                    return textosActuales.Kero.diseño;
+                    return r.Kero.diseño;
                 }
-                return textosActuales.Kero.default(mensaje);
+                return r.Kero.default(mensaje);
             }
-            
+
             if (version === 'Umwarimu') {
                 if (msg.includes('aprender') || msg.includes('principiante') || msg.includes('explica') || msg.includes('aprendizaje') || msg.includes('learn')) {
-                    return textosActuales.Umwarimu.aprender;
+                    return r.Umwarimu.aprender;
                 }
-                return textosActuales.Umwarimu.default(mensaje);
+                return r.Umwarimu.default(mensaje);
             }
-            
+
             return `[Kecomu · ${version}]\n\nRecibí tu mensaje: "${mensaje}". ¿Puedes darme más contexto sobre lo que necesitas? Estoy aquí para ayudarte con desarrollo web.`;
         };
 
         const enviarMensaje = () => {
             const input = document.getElementById('inputMensaje');
             const mensaje = input.value.trim();
-            
-            if (mensaje === '') return;
-            
+            if (!mensaje) return;
             agregarMensaje(mensaje, 'usuario');
             input.value = '';
-            
-            const respuesta = obtenerRespuestaSimulada(mensaje, versionActual);
-            
             setTimeout(() => {
-                agregarMensaje(respuesta, 'ia');
+                agregarMensaje(obtenerRespuesta(mensaje, versionActual), 'ia');
             }, 300);
         };
 
         const aplicarPreferencias = () => {
             const tema = getCookie('kecomu_tema');
             const version = getCookie('kecomu_version');
-            
+
             if (tema === 'claro') document.body.classList.add('modo-claro');
-            
+
             if (version) {
                 versionActual = version;
                 document.querySelectorAll('.btn-version').forEach(btn => {
                     btn.classList.toggle('activo', btn.getAttribute('data-version') === version);
                 });
             }
-            
+
             aplicarCalidadAnimacion();
             aplicarClaridadVisual();
         };
