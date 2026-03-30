@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kecomu · AI for Web Development • Chat</title>
@@ -368,6 +371,22 @@
     </div>
 
     <script>
+
+        const enviarMensaje = () => {
+    const input = document.getElementById('inputMensaje');
+    const mensaje = input.value.trim();
+    if(!mensaje) return;
+
+    agregarMensaje(mensaje, 'usuario');
+    
+    const respuestaIA = obtenerRespuestaDeSQL(limpiarTexto(mensaje), versionActual);
+
+    setTimeout(() => {
+        agregarMensaje(respuestaIA, 'ia');
+    }, 300);
+
+    input.value = '';
+};
         let idiomaActual = localStorage.getItem('kecomu_idioma') || 'en';
         let versionActual = 'Nova';
 
