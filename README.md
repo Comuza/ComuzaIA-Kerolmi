@@ -13,6 +13,4 @@
 
 # Kecomu 
 
-## Porque dejare este proyecto?
-
-<li>Este proyecto es casi imposible sin un equipo de desarrollo, al intentar hacer una inteligencia artificial desde cero, y intentar usar unicamente MegaBytes... Me he desanimado por la dificultad... Gracias</li>
+  ## VOLVIMOS
